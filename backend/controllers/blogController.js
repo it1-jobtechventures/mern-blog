@@ -31,11 +31,11 @@ const listBlog = async (req, res) => {
     //logic to access all food list and send them as a response
     try {
         //in this variable we will get all the data of the food items
-        const blogs = await blogModelModel.find({});
+        const blogs = await blogModel.find({});
         res.json({success:true ,data:blogs})
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:'Error'})
+        res.json({success:false,message:error.message})
     }
 }
 
