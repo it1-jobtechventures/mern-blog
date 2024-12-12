@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
 import Header from './components/Header';
+import Logo from './components/Logo';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path='/gallary' element={<Gallery/>}/>
       </Routes>
+      <Logo/>
       <Footer/>
     </>
 
