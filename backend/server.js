@@ -6,6 +6,7 @@ import 'dotenv/config'
 import userRouter from './routes/userRoute.js';
 import blogRouter from './routes/blogRoute.js';
 import updateRouter from './routes/updateRoute.js';
+import bannerRouter from './routes/bannerRoute.js';
 
 //app config
 const app = express();
@@ -25,6 +26,8 @@ app.use('/api/user',userRouter)
 app.use('/images',express.static('upload'))
 app.use('/api/blog',blogRouter)
 app.use('/api/update', updateRouter)
+app.use('/api/banner', bannerRouter)
+
 
 // request the data for server
 app.get('/' , (req , res) => {
