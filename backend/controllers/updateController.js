@@ -1,6 +1,5 @@
 import updateModel from "../models/updateModel.js";
 
- //add food item 
  const addUpdate = async (req, res) => {
     try {
         const update = new updateModel({
@@ -15,4 +14,25 @@ import updateModel from "../models/updateModel.js";
     }
 };
 
-export {addUpdate}
+const listUpdateLink = async (req, res) => {
+    try {
+        const updateLink = await updateModel.find({});
+        res.json({success:true ,data:updateLink})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:error.message})
+    }
+}
+
+const removeUpdatedLink = async (req, res) => {
+    try {
+        const updateLink = await updateModel.findById(req.body.id);
+        await updateModel.findByIdAndDelete(req.body.id);
+        res.json({ success: true, message: ' removed updated link' });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+export {addUpdate, listUpdateLink,removeUpdatedLink}

@@ -14,7 +14,8 @@ const port = process.env.PORT || 4000;
 //middleware 
 app.use(express.json());
 app.use(cors());
-
+// Middleware to parse URL-encoded data (if needed)
+app.use(express.urlencoded({ extended: true }));
 //db connect
 connectDB();
 

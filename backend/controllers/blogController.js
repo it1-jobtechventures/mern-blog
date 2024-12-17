@@ -1,7 +1,6 @@
 import blogModel from '../models/blogModel.js';
 import fs from 'fs'
 
- //add food item 
 const addBlog = async (req, res) => {
     try {
         let image_filename = req.file.filename;
@@ -26,11 +25,8 @@ const addBlog = async (req, res) => {
 };
 
 
-// all food list
 const listBlog = async (req, res) => {
-    //logic to access all food list and send them as a response
     try {
-        //in this variable we will get all the data of the food items
         const blogs = await blogModel.find({});
         res.json({success:true ,data:blogs})
     } catch (error) {
@@ -39,7 +35,6 @@ const listBlog = async (req, res) => {
     }
 }
 
-// Remove food item
 const removeBlog = async (req, res) => {
     try {
         const blog = await blogModel.findById(req.body.id);
