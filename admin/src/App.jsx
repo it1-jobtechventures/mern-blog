@@ -8,6 +8,8 @@ import Sidebar from './components/Sidebar';
 import AllBlog from './components/AllBlog';
 import UpdateLink from './components/UpdateLink';
 import ListAllUpdateLink from './components/ListAllUpdateLink';
+import AddBanner from './components/AddBanner';
+import AllBanner from './components/AllBanner';
 
 function App() {
     const url = 'http://localhost:4000'
@@ -24,6 +26,8 @@ function App() {
             <Route path="/allBlog" element={<AllBlog url={url} />} />
             <Route path="/updateLink" element={<UpdateLink url={url} />} />
             <Route path="/allUpdateLink" element={<ListAllUpdateLink url={url} />} />
+            <Route path="/addBanner" element={<AddBanner url={url} />} />
+            <Route path="/allBanner" element={<AllBanner url={url} />} />
           </Routes>
         </div>
       </div>

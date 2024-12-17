@@ -10,7 +10,6 @@ const AllBlog = ({ url }) => {
             const response = await axios.get(`http://localhost:4000/api/blog/list`);
             if (response.data.success) {
                 setAllBlog(response.data.data);
-                console.log("jsdskd",response.data.data);
             } else {
                 toast.error('Error fetching blogs.');
             }
@@ -55,21 +54,14 @@ const AllBlog = ({ url }) => {
                 </div>
                 {allBlog.map((blog, index) => (
                     <div key={index} className="grid grid-cols-5 gap-4 items-center border-b py-2">
-                        <img
-                            src={`${url}/images/${blog.image}`}
-                            alt="Menu Item"
-                            className="h-20 w-20 object-cover rounded"
-                        />
+                        <img src={`${url}/images/${blog.image}`} alt="Menu Item" className="h-20 w-20 object-cover rounded"/>
                         <p>{blog.title}</p>
                         <p>{blog.headline}</p>
                         <p>{blog.category}</p>
                         <p>{blog.description}</p>
                         <p>{blog.long_description}</p>
                         <p>{blog.keyword}</p>
-                        <p
-                            onClick={() => removeBlog(blog._id)}
-                            className="cursor-pointer text-red-500 hover:text-red-700 transition duration-200"
-                        >
+                        <p onClick={() => removeBlog(blog._id)} className="cursor-pointer text-red-500 hover:text-red-700 transition duration-200">
                             Remove
                         </p>
                     </div>

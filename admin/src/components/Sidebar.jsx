@@ -17,6 +17,12 @@ const Sidebar = () => {
         <NavLink to={'/allUpdateLink'} className="hover:text-gray-300 transition duration-200">
           <p>All Update link</p>
         </NavLink>
+        <NavLink to={'/addBanner'} className="hover:text-gray-300 transition duration-200">
+          <p>Add banner</p>
+        </NavLink>
+        <NavLink to={'/allBanner'} className="hover:text-gray-300 transition duration-200">
+          <p>All banner</p>
+        </NavLink>
       </div>
     </aside>
   );
