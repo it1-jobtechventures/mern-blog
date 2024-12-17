@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import blogData from '../assets/blogData'; 
 import BlogCard from './BlogCard';
+import axios from 'axios';
 
 const Blog = () => {
     const navigate = useNavigate();
+    const [blogs, setBlogs] = useState([]);
+
+    const fetchBlogs = async () => {
+        try {
+            const response = await axios.get('http://localhost:4000/api/blog/list'); 
+            if (response.data.success) {
+                setBlogs(response.data.data); // Set fetched data to the state
+            } else {
+                console.error('Error fetching blogs');
+            }
+        } catch (error) {
+            console.error('Error fetching blogs:', error);
+        }
+    };
+  
+    useEffect(() => {
+        fetchBlogs()
+    },[])
 
     const handleCardClick = (id) => {
         navigate(`/blog/${id}`); 
@@ -16,8 +35,8 @@ const Blog = () => {
         <div className='flex justify-center items-center'> 
             <div className="grid grid-cols-1  md:grid-cols-2 gap-8 p-4">
                 {
-                    blogData.map((blog, id) => (
-                        <div key={id} onClick={() => handleCardClick(id)} className="cursor-pointer">
+                    blogs.map((blog, id) => (
+                        <div key={blog._id} onClick={() => handleCardClick(blog._id)} className="cursor-pointer">
                             <BlogCard blog={blog} />
                         </div>
                     ))
