@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Route, Routes } from 'react-router-dom'
 import Sidebar from './components/Sidebar';
 import AllBlog from './components/AllBlog';
+import UpdateLink from './components/UpdateLink';
+import ListAllUpdateLink from './components/ListAllUpdateLink';
 
 function App() {
     const url = 'http://localhost:4000'
@@ -20,6 +22,8 @@ function App() {
             <Route path="/" element={<AddBlog url={url} />} />
             <Route path="/login" element={<Login url={url} />} />
             <Route path="/allBlog" element={<AllBlog url={url} />} />
+            <Route path="/updateLink" element={<UpdateLink url={url} />} />
+            <Route path="/allUpdateLink" element={<ListAllUpdateLink url={url} />} />
           </Routes>
         </div>
       </div>
