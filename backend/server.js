@@ -5,6 +5,7 @@ import { connectDB } from './config/db.js';
 import 'dotenv/config'
 import userRouter from './routes/userRoute.js';
 import blogRouter from './routes/blogRoute.js';
+import updateRouter from './routes/updateRoute.js';
 
 //app config
 const app = express();
@@ -22,7 +23,7 @@ app.use('/api/user',userRouter)
 //mount upload folder to the 'images' endpoint.
 app.use('/images',express.static('upload'))
 app.use('/api/blog',blogRouter)
-
+app.use('/api/update', updateRouter)
 
 // request the data for server
 app.get('/' , (req , res) => {
