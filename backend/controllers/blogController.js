@@ -54,4 +54,17 @@ const removeBlog = async (req, res) => {
     }
 }
 
-export {addBlog, listBlog, removeBlog};
+const getBlockById = async (req, res) => {
+    try {
+        const blog = await blogModel.findById(req.params.id)
+        if (!blog) {
+            return res.status(404).json({ success: false, message: 'Blog not found' });
+        }
+        res.json({ success: true, data: blog });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+}
+
+export {addBlog, listBlog, removeBlog,getBlockById};
