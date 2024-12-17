@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import Gallery from './components/Gallery';
 import Header from './components/Header';
 import Logo from './components/Logo';
+import UpdatedLink from './components/UpdatedLink';
+import Banner from './components/Banner';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path='/gallary' element={<Gallery/>}/>
       </Routes>
+      <UpdatedLink/>
+      <Banner/>
       <Logo/>
       <Footer/>
     </>
