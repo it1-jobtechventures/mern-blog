@@ -18,6 +18,9 @@ const Navbar = () => {
           <NavLink to="/gallary" className={({ isActive }) => isActive ? 'text-yellow-300 underline' : '' }>
             Gallery
           </NavLink>
+          <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-yellow-300 underline' : '' }>
+            Contact
+          </NavLink>
         </div>
       </nav>
     </>
