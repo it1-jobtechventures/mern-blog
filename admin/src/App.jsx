@@ -18,10 +18,10 @@ function App() {
 
   return (
     <>
-    <ToastContainer/>
-    <div className="flex">
-        <Sidebar className="w-1/4 min-h-screen bg-gray-100 p-4" />
-        <div className="flex-1 p-6 pt-24 ml-52">
+      <ToastContainer />
+      <div className="flex">
+        <Sidebar />
+        <div className="flex-1 p-6 pt-24 ml-0 lg:ml-52"> {/* Adjusted margin for mobile */}
           <Routes>
             <Route path="/" element={<AddBlog url={url} />} />
             <Route path="/login" element={<Login url={url} />} />

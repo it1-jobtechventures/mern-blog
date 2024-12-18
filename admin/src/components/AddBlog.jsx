@@ -67,12 +67,8 @@ const AddBlog = ({ url }) => {
         }
     };
 
-    useEffect(() => {
-        
-    }, [data]);
-
     return (
-        <div className="max-w-md mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
+        <div className="max-w-2xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
             <h1 className="text-2xl font-bold mb-5">Add Blog</h1>
             <form onSubmit={onSubmitHandler}>
                 <div className="mb-4">
@@ -80,9 +76,9 @@ const AddBlog = ({ url }) => {
                         Upload Main Image
                     </label>
                     <label htmlFor="image" className="block cursor-pointer">
-                        <img src={image ? URL.createObjectURL(image) : ''} alt="Main Upload" className="h-20 w-20 mb-2 border border-gray-300 rounded object-cover"/>
+                        <img src={image ? URL.createObjectURL(image) : ''} alt="Main Upload" className="h-20 w-20 mb-2 border border-gray-300 rounded object-cover" />
                     </label>
-                    <input onChange={handleMainImageChange} type="file" id="image" hidden required/>
+                    <input onChange={handleMainImageChange} type="file" id="image" hidden required />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="images" className="block text-sm font-medium text-gray-700">
@@ -90,16 +86,16 @@ const AddBlog = ({ url }) => {
                     </label>
                     <div className="flex gap-4 flex-wrap mt-2">
                         {previews.map((preview, index) => (
-                            <img key={index} src={preview} alt={`Preview ${index}`} className="h-20 w-20 border border-gray-300 rounded object-cover"/>
+                            <img key={index} src={preview} alt={`Preview ${index}`} className="h-20 w-20 border border-gray-300 rounded object-cover" />
                         ))}
                     </div>
-                    <input onChange={handleAdditionalImagesChange} type="file" id="images" multiple hidden required/>
+                    <input onChange={handleAdditionalImagesChange} type="file" id="images" multiple hidden required />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                         Blog Title
                     </label>
-                    <input onChange={onChangeHandler} value={data.title} type="text" name="title" placeholder="Type here" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"  />
+                    <input onChange={onChangeHandler} value={data.title} type="text" name="title" placeholder="Type here" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="headline" className="block text-sm font-medium text-gray-700">
@@ -111,7 +107,7 @@ const AddBlog = ({ url }) => {
                     <label htmlFor="keyword" className="block text-sm font-medium text-gray-700">
                         Blog Keyword
                     </label>
-                    <input onChange={onChangeHandler} value={data.keyword} type="text" name="keyword" placeholder="Type here" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"/>
+                    <input onChange={onChangeHandler} value={data.keyword} type="text" name="keyword" placeholder="Type here" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="description" className="block text-sm font-medium text-gray-700">
@@ -123,7 +119,7 @@ const AddBlog = ({ url }) => {
                     <label htmlFor="long_description" className="block text-sm font-medium text-gray-700">
                         Blog Long Description
                     </label>
-                    <textarea onChange={onChangeHandler} value={data.long_description} name="long_description" rows={4} placeholder="Type here" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"/>
+                    <textarea onChange={onChangeHandler} value={data.long_description} name="long_description" rows={4} placeholder="Type here" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="category" className="block text-sm font-medium text-gray-700">

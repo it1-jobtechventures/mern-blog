@@ -28,7 +28,7 @@ const AddGallery = () => {
     }, []);
   return (
     <div>
-            <div className="max-w-md mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
+        <div className="max-w-md mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
         <h1 className="text-2xl font-bold mb-5">Add photo</h1>
         <form onSubmit={onSubmitHandler}>
             <div className="mb-4">
