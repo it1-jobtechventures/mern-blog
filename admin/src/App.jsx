@@ -12,6 +12,7 @@ import AddBanner from './components/AddBanner';
 import AllBanner from './components/AllBanner';
 import AddGallery from './components/addGallery';
 import DisplayGallery from './components/DisplayGallery';
+import AllEmail from './components/AllEmail';
 
 function App() {
     const url = 'http://localhost:4000'
@@ -32,6 +33,7 @@ function App() {
             <Route path="/allBanner" element={<AllBanner url={url} />} />
             <Route path="/addGallery" element={<AddGallery url={url} />} />
             <Route path="/allGallery" element={<DisplayGallery url={url} />} />
+            <Route path="/emails" element={<AllEmail url={url} />} />
           </Routes>
         </div>
       </div>

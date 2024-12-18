@@ -53,6 +53,9 @@ const Sidebar = () => {
           <NavLink to={'/allGallery'} className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLinkClick}>
             <span className="text-xl">🖼️</span> <p className="ml-2">All Gallery</p>
           </NavLink>
+          <NavLink to={'/emails'} className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLinkClick}>
+            <span className="text-xl">💬</span> <p className="ml-2">All Emails</p>
+          </NavLink>
         </div>
       </aside>
     </>
