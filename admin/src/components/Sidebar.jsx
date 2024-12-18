@@ -23,6 +23,12 @@ const Sidebar = () => {
         <NavLink to={'/allBanner'} className="hover:text-gray-300 transition duration-200">
           <p>All banner</p>
         </NavLink>
+        <NavLink to={'/addGallery'} className="hover:text-gray-300 transition duration-200">
+          <p>addGallery</p>
+        </NavLink>
+        <NavLink to={'/allGallery'} className="hover:text-gray-300 transition duration-200">
+          <p>allGallery</p>
+        </NavLink>
       </div>
     </aside>
   );

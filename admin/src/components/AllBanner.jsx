@@ -25,12 +25,12 @@ const AllBanner = ({url}) => {
       const response = await axios.post(`http://localhost:4000/api/banner/removeBanner`, { id: bannerId });
       await fetchAllBanner();
       if (response.data.success) {
-        toast.success('blog removed successfully.');
+        toast.success('banner removed successfully.');
       } else {
         toast.error('Error removing blog.');
       }
     } catch (error) {
-      toast.error('An error occurred while removing the blog.');
+      toast.error('An error occurred while removing the banner.');
       console.error(error);
     }
 };

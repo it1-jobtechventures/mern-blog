@@ -10,6 +10,8 @@ import UpdateLink from './components/UpdateLink';
 import ListAllUpdateLink from './components/ListAllUpdateLink';
 import AddBanner from './components/AddBanner';
 import AllBanner from './components/AllBanner';
+import AddGallery from './components/addGallery';
+import DisplayGallery from './components/DisplayGallery';
 
 function App() {
     const url = 'http://localhost:4000'
@@ -28,6 +30,8 @@ function App() {
             <Route path="/allUpdateLink" element={<ListAllUpdateLink url={url} />} />
             <Route path="/addBanner" element={<AddBanner url={url} />} />
             <Route path="/allBanner" element={<AllBanner url={url} />} />
+            <Route path="/addGallery" element={<AddGallery url={url} />} />
+            <Route path="/allGallery" element={<DisplayGallery url={url} />} />
           </Routes>
         </div>
       </div>
