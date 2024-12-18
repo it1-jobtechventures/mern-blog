@@ -10,10 +10,13 @@ import Logo from './components/Logo';
 import UpdatedLink from './components/UpdatedLink';
 import Banner from './components/Banner';
 import Contact from './components/Contact';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
     <>
+    <ToastContainer/>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Header/>}/>
