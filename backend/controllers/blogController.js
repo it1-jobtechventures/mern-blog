@@ -3,7 +3,8 @@ import fs from 'fs'
 
 const addBlog = async (req, res) => {
     try {
-        let image_filename = req.file.filename;
+        let mainImageFilename = req.files['image'][0].filename;
+        let imagesFilenames = req.files['images'] ? req.files['images'].map(file => file.filename) : [];
 
         const blog = new blogModel({
             title: req.body.title,
@@ -11,15 +12,16 @@ const addBlog = async (req, res) => {
             headline: req.body.headline,
             long_description: req.body.long_description,
             category: req.body.category,
-            keyword: req.body.keyword,
-            image: image_filename
+            keyword: req.body.keyword.split(','),
+            image: mainImageFilename,
+            images: imagesFilenames
         });
 
         await blog.save();
-        res.json({ success: true, message: 'blog Added' });
+        res.json({ success: true, message: 'Blog Added' });
     } catch (error) {
         console.log(error.message);
-        res.json({ success: false, message: error.message});
+        res.json({ success: false, message: error.message });
     }
 };
 

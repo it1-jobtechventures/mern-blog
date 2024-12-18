@@ -18,7 +18,11 @@ const upload = multer({storage:storage})
 
 //post method (if we have to upload file)
 //route to post
-blogRouter.post("/add" ,upload.single("image"), addBlog)
+
+blogRouter.post("/add", upload.fields([
+    { name: 'image', maxCount: 1 },
+    { name: 'images', maxCount: 10 }
+]), addBlog);
 
 blogRouter.get('/list' ,listBlog)
 
