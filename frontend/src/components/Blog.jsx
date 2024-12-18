@@ -12,7 +12,7 @@ const Blog = () => {
         try {
             const response = await axios.get('http://localhost:4000/api/blog/list'); 
             if (response.data.success) {
-                setBlogs(response.data.data); // Set fetched data to the state
+                setBlogs(response.data.data); 
             } else {
                 console.error('Error fetching blogs');
             }
