@@ -8,6 +8,7 @@ import blogRouter from './routes/blogRoute.js';
 import updateRouter from './routes/updateRoute.js';
 import bannerRouter from './routes/bannerRoute.js';
 import galleryRouter from './routes/galleryRoute.js';
+import contactRouter from './routes/contactRoute.js';
 
 //app config
 const app = express();
@@ -29,8 +30,7 @@ app.use('/api/blog',blogRouter)
 app.use('/api/update', updateRouter)
 app.use('/api/banner', bannerRouter)
 app.use('/api/gallery', galleryRouter)
-
-
+app.use('/api/contact', contactRouter)
 
 // request the data for server
 app.get('/' , (req , res) => {
