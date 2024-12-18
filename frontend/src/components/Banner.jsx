@@ -24,7 +24,7 @@ const Banner = () => {
     }, []);
 
   return (
-    <div className="border border-yellow-900 w-52 mb-3">
+    <div className="border border-yellow-900 w-72 mb-3">
         <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={3000} showThumbs={false}dynamicHeight={true}>
         {
             banner.map((ban, id) => (

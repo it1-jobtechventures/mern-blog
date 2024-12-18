@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Logo from './components/Logo';
 import UpdatedLink from './components/UpdatedLink';
 import Banner from './components/Banner';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -19,13 +20,13 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path='/gallary' element={<Gallery/>}/>
+        <Route path='/contact' element={<Contact/>}/>
       </Routes>
       <UpdatedLink/>
       <Banner/>
       <Logo/>
       <Footer/>
     </>
-
   );
 }
 
