@@ -13,7 +13,6 @@ const addBlog = async (req, res) => {
             category: req.body.category,
             keyword: req.body.keyword,
             image: image_filename
-            
         });
 
         await blog.save();
