@@ -7,7 +7,7 @@ const AllBanner = ({ url }) => {
 
   const fetchAllBanner = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/banner/listBanner`);
+      const response = await axios.get(`${url}/api/banner/listBanner`);
       if (response.data.success) {
         setAllBanner(response.data.data);
       } else {
@@ -21,7 +21,7 @@ const AllBanner = ({ url }) => {
 
   const removeBanner = async (bannerId) => {
     try {
-      const response = await axios.post(`http://localhost:4000/api/banner/removeBanner`, { id: bannerId });
+      const response = await axios.post(`${url}/api/banner/removeBanner`, { id: bannerId });
       await fetchAllBanner();
       if (response.data.success) {
         toast.success('Banner removed successfully.');

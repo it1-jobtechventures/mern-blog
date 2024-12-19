@@ -7,7 +7,7 @@ const DisplayGallery = ({ url }) => {
 
   const fetchAllPhotos = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/gallery/listPhoto`);
+      const response = await axios.get(`${url}/api/gallery/listPhoto`);
       if (response.data.success) {
         setAllPhoto(response.data.data);
       } else {
@@ -21,7 +21,7 @@ const DisplayGallery = ({ url }) => {
 
   const removePhoto = async (photoId) => {
     try {
-      const response = await axios.post(`http://localhost:4000/api/gallery/removePhoto`, { id: photoId });
+      const response = await axios.post(`${url}/api/gallery/removePhoto`, { id: photoId });
       await fetchAllPhotos();
       if (response.data.success) {
         toast.success('Photo removed successfully.');

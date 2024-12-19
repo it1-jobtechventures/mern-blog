@@ -3,10 +3,10 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const Login = () => {
+const Login = ({url}) => {
     const [currentState, setCurrentState] = useState('login');
     const [token ,setToken] = useState('')
-    const url= "http://localhost:4000"
+    // const url= "http://localhost:4000"
     const [data , setData] = useState({
         name:'',
         email:'',

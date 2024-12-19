@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const AddBanner = () => {
+const AddBanner = ({url}) => {
     const [image, setImage] = useState(null);
     const [data, setData] = useState({
         link: '',
@@ -21,7 +21,7 @@ const AddBanner = () => {
         formData.append('image', image);
 
         try {
-            const response = await axios.post(`http://localhost:4000/api/banner/addBanner`, formData);
+            const response = await axios.post(`${url}/api/banner/addBanner`, formData);
             if (response.data.success) {
                 setData({
                     link: '',

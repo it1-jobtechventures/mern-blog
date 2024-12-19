@@ -15,14 +15,14 @@ import DisplayGallery from './components/DisplayGallery';
 import AllEmail from './components/AllEmail';
 
 function App() {
-    const url = 'http://localhost:4000'
+    const url = 'https://mern-blog-backend-9oua.onrender.com'
 
   return (
     <>
       <ToastContainer />
       <div className="flex">
         <Sidebar />
-        <div className="flex-1 p-6 pt-24 ml-0 lg:ml-52"> {/* Adjusted margin for mobile */}
+        <div className="flex-1 p-6 pt-24 ml-0 lg:ml-52">
           <Routes>
             <Route path="/" element={<AddBlog url={url} />} />
             <Route path="/login" element={<Login url={url} />} />

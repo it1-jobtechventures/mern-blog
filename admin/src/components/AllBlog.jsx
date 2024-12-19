@@ -7,7 +7,7 @@ const AllBlog = ({ url }) => {
 
     const fetchAllBlog = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/blog/list`);
+            const response = await axios.get(`${url}/api/blog/list`);
             if (response.data.success) {
                 setAllBlog(response.data.data);
             } else {
@@ -21,7 +21,7 @@ const AllBlog = ({ url }) => {
 
     const removeBlog = async (blogId) => {
         try {
-            const response = await axios.post(`http://localhost:4000/api/blog/remove`, { id: blogId });
+            const response = await axios.post(`${url}/api/blog/remove`, { id: blogId });
             await fetchAllBlog();
             if (response.data.success) {
                 toast.success('Blog removed successfully.');

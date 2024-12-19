@@ -16,7 +16,7 @@ const UpdateLink = ({ url }) => {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:4000/api/update/addUpdate`, data, {
+            const response = await axios.post(`${url}/api/update/addUpdate`, data, {
                 headers: { 'Content-Type': 'application/json' }
             });
             if (response.data.success) {

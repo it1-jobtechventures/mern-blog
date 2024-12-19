@@ -45,7 +45,7 @@ const AddBlog = ({ url }) => {
         images.forEach((img) => formData.append('images', img));
 
         try {
-            const response = await axios.post(`http://localhost:4000/api/blog/add`, formData);
+            const response = await axios.post(`${url}/api/blog/add`, formData);
             if (response.data.success) {
                 setData({
                     title: '',

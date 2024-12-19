@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const AllEmail = () => {
+const AllEmail = ({url}) => {
     const [allEmails, setAllEmails] = useState([]);
 
     const fetchAllEmail = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/contact/listOfContact`);
+            const response = await axios.get(`${url}/api/contact/listOfContact`);
             if (response.data.success) {
                 setAllEmails(response.data.data);
                 console.log(response.data.data)

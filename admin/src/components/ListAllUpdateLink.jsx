@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const ListAllUpdateLink = () => {
+const ListAllUpdateLink = ({url}) => {
     const [updateList, setUpdateList] = useState([]);
 
     const fetchAllUpdateList = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/update/allUpdate`);
+            const response = await axios.get(`${url}/api/update/allUpdate`);
             if (response.data.success) {
                 setUpdateList(response.data.data);
             } else {
@@ -21,7 +21,7 @@ const ListAllUpdateLink = () => {
 
     const removeUpdatedLink = async (linkId) => {
         try {
-            const response = await axios.post(`http://localhost:4000/api/update/removeUpdate`, { id: linkId });
+            const response = await axios.post(`${url}/api/update/removeUpdate`, { id: linkId });
             await fetchAllUpdateList();
             if (response.data.success) {
                 toast.success('Link removed successfully.');

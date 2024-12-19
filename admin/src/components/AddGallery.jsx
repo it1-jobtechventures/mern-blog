@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const AddGallery = () => {
+const AddGallery = ({url}) => {
     const [image, setImage] = useState(null);
 
     const onSubmitHandler = async (e) => {
@@ -11,7 +11,7 @@ const AddGallery = () => {
         formData.append('image', image);
 
         try {
-            const response = await axios.post(`http://localhost:4000/api/gallery/addPhoto`, formData);
+            const response = await axios.post(`${url}/api/gallery/addPhoto`, formData);
             if (response.data.success) {
                 setImage(null);
                 toast.success(response.data.message);
