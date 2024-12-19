@@ -89,7 +89,7 @@ const AddBlog = ({ url }) => {
                             <img key={index} src={preview} alt={`Preview ${index}`} className="h-20 w-20 border border-gray-300 rounded object-cover" />
                         ))}
                     </div>
-                    <input onChange={handleAdditionalImagesChange} type="file" id="images" multiple hidden required />
+                    <input onChange={handleAdditionalImagesChange} type="file" id="images" multiple hidden />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="title" className="block text-sm font-medium text-gray-700">
