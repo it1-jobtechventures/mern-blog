@@ -75,7 +75,8 @@ const BlogDetail = ({url}) => {
     try {
       const response = await axios.post(`${url}/api/blog/blog/${id}`); 
       if (response.data.success) {
-        setBlog(response.data.data); 
+        setBlog(response.data.data);
+        console.log(response.data)
       } else {
         console.error('Error fetching the blog');
       }
@@ -95,6 +96,7 @@ const BlogDetail = ({url}) => {
   return (
     <div className="container mx-auto p-6 md:p-10 md:pt-32 bg-gray-50 rounded-lg shadow-lg relative">
       <h1 className="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-4">{blog.title}</h1>
+      <h3 className="text-3xl md:text-4xl font-semibold text-center text-[#ff6200] mb-4">{blog.headline}</h3>
       <div className="relative mb-8 flex justify-center items-center">
         <img  src={`${url}/images/${blog.image}`}  alt={blog.title}  className="h-80 object-contain rounded-lg shadow-lg" />
       </div>
