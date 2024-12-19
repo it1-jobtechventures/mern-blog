@@ -119,10 +119,13 @@ const Contact = ({url}) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    phoneNo:'',
     email: '',
     subject: '',
     message: ''
   });
+
+  
 
   // Handle form data change
   const onChangeHandler = (e) => {
@@ -140,11 +143,13 @@ const Contact = ({url}) => {
       if (response.data.success) {
         // Send email using EmailJS
         sendEmail(formData);
+        console.log("dksj" , formData)
         toast.success('Form submitted successfully.');
         setFormData({
           firstName: '',
           lastName: '',
           email: '',
+          phoneNo:'',
           subject: '',
           message: ''
         });
@@ -178,7 +183,7 @@ const Contact = ({url}) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto pt-32 p-5 bg-white shadow-lg rounded-lg">
+    <div className="max-w-4xl mx-auto md:pt-32 p-5 bg-white shadow-lg rounded-lg">
       <h1 className="text-3xl font-bold mb-5 text-center">Contact Us</h1>
       <form onSubmit={onSubmitHandler}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
@@ -195,11 +200,19 @@ const Contact = ({url}) => {
             <input type="text" name="lastName" value={formData.lastName} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" required/>
           </div>
         </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email Address
-          </label>
-          <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" required />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" required/>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="phoneNo" className="block text-sm font-medium text-gray-700">
+              Phone No.
+            </label>
+            <input type='tel' name="phoneNo" value={formData.phoneNo} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" required/>
+          </div>
         </div>
         <div className="mb-4">
           <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
@@ -213,7 +226,7 @@ const Contact = ({url}) => {
           </label>
           <textarea name="message" value={formData.message} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" rows="4" required/>
         </div>
-        <button type="submit" className="w-full bg-blue-600 text-white font-bold py-3 rounded hover:bg-blue-700 transition duration-200">
+        <button type="submit" className="w-full bg-[#ff6200] text-white font-bold py-3 rounded hover:bg-[#f18847] transition duration-200">
           Submit
         </button>
       </form>
