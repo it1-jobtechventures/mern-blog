@@ -38,23 +38,21 @@
 // export default Logo
 
   import React from "react";
-  import jobringer from "src/assets/jobringer.png";
-  import alanze from "src/assets/alanze.png";
-  import hindco from "src/assets/hindco.png";
-  import arfectLogo from "src/assets/arfectLogo.png";
+import logoData from "../assets/logoData";
+
 
   const Logo = () => {
     return (
       <div className="p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[jobringer, alanze, hindco, arfectLogo].map((logo, idx) => (
+          {logoData.map((logo, idx) => (
             <div
               key={idx}
               className="rounded-md border border-black p-4 flex flex-col items-center"
             >
               <img
                 className="rounded-sm h-32 w-full object-contain bg-white"
-                src={logo}
+                src={logo.image }
                 alt="logo"
               />
               <p className="text-center mt-2">
