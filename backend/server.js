@@ -9,6 +9,7 @@ import updateRouter from './routes/updateRoute.js';
 import bannerRouter from './routes/bannerRoute.js';
 import galleryRouter from './routes/galleryRoute.js';
 import contactRouter from './routes/contactRoute.js';
+import bcrypt from 'bcryptjs';
 
 //app config
 const app = express();
@@ -21,6 +22,40 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 //db connect
 connectDB();
+
+
+// // Check and Create Default Admin
+// const createDefaultAdmin = async () => {
+//     try {
+//       const adminEmail = process.env.ADMIN_EMAIL;
+//       const adminPassword = process.env.ADMIN_PASSWORD;
+  
+//       if (!adminEmail || !adminPassword) {
+//         console.error('Admin credentials are missing in .env file');
+//         return;
+//       }
+  
+//       const existingAdmin = await adminModel.findOne({ email: adminEmail });
+//       if (!existingAdmin) {
+//         const hashedPassword = await bcrypt.hash(adminPassword, 10);
+//         const admin = new adminModel({
+//           name: 'Default Admin',
+//           email: adminEmail,
+//           password: hashedPassword,
+//         });
+//         await admin.save();
+//         console.log('Default admin created successfully!');
+//       } else {
+//         console.log('Admin already exists.');
+//       }
+//     } catch (error) {
+//       console.error('Error creating default admin:', error);
+//     }
+//   };
+  
+//   // Call the function on server startup
+//   createDefaultAdmin()
+
 
 //routes
 app.use('/api/user',userRouter)

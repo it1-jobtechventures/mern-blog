@@ -8,7 +8,7 @@ const blogSchema = new mongoose.Schema({
     image: { type: String, required: true }, 
     images: { type: [String]},
     keyword: { type: [String], required: true },
-    category: { type: String, required: true },
+    category: { type: String },
     date: { type: Date, default: Date.now }
 });
 
