@@ -10,7 +10,7 @@ import UpdateLink from './components/UpdateLink';
 import ListAllUpdateLink from './components/ListAllUpdateLink';
 import AddBanner from './components/AddBanner';
 import AllBanner from './components/AllBanner';
-import AddGallery from './components/addGallery';
+import AddGallery from './components/AddGallery';
 import DisplayGallery from './components/DisplayGallery';
 import AllEmail from './components/AllEmail';
 
