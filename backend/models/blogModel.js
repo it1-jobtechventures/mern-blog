@@ -6,7 +6,7 @@ const blogSchema = new mongoose.Schema({
     description: { type: String, required: true },
     long_description: { type: String, required: true },
     image: { type: String, required: true }, 
-    images: { type: [String], required: false },
+    images: { type: [String]},
     keyword: { type: [String], required: true },
     category: { type: String, required: true },
     date: { type: Date, default: Date.now }
