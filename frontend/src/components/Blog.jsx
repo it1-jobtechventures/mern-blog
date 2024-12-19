@@ -108,7 +108,7 @@ const Blog = ({ url }) => {
 
       {/* Blogs Section */}
       <div className="mt-5 px-4 md:px-8">
-        <div className="w-full flex justify-center flex-col text-center md:text-right">
+        <div className="w-1/2 flex justify-center flex-col text-center md:text-right">
           <h1 className="text-xl md:text-2xl font-bold mb-2 text-white">
             MY OWN WRITINGS.
           </h1>
