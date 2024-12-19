@@ -2,9 +2,11 @@ import contactModel from "../models/contactModel.js";
 
 const sentEmail = async(req, res) => {
     try {
+        console.log("Request Body:", req.body); 
         const contact = new contactModel({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
+            phoneNo : req.body.phoneNo,
             email: req.body.email,
             subject: req.body.subject,
             message: req.body.message,
