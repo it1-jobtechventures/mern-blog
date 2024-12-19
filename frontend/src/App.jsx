@@ -14,21 +14,23 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
+  const url ="https://mern-blog-backend-9oua.onrender.com"
+
   return (
     <>
     <ToastContainer/>
       <Navbar/>
       <Routes>
-        <Route path='/' element={<Header/>}/>
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:id" element={<BlogDetail />} />
-        <Route path='/gallery' element={<Gallery/>}/>
-        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/' element={<Header url={url}/>}/>
+        <Route path="/blog" element={<Blog url={url} />} />
+        <Route path="/blog/:id" element={<BlogDetail url={url} />} />
+        <Route path='/gallery' element={<Gallery url={url}/>}/>
+        <Route path='/contact' element={<Contact url={url}/>}/>
       </Routes>
-      <UpdatedLink/>
-       <Banner/>
-      <Logo/>
-      <Footer/>
+      <UpdatedLink url={url}/>
+      <Banner url={url}/>
+      <Logo url={url}/>
+      <Footer url={url}/>
     </>
   );
 }

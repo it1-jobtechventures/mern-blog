@@ -41,17 +41,18 @@
 // };
 
 // export default Banner;
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const Banner = () => {
+const Banner = ({url}) => {
     const [banner, setBanner] = useState([]);
 
     const fetchBanner = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/banner/listBanner');
+            const response = await axios.get(`${url}/api/banner/listBanner`);
             if (response.data.success) {
                 setBanner(response.data.data);
             } else {
