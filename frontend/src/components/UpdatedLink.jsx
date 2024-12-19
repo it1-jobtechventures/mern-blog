@@ -64,8 +64,8 @@ const UpdatedLink = ({ url }) => {
 
   return (
     <div className="p-5 m-3">
-      <h1 className="text-lg md:text-xl font-bold mb-4">Updated List</h1>
-      <div className="w-full md:w-72 h-72 overflow-y-auto border border-gray-200 rounded-md p-3">
+      <h1 className="text-2xl text-[#ff6200] text-center md:text-xl font-bold mb-4">Updated List</h1>
+      <div className="w-full md:w-72 h-72 overflow-y-auto scrollbar-hide rounded-md p-3">
         {allUpdateList.map((list, id) => (
           <div
             key={id}
