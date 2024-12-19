@@ -74,11 +74,7 @@ const Banner = ({url}) => {
                 banner.map((ban, id) => (
                     <div key={id} className="w-full h-full">
                         <a href={ban.link} target="_blank" rel="noopener noreferrer">
-                            <img 
-                                src={`http://localhost:4000/images/${ban.image}`} 
-                                alt="banner" 
-                                className="w-full h-full object-cover"
-                            />
+                            <img  src={`${url}/images/${ban.image}`}  alt="banner"  className="w-full h-full object-cover"/>
                         </a>
                     </div>
                 ))

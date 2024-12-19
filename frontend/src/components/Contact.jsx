@@ -115,7 +115,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import emailjs from 'emailjs-com';
 
-const Contact = () => {
+const Contact = ({url}) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -136,7 +136,7 @@ const Contact = () => {
 
     // Save form data in the database
     try {
-      const response = await axios.post('http://localhost:4000/api/contact/sentEmail', formData);
+      const response = await axios.post(`${url}/api/contact/sentEmail`, formData);
       if (response.data.success) {
         // Send email using EmailJS
         sendEmail(formData);
@@ -186,72 +186,34 @@ const Contact = () => {
             <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
               First Name
             </label>
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={onChangeHandler}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3"
-              required
-            />
+            <input type="text" name="firstName" value={formData.firstName} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" required/>
           </div>
           <div className="mb-4">
             <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
               Last Name
             </label>
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={onChangeHandler}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3"
-              required
-            />
+            <input type="text" name="lastName" value={formData.lastName} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" required/>
           </div>
         </div>
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email Address
           </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={onChangeHandler}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3"
-            required
-          />
+          <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" required />
         </div>
         <div className="mb-4">
           <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
             Subject
           </label>
-          <input
-            type="text"
-            name="subject"
-            value={formData.subject}
-            onChange={onChangeHandler}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3"
-            required
-          />
+          <input type="text" name="subject" value={formData.subject} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" required/>
         </div>
         <div className="mb-4">
           <label htmlFor="message" className="block text-sm font-medium text-gray-700">
             Message
           </label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={onChangeHandler}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3"
-            rows="4"
-            required
-          />
+          <textarea name="message" value={formData.message} onChange={onChangeHandler} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3" rows="4" required/>
         </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white font-bold py-3 rounded hover:bg-blue-700 transition duration-200"
-        >
+        <button type="submit" className="w-full bg-blue-600 text-white font-bold py-3 rounded hover:bg-blue-700 transition duration-200">
           Submit
         </button>
       </form>

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import blogData from '../assets/blogData'; 
 import BlogCard from './BlogCard';
 import axios from 'axios';
 
-const Blog = () => {
+const Blog = ({url}) => {
     const navigate = useNavigate();
     const [blogs, setBlogs] = useState([]);
 
     const fetchBlogs = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/blog/list'); 
+            const response = await axios.get(`${url}/api/blog/list`); 
             if (response.data.success) {
                 setBlogs(response.data.data); 
             } else {
@@ -37,7 +36,7 @@ const Blog = () => {
                 {
                     blogs.map((blog, id) => (
                         <div key={blog._id} onClick={() => handleCardClick(blog._id)} className="cursor-pointer">
-                            <BlogCard blog={blog} />
+                            <BlogCard blog={blog} url={url}/>
                         </div>
                     ))
                 }
