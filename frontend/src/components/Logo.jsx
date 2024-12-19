@@ -38,10 +38,10 @@
 // export default Logo
 
   import React from "react";
-  import jobringer from "../assets/jobringer.png";
-  import alanze from "../assets/alanze.png";
-  import hindco from "../assets/hindco.png";
-  import arfectLogo from "../assets/arfectLogo.png";
+  import jobringer from "src/assets/jobringer.png";
+  import alanze from "src/assets/alanze.png";
+  import hindco from "src/assets/hindco.png";
+  import arfectLogo from "src/assets/arfectLogo.png";
 
   const Logo = () => {
     return (
