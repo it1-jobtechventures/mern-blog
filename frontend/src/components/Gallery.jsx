@@ -6,7 +6,7 @@ const Gallery = ({url}) => {
 
   const fetchGallery = async () => {
     try {
-      const response = await axios.get(`${url}/api/gallery/listPhoto`);
+      const response = await axios.get(url+'/api/gallery/listPhoto');
       if (response.data.success) {
         setPhotos(response.data.data);
         console.log(response.data);
