@@ -44,7 +44,7 @@ const DisplayGallery = ({ url }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {allPhoto.map((photo, index) => (
           <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-md">
-            <img src={`${url}/images/${photo.image}`} alt="photo" className="w-full h-40 object-cover rounded-lg mb-3"/>
+            <img src={url+"/images/"+photo.image} alt="photo" className="w-full h-40 object-cover rounded-lg mb-3"/>
             <div className="flex flex-col items-center">
               <button onClick={() => removePhoto(photo._id)} className="mt-2 w-full bg-red-500 text-white font-bold py-2 rounded hover:bg-red-700 transition duration-200">
                 Remove
