@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MiddlePage from './pages/MiddlePage';
+import Logo from './components/Logo';
 
 function App() {
   const url = "https://mern-blog-backend-9oua.onrender.com";
@@ -29,7 +30,8 @@ function App() {
         <Route path="/gallery" element={<Gallery url={url} />} />
         <Route path="/contact" element={<Contact url={url} />} />
       </Routes>
-      {isHomePage && <MiddlePage url={url}/>}
+      <Logo/>
+      {/* {isHomePage && <MiddlePage url={url}/>} */}
       <Footer url={url} />
     </>
   );

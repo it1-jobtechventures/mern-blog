@@ -26,7 +26,7 @@ const Navbar = () => {
       <nav className="h-16 bg-[#202020] flex justify-between items-center px-4 text-white  w-full z-50 shadow-md">
         <div>
           <NavLink to="/" onClick={closeSidebar}>
-            <img src="" alt="logo" className="h-10" />
+            <img src="/pbd.png" alt="logo" className="h-12 w-32 object-contain" />
           </NavLink>
         </div>
         <div

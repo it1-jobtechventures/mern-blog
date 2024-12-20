@@ -8,10 +8,10 @@ import {Link} from 'react-router-dom'
   const Logo = () => {
     return (
       <div className="p-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex md:flex-row flex-col  gap-4">
           {logoData.map((logo, idx) => (
-            <div key={idx} className="rounded-md border border-black p-4 flex flex-col items-center">
-              <img className="rounded-sm h-32 w-full object-contain bg-white" src={logo.image } alt="logo"/>
+            <div key={idx} className="rounded-md border border-black bg-[#f3f3f3] p-4 flex flex-col items-center">
+              <img className="rounded-sm h-32 w-full object-contain " src={logo.image } alt="logo"/>
               <p className="text-center mt-2"> Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
               <div className="flex text-2xl mt-2 gap-4 font-bold">
                 <Link to={''}><FaInstagram className="hover:text-[#FF6200] cursor-pointer"/></Link>
@@ -27,12 +27,3 @@ import {Link} from 'react-router-dom'
   };
 
   export default Logo;
-  // import React from 'react'
-
-  // const Logo = () => {
-  //   return (
-  //     <div>Logo</div>
-  //   )
-  // }
-
-  // export default Logo
