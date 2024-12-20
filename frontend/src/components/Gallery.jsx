@@ -29,7 +29,7 @@ const Gallery = ({url}) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {photo.map((pht, idx) => (
             <div key={idx} className="relative group">
-              <img src={`${url}/images/${pht.image}`} alt="gallery" className="w-full h-64 object-fit rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg"/>
+              <img src={url+"/images/"+pht.image} alt="gallery" className="w-full h-64 object-fit rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg"/>
             </div>
           ))}
         </div>
