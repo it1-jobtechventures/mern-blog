@@ -25,7 +25,6 @@ const Header = () => {
             <Link to={''}><CiTwitter className="hover:text-[#FF6200] cursor-pointer"/></Link>
           </div>
         </div>
-
         {/* Right Content */}
         <div className="w-full md:w-1/2 flex justify-center p-6">
           <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md"/>

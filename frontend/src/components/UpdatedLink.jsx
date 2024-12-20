@@ -6,7 +6,7 @@ const UpdatedLink = ({ url }) => {
 
   const fetchUpdatedlink = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/update/allUpdate`);
+      const response = await axios.get(`${url}/api/update/allUpdate`);
       if (response.data.success) {
         setUpdateList(response.data.data);
       } else {
