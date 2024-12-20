@@ -67,23 +67,12 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="border border-yellow-900 w-full md:w-72 mb-3">
-      <Carousel
-        showArrows={true}
-        infiniteLoop={true}
-        autoPlay={true}
-        interval={3000}
-        showThumbs={false}
-        dynamicHeight={true}
-      >
+    <div className="border border-yellow-900 w-60 md:w-96 lg:w-[28rem] m:w-48 mb-3">
+      <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={1000} showThumbs={false} dynamicHeight={true}>
         {banner.map((ban, id) => (
           <div key={id}>
             <a href={ban.link} target="_blank" rel="noopener noreferrer">
-              <img
-                src={`http://localhost:4000/images/${ban.image}`}
-                alt="banner"
-                className="max-w-full h-auto"
-              />
+              <img src={`http://localhost:4000/images/${ban.image}`} alt="banner" className="max-w-full h-auto"/>
             </a>
           </div>
         ))}

@@ -1,68 +1,24 @@
-// import React from 'react'
-// import jobringer from '../assets/jobringer.png'
-// import alanze from '../assets/alanze.png'
-// import hindco from '../assets/hindco.png'
-// import arfectLogo from '../assets/arfectLogo.png'
-
-// const Logo = () => {
-//   return (
-//     <>
-//       <div className="">
-//         <div className="grid grid-cols-2 h-full gap-2 m-2">
-//           <div className='rounded-md border border-black p-2 gap-3 flex justify-between flex-col'>
-//             <img className='rounded-sm h-32 w-60 object-contain bg-white' src={jobringer} alt="jobringer" />
-//             <p className=''>etur adipisicing elit. Sint totam nam voluptatum animi, nesciunt soluta veniam </p>
-//             <a href='' className='mt-2'><button className='bg-[#ff6200] mt-1 p-2 rounded-lg text-white bottom-0 '>VISIT</button></a>
-//           </div>
-//           <div className='rounded-md border border-black p-2 gap-3 flex justify-between flex-col'>
-//             <img className='rounded-sm h-32 w-60 object-cover bg-white' src={alanze} alt="alanze" />
-//             <p className=''>Lorem ipsum, dolor sit amet consectetur oluptatum animi, nesciunt soluta veniam </p>
-//             <a href='' className='mt-2'><span className='bg-[#ff6200] mt-1 p-2 rounded-lg text-white bottom-0 '>VISIT</span></a>
-//           </div>
-//           <div className='rounded-md border border-black p-2 gap-3 flex justify-between flex-col'>
-//             <img className='rounded-sm h-32 w-60 object-contain bg-white' src={hindco} alt="image" />
-//             <p className=''>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint totam nam voluptatum animi, nesciunt soluta veniam </p>
-//             <a href='' className='mt-2'><span className='bg-[#ff6200] mt-1 p-2 rounded-lg text-white bottom-0 '>VISIT</span></a>
-//           </div>
-//           <div className='rounded-md border border-black p-2 gap-3 flex justify-between flex-col'>
-//             <img className='rounded-sm h-32 w-60 object-contain bg-white' src={arfectLogo} alt="image" />
-//             <p className=''>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint totam nam voluptatum animi, nesciunt soluta veniam </p>
-//             <a href='' className='mt-2'><span className='bg-[#ff6200] mt-1 p-2 rounded-lg text-white bottom-0 '>VISIT</span></a>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default Logo
-
-  import React from "react";
+import React from "react";
 import logoData from "../assets/logoData";
-
+import { FaInstagram } from "react-icons/fa";
+import { CiLinkedin, CiFacebook } from "react-icons/ci";
+import { CiTwitter } from "react-icons/ci";
+import {Link} from 'react-router-dom'
 
   const Logo = () => {
     return (
       <div className="p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {logoData.map((logo, idx) => (
-            <div
-              key={idx}
-              className="rounded-md border border-black p-4 flex flex-col items-center"
-            >
-              <img
-                className="rounded-sm h-32 w-full object-contain bg-white"
-                src={logo.image }
-                alt="logo"
-              />
-              <p className="text-center mt-2">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              </p>
-              <a href="/" className="mt-2">
-                <button className="bg-[#ff6200] mt-1 px-4 py-2 rounded-lg text-white">
-                  VISIT
-                </button>
-              </a>
+            <div key={idx} className="rounded-md border border-black p-4 flex flex-col items-center">
+              <img className="rounded-sm h-32 w-full object-contain bg-white" src={logo.image } alt="logo"/>
+              <p className="text-center mt-2"> Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              <div className="flex text-2xl mt-2 gap-4 font-bold">
+                <Link to={''}><FaInstagram className="hover:text-[#FF6200] cursor-pointer"/></Link>
+                <Link to={''}><CiLinkedin className="hover:text-[#FF6200] cursor-pointer"/></Link>
+                <Link to={''}><CiFacebook className="hover:text-[#FF6200] cursor-pointer"/></Link>
+                <Link to={''}><CiTwitter className="hover:text-[#FF6200] cursor-pointer"/></Link>
+              </div>
             </div>
           ))}
         </div>

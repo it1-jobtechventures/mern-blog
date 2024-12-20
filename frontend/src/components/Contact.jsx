@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import emailjs from "emailjs-com";
+import { FaInstagram } from "react-icons/fa";
 import { CiLinkedin, CiFacebook } from "react-icons/ci";
+import {Link} from 'react-router-dom'
+import { CiTwitter } from "react-icons/ci";
 
 const Contact = ({ url }) => {
   const [formData, setFormData] = useState({
@@ -171,13 +174,11 @@ const Contact = ({ url }) => {
       <p className="mb-6 text-center md:text-left text-sm">
         PRAKASHBANSAL(AT)GMAIL(DOT)COM
       </p>
-      <div className="flex justify-center md:justify-start space-x-4 mb-6">
-        <span className="text-3xl cursor-pointer">
-          <CiLinkedin />
-        </span>
-        <span className="text-3xl cursor-pointer">
-          <CiFacebook />
-        </span>
+      <div className="flex justify-center md:justify-start space-x-4 text-3xl mb-6">
+        <Link to={''}><FaInstagram className="hover:text-[#FF6200] cursor-pointer"/></Link>
+        <Link to={''}><CiLinkedin className="hover:text-[#FF6200] cursor-pointer"/></Link>
+        <Link to={''}><CiFacebook className="hover:text-[#FF6200] cursor-pointer"/></Link>
+        <Link to={''}><CiTwitter className="hover:text-[#FF6200] cursor-pointer"/></Link> 
       </div>
       <button
         onClick={() => setIsModalOpen(true)}

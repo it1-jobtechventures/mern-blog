@@ -1,7 +1,8 @@
 import React from "react";
 import { FaInstagram } from "react-icons/fa";
 import { CiLinkedin, CiFacebook } from "react-icons/ci";
-import { FaWhatsapp } from "react-icons/fa6";
+import {Link} from 'react-router-dom'
+import { CiTwitter } from "react-icons/ci";
 
 const Header = () => {
   return (
@@ -18,10 +19,10 @@ const Header = () => {
             the real world and have a direct impact on our lives.
           </p>
           <div className="flex gap-4 text-3xl justify-center md:justify-start mt-6">
-            <FaInstagram className="hover:text-[#FF6200] cursor-pointer"/>
-            <CiLinkedin className="hover:text-[#FF6200] cursor-pointer"/>
-            <CiFacebook className="hover:text-[#FF6200] cursor-pointer"/>
-            <FaWhatsapp className="hover:text-[#FF6200] cursor-pointer"/>
+            <Link to={''}><FaInstagram className="hover:text-[#FF6200] cursor-pointer"/></Link>
+            <Link to={''}><CiLinkedin className="hover:text-[#FF6200] cursor-pointer"/></Link>
+            <Link to={''}><CiFacebook className="hover:text-[#FF6200] cursor-pointer"/></Link>
+            <Link to={''}><CiTwitter className="hover:text-[#FF6200] cursor-pointer"/></Link>
           </div>
         </div>
 

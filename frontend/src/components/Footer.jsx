@@ -2,7 +2,8 @@ import React from 'react';
 import { FaInstagram } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { CiFacebook } from "react-icons/ci";
-import { FaWhatsapp } from "react-icons/fa6";
+import {Link, NavLink} from 'react-router-dom'
+import { CiTwitter } from "react-icons/ci";
 
 const Footer = () => {
   return (
@@ -15,19 +16,19 @@ const Footer = () => {
         </p>
         {/* Social Media Icons */}
         <div className="mt-6 text-3xl font-medium flex gap-5 justify-center md:justify-start items-center">
-          <FaInstagram className="hover:text-gray-500 transition-colors" />
-          <CiLinkedin className="hover:text-gray-500 transition-colors" />
-          <CiFacebook className="hover:text-gray-500 transition-colors" />
-          <FaWhatsapp className="hover:text-gray-500 transition-colors" />
+          <Link to={''}><FaInstagram className="hover:text-[#FF6200] cursor-pointer"/></Link>
+          <Link to={''}><CiLinkedin className="hover:text-[#FF6200] cursor-pointer"/></Link>
+          <Link to={''}><CiFacebook className="hover:text-[#FF6200] cursor-pointer"/></Link>
+          <Link to={''}><CiTwitter className="hover:text-[#FF6200] cursor-pointer"/></Link>
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 text-center md:text-left text-white">
         <ul className="space-y-2">
           <li className="font-bold">Navigate</li>
-          <li>About</li>
-          <li>Blogs</li>
-          <li>Gallery</li>
-          <li>Contact</li>
+          <NavLink to={'/'}><li>About</li></NavLink>
+          <NavLink to={'/'}><li>Blogs</li></NavLink>
+          <NavLink to={'/'}><li>Gallery</li></NavLink>
+          <NavLink to={'/'}><li>Contact</li></NavLink>
         </ul>
       </div>
     </footer>
