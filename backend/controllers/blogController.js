@@ -36,31 +36,76 @@ const listBlog = async (req, res) => {
     }
 }
 
+// const removeBlog = async (req, res) => {
+//     try {
+//         const blog = await blogModel.findById(req.body.id);
+//         fs.unlink(`upload/${blog.image}`, (err) => {
+//             if (err) console.log('Error removing file:', err);
+//         });
+//         await blogModel.findByIdAndDelete(req.body.id);
+//         res.json({ success: true, message: 'Blog removed' });
+//     } catch (error) {
+//         console.log(error);
+//         res.json({ success: false, message: error.message });
+//     }
+// }
 const removeBlog = async (req, res) => {
     try {
         const blog = await blogModel.findById(req.body.id);
-        fs.unlink(`upload/${blog.image}`, (err) => {
-            if (err) console.log('Error removing file:', err);
-        });
+        if (!blog) {
+            return res.json({ success: false, message: 'Blog not found' });
+        }
+
+        const imagePath = `upload/${blog.image}`;
+        if (fs.existsSync(imagePath)) {
+            fs.unlink(imagePath, (err) => {
+                if (err) console.log('Error removing file:', err);
+            });
+        } else {
+            console.log('File does not exist:', imagePath);
+        }
+
         await blogModel.findByIdAndDelete(req.body.id);
         res.json({ success: true, message: 'Blog removed' });
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: error.message });
     }
-}
+};
+
+// const getBlockById = async (req, res) => {
+//     try {
+//         const blog = await blogModel.findById(req.params.id)
+//         if (!blog) {
+//             return res.status(404).json({ success: false, message: 'Blog not found' });
+//         }
+//         res.json({ success: true, data: blog });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ success: false, message: error.message });
+//     }
+// }
 
 const getBlockById = async (req, res) => {
     try {
-        const blog = await blogModel.findById(req.params.id)
+        const blog = await blogModel.findById(req.params.id);
         if (!blog) {
             return res.status(404).json({ success: false, message: 'Blog not found' });
         }
+
+        // Check for main image existence
+        const mainImagePath = `upload/${blog.image}`;
+        if (!fs.existsSync(mainImagePath)) {
+            console.log('Main image file does not exist:', mainImagePath);
+            blog.image = null; // Optionally set to null if not found
+        }
+
         res.json({ success: true, data: blog });
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: error.message });
     }
-}
+};
+
 
 export {addBlog, listBlog, removeBlog,getBlockById};
