@@ -81,7 +81,7 @@ const AddBlog = ({ url }) => {
                     <input onChange={handleMainImageChange} type="file" id="image" hidden required />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="images" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="images" className="block text-sm font-medium text-gray-700 p-2 border border-black">
                         Upload Additional Images
                     </label>
                     <div className="flex gap-4 flex-wrap mt-2">
