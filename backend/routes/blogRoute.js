@@ -16,7 +16,7 @@ const blogRouter = express.Router();
 
 // const upload = multer({storage:storage})
 
-import multer from 'multer';
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
