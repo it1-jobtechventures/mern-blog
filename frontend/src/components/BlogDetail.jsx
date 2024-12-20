@@ -40,18 +40,18 @@ const BlogDetail = ({url}) => {
           <p>{blog.description}</p>
         </div>
         <div className="w-full md:w-1/2">
-          <img  src={`${url}/images/${blog.image}`}  alt="Image on the right side" className="w-full h-64 object-contain rounded-lg shadow-md" />
+          <img  src={`${url}/images/${blog.image[1]}`}  alt="Image on the right side" className="w-full h-64 object-contain rounded-lg shadow-md" />
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-6 mb-8">
         <div className="w-full md:w-1/2">
-          <img  src={`${url}/images/${blog.images[1]}`}  alt="Image on the left side"  className="w-full h-64 object-contain rounded-lg shadow-md" />
+          <img  src={`${url}/images/${blog.images[2]}`}  alt="Image on the left side"  className="w-full h-64 object-contain rounded-lg shadow-md" />
         </div>
         <div className="w-full md:w-1/2 text-lg text-gray-700">
           <p>{blog.long_description}</p>
         </div>
       </div>
-      {blog.images && blog.images.length > 2 && (
+      {blog.images && blog.images.length > 3 && (
         <div className="flex flex-wrap gap-6 justify-center md:justify-start mb-8">
           {blog.images.slice(2).map((image, index) => (
             <img  key={index}  src={`${url}/images/${image}`}  alt={`Sub-image ${index + 2}`}  className="w-40 h-40 object-contain rounded-lg shadow-md border-2 border-gray-300"  />
