@@ -16,20 +16,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage})
 
-
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, '/upload');
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, `${Date.now()}-${file.originalname}`);
-//   },
-// });
-
-// const upload = multer({ storage: storage });
-
-
 //post method (if we have to upload file)
 //route to post
 
