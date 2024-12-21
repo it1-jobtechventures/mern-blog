@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="flex flex-col md:flex-row justify-around items-center md:items-start gap-2 p-8 bg-[#202020] ">
       <div className="space-y-4 text-center md:text-left text-white">
-        <h1 className="font-bold text-3xl md:text-4xl">PB</h1>
+          <img src="/pbd.png" alt="logo" className="h-12 w-32 object-contain align-middle" />
         <p className="text-sm md:text-base">
           iste odit quam ratione? Ullam adipisci deserunt <br />
           similique nemo alias exercitationem at ipsa ut laborum.

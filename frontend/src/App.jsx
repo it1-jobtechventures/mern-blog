@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MiddlePage from './pages/MiddlePage';
 import Logo from './components/Logo';
+import About from './components/About';
 
 function App() {
   const url = "https://mern-blog-backend-9oua.onrender.com";
@@ -25,6 +26,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Header url={url} />} />
+        <Route path='/about' element={<About url={url}/>}/>
         <Route path="/blog" element={<Blog url={url} />} />
         <Route path="/blog/:id" element={<BlogDetail url={url} />} />
         <Route path="/gallery" element={<Gallery url={url} />} />
