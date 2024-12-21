@@ -14,10 +14,10 @@ import {Link} from 'react-router-dom'
               <img className="rounded-sm h-32 w-full object-contain " src={logo.image } alt="logo"/>
               <p className="text-center mt-2"> Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
               <div className="flex text-2xl mt-2 gap-4 font-bold">
-                <Link to={''}><FaInstagram className="hover:text-[#FF6200] cursor-pointer"/></Link>
-                <Link to={''}><CiLinkedin className="hover:text-[#FF6200] cursor-pointer"/></Link>
-                <Link to={''}><CiFacebook className="hover:text-[#FF6200] cursor-pointer"/></Link>
-                <Link to={''}><CiTwitter className="hover:text-[#FF6200] cursor-pointer"/></Link>
+                <Link to={logo.insta}><FaInstagram className="hover:text-[#FF6200] cursor-pointer"/></Link>
+                <Link to={logo.linkedin}><CiLinkedin className="hover:text-[#FF6200] cursor-pointer"/></Link>
+                <Link to={logo.facebook}><CiFacebook className="hover:text-[#FF6200] cursor-pointer"/></Link>
+                <Link to={logo.twitter}><CiTwitter className="hover:text-[#FF6200] cursor-pointer"/></Link>
               </div>
             </div>
           ))}
