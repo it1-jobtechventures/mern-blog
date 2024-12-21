@@ -8,7 +8,7 @@ const addBlog = async (req, res) => {
 
         const blog = new blogModel({
             title: req.body.title,
-            description: req.body.description,
+            // description: req.body.description,
             headline: req.body.headline,
             long_description: req.body.long_description,
             category: req.body.category,
