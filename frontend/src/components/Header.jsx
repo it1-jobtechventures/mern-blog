@@ -10,7 +10,7 @@ const Header = () => {
             <h1 className="text-3xl sm:text-4xl font-bold mb-6 relative inline-block">
               PRAKASH BANSAL
             </h1>
-            <div className="bottom-0 left-0 w-full h-1 bg-[#FF6200]"></div>
+            <div className="bottom-0 left-0 w-full h-1 bg-[#ff9724]"></div>
             <div className="text-3xl sm:text-5xl lg:text-8xl text-right mt-6 md:mt-10">
               <p>RESEARCHER.</p>
               <p>INVENTOR.</p>
@@ -37,7 +37,7 @@ const Header = () => {
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 relative text-right">
                 BIOGRAPHY
               </h1>
-              <div className="w-full sm:w-1/4 h-1 bg-[#FF6200]"></div>
+              <div className="w-full sm:w-1/4 h-1 bg-[#ff9724]"></div>
             </div>
             <p className="text-base sm:text-lg leading-relaxed mb-4 pt-7 p-6 sm:p-10 lg:p-14">
               Dr Orestis Georgiou is an author of 6 patents, 2 books, and 100+
@@ -53,7 +53,7 @@ const Header = () => {
             </p>
             <div className="-mt-6 pl-6 sm:pl-10 lg:pl-14 text-lg sm:text-xl">
               <Link to={""}>
-                <button className="bg-[#ff6200] text-white p-3 rounded-full">
+                <button className="bg-[#ff9724] text-white p-3 rounded-full">
                   About me
                 </button>
               </Link>

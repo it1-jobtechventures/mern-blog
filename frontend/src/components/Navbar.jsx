@@ -35,7 +35,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <NavLink key={item.path} to={item.path} onClick={closeSidebar} className="relative px-2 transition-colors duration-300">
               {item.name}
-              <div className={`absolute left-0 bottom-[-4px] h-1 w-full bg-[#ff6200] transition-transform duration-300 ${ location.pathname === item.path ? "scale-x-100" : "scale-x-0" } origin-left`} ></div>
+              <div className={`absolute left-0 bottom-[-4px] h-1 w-full bg-[#ff9724] transition-transform duration-300 ${ location.pathname === item.path ? "scale-x-100" : "scale-x-0" } origin-left`} ></div>
             </NavLink>
           ))}
         </div>

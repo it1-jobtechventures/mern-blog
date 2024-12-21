@@ -6,7 +6,7 @@ const About = () => {
     <header className="flex flex-col bg-[#202020] text-white pt-12 pb-32">
       <div className="flex flex-col-reverse md:flex-row bg-[#202020] text-white md:pt-16">
         <div className="w-full md:w-1/2 p-6 md:text-left">
-        <div className="bottom-0 left-0 w-full h-1 bg-[#FF6200]"></div>
+        <div className="bottom-0 left-0 w-full h-1 bg-[#ff9724]"></div>
           <h1 className="text-7xl font-bold mb-6 relative inline-block">
             ABOUT.
           </h1>
@@ -33,7 +33,7 @@ const About = () => {
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 relative text-right">
               My background is a bit like a pizza
             </h1>
-            <div className="w-1/3 sm:w-1/4 h-1 bg-[#FF6200]"></div>
+            <div className="w-1/3 sm:w-1/4 h-1 bg-[#ff9724]"></div>
           </div>
           <p className="text-base sm:text-lg leading-relaxed mb-4 pt-7 p-6 sm:p-10 lg:p-14">
             The base is Mathematical Physics, the sauce is Engineering and Computer Science, and the toppings, well, the toppings will depend on the project that I’m working on at the time. 

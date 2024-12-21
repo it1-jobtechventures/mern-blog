@@ -83,17 +83,17 @@ const Contact = ({ url }) => {
     <div className="relative">
       <div className="flex flex-col md:flex-row items-center justify-between bg-[#202020] text-white py-16 px-6 md:px-8">
         <div className="w-full md:w-1/2">
-          <div className="w-full h-1 bg-[#FF6200] mb-4"></div>
+          <div className="w-full h-1 bg-[#ff9724] mb-4"></div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center md:text-left">CONTACT.</h1>
           <p className="mb-4 text-center md:text-left text-sm md:text-lg"> PRAKASH BANSAL</p>
           <p className="mb-6 text-center md:text-left text-sm"> PRAKASHBANSAL(AT)GMAIL(DOT)COM</p>
           <div className="flex justify-center md:justify-start space-x-4 text-3xl mb-6">
-            <Link to={''}><FaInstagram className="hover:text-[#FF6200] cursor-pointer"/></Link>
-            <Link to={''}><CiLinkedin className="hover:text-[#FF6200] cursor-pointer"/></Link>
-            <Link to={''}><CiFacebook className="hover:text-[#FF6200] cursor-pointer"/></Link>
-            <Link to={''}><CiTwitter className="hover:text-[#FF6200] cursor-pointer"/></Link> 
+            <Link to={''}><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={''}><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={''}><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={''}><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link> 
           </div>
-          <button onClick={() => setIsModalOpen(true)} className="bg-[#FF6200] text-white font-bold py-2 px-6 rounded hover:bg-[#f18847] transition duration-200 w-full md:w-auto">
+          <button onClick={() => setIsModalOpen(true)} className="bg-[#ff9724] text-white font-bold py-2 px-6 rounded hover:bg-[#f18847] transition duration-200 w-full md:w-auto">
             Get in Touch
           </button>
         </div>
@@ -112,13 +112,13 @@ const Contact = ({ url }) => {
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 hidden sm:block">
                     First Name
                   </label>
-                  <input type="text" name="firstName" value={formData.firstName} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#FF6200] focus:border-[#FF6200]" placeholder="First Name" required/>
+                  <input type="text" name="firstName" value={formData.firstName} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="First Name" required/>
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 hidden sm:block">
                     Last Name
                   </label>
-                  <input type="text" name="lastName" value={formData.lastName} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#FF6200] focus:border-[#FF6200]" placeholder="Last Name" required/>
+                  <input type="text" name="lastName" value={formData.lastName} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Last Name" required/>
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
@@ -126,32 +126,32 @@ const Contact = ({ url }) => {
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 hidden sm:block">
                     Email
                   </label>
-                  <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#FF6200] focus:border-[#FF6200]" placeholder="Email"  required/>
+                  <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Email"  required/>
                 </div>
                 <div>
                   <label htmlFor="phoneNo" className="block text-sm font-medium text-gray-700 hidden sm:block">
                     Phone No.
                   </label>
-                  <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#FF6200] focus:border-[#FF6200]" placeholder="Phone No." required/>
+                  <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Phone No." required/>
                 </div>
               </div>
               <div className="mb-4">
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 hidden sm:block">
                   Subject
                 </label>
-                <input type="text" name="subject" value={formData.subject} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#FF6200] focus:border-[#FF6200]" placeholder="Subject" required/>
+                <input type="text" name="subject" value={formData.subject} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Subject" required/>
               </div>
               <div className="mb-4">
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 hidden sm:block">
                   Message
                 </label>
-                <textarea name="message" value={formData.message} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#FF6200] focus:border-[#FF6200]" placeholder="Message" rows="4" required/>
+                <textarea name="message" value={formData.message} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Message" rows="4" required/>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 sm:justify-between items-center">
                 <button type="button" onClick={() => setIsModalOpen(false)} className="w-full sm:w-auto bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 transition">
                   Close
                 </button>
-                <button type="submit" className="w-full sm:w-auto bg-[#FF6200] text-white px-4 py-2 rounded-md hover:bg-[#f18847] transition">
+                <button type="submit" className="w-full sm:w-auto bg-[#ff9724] text-white px-4 py-2 rounded-md hover:bg-[#f18847] transition">
                   Submit
                 </button>
               </div>

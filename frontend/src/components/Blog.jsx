@@ -34,7 +34,7 @@ const Blog = ({ url }) => {
     <div className="bg-[#202020]">
       <main className="flex flex-col-reverse md:flex-row items-center bg-[#202020] justify-around p-4 md:p-8">
         <div className="w-full md:w-1/2 flex justify-center flex-col text-center md:text-left">
-          <div className="bottom-0 left-0 w-full h-1 bg-[#FF6200]"></div>
+          <div className="bottom-0 left-0 w-full h-1 bg-[#ff9724]"></div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">BLOG.</h1>
         </div>
         <div className="w-full md:w-1/2 flex justify-center">
@@ -46,7 +46,7 @@ const Blog = ({ url }) => {
           <h1 className="text-xl md:text-2xl font-bold mb-2 text-white">
             MY OWN WRITINGS.
           </h1>
-          <div className="bottom-0 left-0 w-full h-1 bg-[#FF6200]"></div>
+          <div className="bottom-0 left-0 w-full h-1 bg-[#ff9724]"></div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mt-4">
           {blogs.map((blog) => (

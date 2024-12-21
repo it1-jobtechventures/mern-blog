@@ -31,7 +31,7 @@
 //   return (
 //     <div className="container mx-auto p-6 md:p-10 md:pt-32 bg-gray-50 rounded-lg shadow-lg relative">
 //       <h1 className="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-4">{blog.title}</h1>
-//       <h3 className="text-3xl md:text-4xl font-semibold text-center text-[#ff6200] mb-4">{blog.headline}</h3>
+//       <h3 className="text-3xl md:text-4xl font-semibold text-center text-[#ff9724] mb-4">{blog.headline}</h3>
 //       <div className="relative mb-8 flex justify-center items-center">
 //         <img  src={`${url}/images/${blog.image}`}  alt={blog.title}  className="h-80 object-contain rounded-lg shadow-lg" />
 //       </div>
@@ -114,7 +114,7 @@ const BlogDetail = ({ url }) => {
   return (
     <div className="container mx-auto p-6 md:p-10 md:pt-32 bg-gray-50 rounded-lg shadow-lg relative">
       <h1 className="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-4">{blog.title}</h1>
-      <h3 className="text-2xl md:text-3xl font-semibold text-center text-[#ff6200] mb-6">{blog.headline}</h3>
+      <h3 className="text-2xl md:text-3xl font-semibold text-center text-[#ff9724] mb-6">{blog.headline}</h3>
       <div className="mb-8 flex justify-center">
         <img src={`${url}/images/${blog.image}`} alt={blog.title} className="max-w-full h-auto object-contain rounded-lg shadow-lg"/>
       </div>
