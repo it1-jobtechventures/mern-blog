@@ -12,6 +12,7 @@ const Blog = ({ url }) => {
       const response = await axios.get(`${url}/api/blog/list`);
       if (response.data.success) {
         setBlogs(response.data.data);
+        console.log(response.data.data)
       } else {
         console.error("Error fetching blogs");
       }
