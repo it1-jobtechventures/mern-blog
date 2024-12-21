@@ -37,7 +37,7 @@ const Header = () => {
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 relative text-right">
                 BIOGRAPHY
               </h1>
-              <div className="w-1/3 sm:w-1/4 h-1 bg-[#FF6200]"></div>
+              <div className="w-full sm:w-1/4 h-1 bg-[#FF6200]"></div>
             </div>
             <p className="text-base sm:text-lg leading-relaxed mb-4 pt-7 p-6 sm:p-10 lg:p-14">
               Dr Orestis Georgiou is an author of 6 patents, 2 books, and 100+
