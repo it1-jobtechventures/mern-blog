@@ -344,10 +344,10 @@ const AddBlog = ({ url }) => {
 
     // Jodit Editor configuration
     const editorConfig = {
-        readonly: false, // Editor is editable
+        readonly: false, 
         height: 400,
         uploader: {
-            insertImageAsBase64URI: true, // Directly inserts uploaded images as Base64
+            insertImageAsBase64URI: true,
         },
         toolbar: true,
         toolbarSticky: false,
