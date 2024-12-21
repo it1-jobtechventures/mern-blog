@@ -27,7 +27,7 @@ const Sidebar = () => {
       </button>
 
       {/* Sidebar */}
-      <aside className={`lg:w-48 w-64 h-screen bg-gray-800 text-white fixed top-0 left-0 p-4 pt-16 transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
+      <aside className={`lg:w-48 w-64 h-screen bg-gray-800 text-white fixed top-0 left-0 p-4 pt-16 z-50 transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
         <div className="flex flex-col space-y-4">
           <NavLink to={'/'} className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLinkClick}>
             <span className="text-xl">🏠</span> <p className="ml-2">Add Blog</p>

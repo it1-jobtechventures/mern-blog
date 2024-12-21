@@ -71,15 +71,15 @@
 //         <div className="max-w-2xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
 //             <h1 className="text-2xl font-bold mb-5">Add Blog</h1>
 //             <form onSubmit={onSubmitHandler}>
-//                 <div className="mb-4">
-//                     <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-//                         Upload Main Image
-//                     </label>
-//                     <label htmlFor="image" className="block cursor-pointer">
-//                         <img src={image ? URL.createObjectURL(image) : ''} alt="Main Upload" className="h-20 w-20 mb-2 border border-gray-300 rounded object-cover" />
-//                     </label>
-//                     <input onChange={handleMainImageChange} type="file" id="image" hidden required />
-//                 </div>
+                // <div className="mb-4">
+                //     <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+                //         Upload Main Image
+                //     </label>
+                //     <label htmlFor="image" className="block cursor-pointer">
+                //         <img src={image ? URL.createObjectURL(image) : ''} alt="Main Upload" className="h-20 w-20 mb-2 border border-gray-300 rounded object-cover" />
+                //     </label>
+                //     <input onChange={handleMainImageChange} type="file" id="image" hidden required />
+                // </div>
 //                 <div className="mb-4">
 //                     <label htmlFor="images" className="block text-sm font-medium text-gray-700 p-2 border border-black">
 //                         Upload Additional Images
@@ -141,12 +141,10 @@
 
 // export default AddBlog;
 
-
 // import React, { useState } from 'react';
 // import axios from 'axios';
 // import { toast } from 'react-toastify';
 // import JoditEditor from 'jodit-react';
-
 
 // const AddBlog = ({ url }) => {
 //     const [image, setImage] = useState(null);
@@ -156,8 +154,7 @@
 //         keyword: '',
 //         category: '',
 //     });
-//     const [description, setDescription] = useState('');
-//     const [longDescription, setLongDescription] = useState('');
+//     const [content, setContent] = useState('');
 
 //     const onChangeHandler = (e) => {
 //         const { name, value } = e.target;
@@ -176,8 +173,7 @@
 //         formData.append('headline', data.headline);
 //         formData.append('keyword', data.keyword);
 //         formData.append('category', data.category);
-//         formData.append('description', description);
-//         formData.append('long_description', longDescription);
+//         formData.append('content', content);
 //         formData.append('image', image);
 
 //         try {
@@ -185,8 +181,7 @@
 //             if (response.data.success) {
 //                 toast.success(response.data.message);
 //                 setData({ title: '', headline: '', keyword: '', category: '' });
-//                 setDescription('');
-//                 setLongDescription('');
+//                 setContent('');
 //                 setImage(null);
 //             } else {
 //                 toast.error(response.data.message);
@@ -196,15 +191,47 @@
 //         }
 //     };
 
+//     // Jodit Editor configuration
+//     const editorConfig = {
+//         readonly: false, 
+//         height: 400,
+//         uploader: {
+//             insertImageAsBase64URI: true,
+//         },
+//         toolbar: true,
+//         toolbarSticky: false,
+//         buttons: [
+//             'bold',
+//             'italic',
+//             'underline',
+//             'link',
+//             'image',
+//             'align',
+//             'undo',
+//             'redo',
+//             'fontsize',
+//             'font',
+//         ],
+//     };
+
 //     return (
 //         <div className="max-w-2xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
 //             <h1 className="text-2xl font-bold mb-5">Add Blog</h1>
 //             <form onSubmit={onSubmitHandler}>
-//                 <div className="mb-4">
+//                 {/* <div className="mb-4">
 //                     <label htmlFor="image" className="block text-sm font-medium text-gray-700">
 //                         Upload Main Image
 //                     </label>
 //                     <input type="file" onChange={handleMainImageChange} required />
+//                 </div> */}
+//                                 <div className="mb-4">
+//                     <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+//                         Upload Main Image
+//                     </label>
+//                     <label htmlFor="image" className="block cursor-pointer">
+//                         <img src={image ? URL.createObjectURL(image) : ''} alt="Main Upload" className="h-20 w-20 mb-2 border border-gray-300 rounded object-cover" />
+//                     </label>
+//                     <input onChange={handleMainImageChange} type="file" id="image" hidden required />
 //                 </div>
 //                 <div className="mb-4">
 //                     <label htmlFor="title" className="block text-sm font-medium text-gray-700">
@@ -250,15 +277,13 @@
 //                 </div>
 //                 <div className="mb-4">
 //                     <label className="block text-sm font-medium text-gray-700">
-//                         Blog Description
+//                         Blog Content
 //                     </label>
-//                     <JoditEditor value={description} onChange={setDescription} />
-//                 </div>
-//                 <div className="mb-4">
-//                     <label className="block text-sm font-medium text-gray-700">
-//                         Blog Long Description
-//                     </label>
-//                     <JoditEditor value={longDescription} onChange={setLongDescription} />
+//                     <JoditEditor
+//                         value={content}
+//                         config={editorConfig}
+//                         onChange={(newContent) => setContent(newContent)}
+//                     />
 //                 </div>
 //                 <div className="mb-4">
 //                     <label htmlFor="category" className="block text-sm font-medium text-gray-700">
@@ -292,6 +317,7 @@
 
 
 
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -305,7 +331,7 @@ const AddBlog = ({ url }) => {
         keyword: '',
         category: '',
     });
-    const [content, setContent] = useState(''); // Single content field
+    const [content, setContent] = useState('');
 
     const onChangeHandler = (e) => {
         const { name, value } = e.target;
@@ -324,7 +350,7 @@ const AddBlog = ({ url }) => {
         formData.append('headline', data.headline);
         formData.append('keyword', data.keyword);
         formData.append('category', data.category);
-        formData.append('content', content); // Add editor content
+        formData.append('content', content);
         formData.append('image', image);
 
         try {
@@ -366,14 +392,21 @@ const AddBlog = ({ url }) => {
     };
 
     return (
-        <div className="max-w-2xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
+        <div className="max-w-2xl mx-auto mt-10 z-0 p-5 bg-white shadow-lg rounded-lg sm:max-w-full md:max-w-3xl lg:max-w-4xl ">
             <h1 className="text-2xl font-bold mb-5">Add Blog</h1>
             <form onSubmit={onSubmitHandler}>
                 <div className="mb-4">
                     <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                         Upload Main Image
                     </label>
-                    <input type="file" onChange={handleMainImageChange} required />
+                    <label htmlFor="image" className="block cursor-pointer">
+                        <img
+                            src={image ? URL.createObjectURL(image) : ''}
+                            alt="Main Upload"
+                            className="h-20 w-20 mb-2 border border-gray-300 rounded object-cover"
+                        />
+                    </label>
+                    <input onChange={handleMainImageChange} type="file" id="image" hidden required />
                 </div>
                 <div className="mb-4">
                     <label htmlFor="title" className="block text-sm font-medium text-gray-700">
@@ -418,7 +451,7 @@ const AddBlog = ({ url }) => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-gray-700 z-0">
                         Blog Content
                     </label>
                     <JoditEditor
@@ -444,7 +477,7 @@ const AddBlog = ({ url }) => {
                         <option value="Education">Education</option>
                     </select>
                 </div>
-                <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">
+                <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded sm:px-6 lg:px-8">
                     Add Blog
                 </button>
             </form>
