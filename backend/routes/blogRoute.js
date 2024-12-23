@@ -7,7 +7,7 @@ const blogRouter = express.Router();
 
 //image storage engine using multer 
 const storage = multer.diskStorage({
-    destination:'upload',
+    destination:'upload/blogs',
     filename:(res,file,cb)=>{
         // file will be store in upload folder with time stamp
         return cb(null , `${Date.now()}${file.originalname}`)
@@ -19,10 +19,7 @@ const upload = multer({storage:storage})
 //post method (if we have to upload file)
 //route to post
 
-blogRouter.post("/add", upload.fields([
-    { name: 'image', maxCount: 1 },
-    { name: 'images', maxCount: 10 }
-]), addBlog);
+blogRouter.post("/add", upload.single("image"), addBlog);
 
 blogRouter.get('/list' ,listBlog)
 

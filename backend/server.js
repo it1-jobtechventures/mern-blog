@@ -62,6 +62,7 @@ app.use('/api/user',userRouter)
 //mount upload folder to the 'images' endpoint.
 // app.use('/images',express.static('upload'))
 app.use('/images/banners', express.static('upload/banners'));
+app.use('/images/blogs', express.static('upload/blogs'));
 
 app.use('/api/blog',blogRouter)
 app.use('/api/update', updateRouter)
