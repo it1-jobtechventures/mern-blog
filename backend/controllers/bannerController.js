@@ -94,4 +94,3 @@ const removeBanner = async (req, res) => {
 };
 
 export { addBanner, listBanner, removeBanner };
-s
