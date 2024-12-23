@@ -45,7 +45,7 @@ const AllBanner = ({ url }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {allBanner.map((banner, index) => (
             <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <img src={`${url}/images/${banner.image}`} alt="banner" className="w-full h-40 object-cover rounded-lg mb-3"/>
+              <img src={`${url}/images/banners/${banner.image}`} alt="banner" className="w-full h-40 object-cover rounded-lg mb-3"/>
               <div className="flex flex-col items-center">
                 <p className="font-semibold text-center mb-2 break-words text-xs sm:text-sm">
                   {banner.link}

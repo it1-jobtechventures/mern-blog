@@ -12,7 +12,7 @@ const AddBanner = ({url}) => {
         const name = e.target.name;
         const value = e.target.value;
         setData((prev) => ({ ...prev, [name]: value }));
-    };
+    };x`x`
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
