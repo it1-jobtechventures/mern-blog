@@ -60,7 +60,9 @@ connectDB();
 //routes
 app.use('/api/user',userRouter)
 //mount upload folder to the 'images' endpoint.
-app.use('/images',express.static('upload'))
+// app.use('/images',express.static('upload'))
+app.use('/images/banners', express.static('upload/banners'));
+
 app.use('/api/blog',blogRouter)
 app.use('/api/update', updateRouter)
 app.use('/api/banner', bannerRouter)
