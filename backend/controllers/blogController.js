@@ -3,8 +3,8 @@ import fs from 'fs'
 
 const addBlog = async (req, res) => {
     try {
-        let mainImageFilename = req.files['image'][0].filename;
-        let imagesFilenames = req.files['images'] ? req.files['images'].map(file => file.filename) : [];
+        let mainImageFilename =req.file.filename;
+        // let imagesFilenames = req.files['images'] ? req.files['images'].map(file => file.filename) : [];
 
         const blog = new blogModel({
             title: req.body.title,
@@ -15,7 +15,7 @@ const addBlog = async (req, res) => {
             category: req.body.category,
             keyword: req.body.keyword.split(','),
             image: mainImageFilename,
-            images: imagesFilenames
+            // images: imagesFilenames
         });
 
         await blog.save();
@@ -40,7 +40,7 @@ const listBlog = async (req, res) => {
 const removeBlog = async (req, res) => {
     try {
         const blog = await blogModel.findById(req.body.id);
-        fs.unlink(`upload/${blog.image}`, (err) => {
+        fs.unlink(`upload/blogs/${blog.image}`, (err) => {
             if (err) console.log('Error removing file:', err);
         });
         await blogModel.findByIdAndDelete(req.body.id);
