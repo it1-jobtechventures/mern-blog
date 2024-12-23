@@ -46,11 +46,11 @@ const AllBlog = ({ url }) => {
                     <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200 p-4">
                         <div className="mb-3">
                             <div className="flex gap-2 overflow-x-auto whitespace-nowrap">
-                                <img src={`${url}/images/${blog.image}`} alt="Main" className="h-24 w-24 object-cover rounded"/>
-                                {blog.images &&
+                                <img src={`${url}/images/blogs/${blog.image}`} alt="Main" className="h-24 w-24 object-cover rounded"/>
+                                {/* {blog.images &&
                                     blog.images.map((img, i) => (
                                         <img key={i} src={`${url}/images/${img}`} alt={`Additional ${i}`} className="h-24 w-24 object-cover rounded"/>
-                                    ))}
+                                    ))} */}
                             </div>
                         </div>
                         <div className="mb-2">
