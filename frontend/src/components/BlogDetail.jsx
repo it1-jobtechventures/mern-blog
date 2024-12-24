@@ -44,20 +44,13 @@ const BlogDetail = ({ url }) => {
 
   const images = blog.images || [];
   return (
-    <div className="container mx-auto p-6 md:p-10 md:pt-32 bg-gray-50 rounded-lg shadow-lg relative">
+    <div className="container mx-auto p-6 md:p-10 md:pt-32  rounded-lg shadow-lg relative">
       <h1 className="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-4">{blog.title}</h1>
       <h3 className="text-2xl md:text-3xl font-semibold text-center text-[#ff9724] mb-6">{blog.headline}</h3>
       <div className="mb-8 flex justify-center">
         <img src={blog.image} alt={blog.title} className="max-w-full h-auto object-contain rounded-lg shadow-lg"/>
       </div>
       <div className="text-lg text-gray-700 mb-8 text-justify leading-relaxed description" dangerouslySetInnerHTML={{ __html: blog.content }} ></div>
-      {images.length > 0 && (
-        <div className="flex justify-center gap-4 mb-8">
-          {images.map((image, index) => (
-            <img key={index} src={`${url}/images/${image}`} alt={`Additional image ${index + 1}`} className="max-w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-auto object-contain rounded-lg shadow-lg"/>
-          ))}
-        </div>
-      )}
       <div className="absolute bottom-6 right-6 text-sm text-gray-500">
         {new Date(blog.date).toLocaleDateString()}
       </div>
