@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate()
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -15,6 +17,11 @@ const Sidebar = () => {
       setIsOpen(false);
     }
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('admin_blog')
+    navigate('/login')
+  }
 
   return (
     <>
@@ -57,6 +64,12 @@ const Sidebar = () => {
             <span className="text-xl">💬</span> <p className="ml-2">All Emails</p>
           </NavLink>
         </div>
+        <div className=''>
+        <p  className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLogout}>
+            <span className="text-xl">🛑</span> <p className="ml-2">logout</p>
+          </p>
+        </div>
+
       </aside>
     </>
   );
