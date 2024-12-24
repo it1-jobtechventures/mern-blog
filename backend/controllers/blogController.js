@@ -1,31 +1,31 @@
 import blogModel from '../models/blogModel.js';
-import fs from 'fs'
+import { v2 as cloudinary  } from "cloudinary";
 
 const addBlog = async (req, res) => {
     try {
-        let mainImageFilename =req.file.filename;
-        // let imagesFilenames = req.files['images'] ? req.files['images'].map(file => file.filename) : [];
+        if (!req.files || !req.files.image || !req.files.image[0]) {
+            throw new Error("No image uploaded");
+        }
+
+        const file = req.files.image[0]; // Access the first uploaded image
+        const result = await cloudinary.uploader.upload(file.path, { resource_type: "image" });
 
         const blog = new blogModel({
             title: req.body.title,
-            // description: req.body.description,
             headline: req.body.headline,
-            content:req.body.content,
-            // long_description: req.body.long_description,
+            content: req.body.content,
             category: req.body.category,
-            keyword: req.body.keyword.split(','),
-            image: mainImageFilename,
-            // images: imagesFilenames
+            keyword: req.body.keyword.split(","),
+            image: result.secure_url,
         });
 
         await blog.save();
-        res.json({ success: true, message: 'Blog Added' });
+        res.json({ success: true, message: "Blog Added" });
     } catch (error) {
-        console.log(error.message);
-        res.json({ success: false, message: error.message });
+        console.error("Error:", error.message);
+        res.status(500).json({ success: false, message: error.message });
     }
 };
-
 
 const listBlog = async (req, res) => {
     try {
@@ -36,43 +36,32 @@ const listBlog = async (req, res) => {
         res.json({success:false,message:error.message})
     }
 }
+;
 
 const removeBlog = async (req, res) => {
     try {
         const blog = await blogModel.findById(req.body.id);
-        fs.unlink(`upload/blogs/${blog.image}`, (err) => {
-            if (err) console.log('Error removing file:', err);
-        });
+        if (!blog) {
+            throw new Error("Blog not found");
+        }
+
+        const imageUrl = blog.image;
+        if (imageUrl) {
+            // Extract public ID from the Cloudinary URL to delete the image
+            const publicId = imageUrl.split('/').pop().split('.')[0];
+            
+            // Delete image from Cloudinary
+            await cloudinary.uploader.destroy(publicId);
+        }
+
         await blogModel.findByIdAndDelete(req.body.id);
-        res.json({ success: true, message: 'Blog removed' });
+        res.json({ success: true, message: "Blog removed" });
     } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
+        console.error("Error:", error.message);
+        res.status(500).json({ success: false, message: error.message });
     }
-}
-// const removeBlog = async (req, res) => {
-//     try {
-//         const blog = await blogModel.findById(req.body.id);
-//         if (!blog) {
-//             return res.json({ success: false, message: 'Blog not found' });
-//         }
+};
 
-//         const imagePath = `upload/${blog.image}`;
-//         if (fs.existsSync(imagePath)) {
-//             fs.unlink(imagePath, (err) => {
-//                 if (err) console.log('Error removing file:', err);
-//             });
-//         } else {
-//             console.log('File does not exist:', imagePath);
-//         }
-
-//         await blogModel.findByIdAndDelete(req.body.id);
-//         res.json({ success: true, message: 'Blog removed' });
-//     } catch (error) {
-//         console.log(error);
-//         res.json({ success: false, message: error.message });
-//     }
-// };
 
 const getBlockById = async (req, res) => {
     try {
@@ -87,26 +76,37 @@ const getBlockById = async (req, res) => {
     }
 }
 
-// const getBlockById = async (req, res) => {
-//     try {
-//         const blog = await blogModel.findById(req.params.id);
-//         if (!blog) {
-//             return res.status(404).json({ success: false, message: 'Blog not found' });
-//         }
+const updateBlog = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const blog = await blogModel.findById(id);
+        if (!blog) {
+            return res.status(404).json({ success: false, message: "Blog not found" });
+        }
 
-//         // Check for main image existence
-//         const mainImagePath = `upload/${blog.image}`;
-//         if (!fs.existsSync(mainImagePath)) {
-//             console.log('Main image file does not exist:', mainImagePath);
-//             blog.image = null; // Optionally set to null if not found
-//         }
+        // Update fields
+        blog.title = req.body.title || blog.title;
+        blog.headline = req.body.headline || blog.headline;
+        blog.content = req.body.content || blog.content;
+        blog.category = req.body.category || blog.category;
+        blog.keyword = req.body.keyword ? req.body.keyword.split(",") : blog.keyword;
 
-//         res.json({ success: true, data: blog });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ success: false, message: error.message });
-//     }
-// };
+        // Update the main image if provided
+        if (req.file) {
+            const mainImageFilename = req.file.filename;
+            fs.unlink(`upload/blogs/${blog.image}`, (err) => {
+                if (err) console.error("Error removing old image:", err);
+            });
+            blog.image = mainImageFilename;
+        }
+
+        await blog.save();
+        res.json({ success: true, message: "Blog updated successfully" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
 
 
-export {addBlog, listBlog, removeBlog,getBlockById};
+export {addBlog, listBlog, removeBlog,getBlockById,updateBlog};

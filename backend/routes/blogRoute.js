@@ -1,29 +1,13 @@
 import express from "express";
-//to store image 
-import multer from "multer";
-import { addBlog, listBlog, removeBlog ,getBlockById} from "../controllers/blogController.js";
+import { addBlog, listBlog, removeBlog ,getBlockById, updateBlog} from "../controllers/blogController.js";
+import upload from "../middleware/multer.js";
 
 const blogRouter = express.Router();
 
-//image storage engine using multer 
-const storage = multer.diskStorage({
-    destination:'upload/blogs',
-    filename:(res,file,cb)=>{
-        // file will be store in upload folder with time stamp
-        return cb(null , `${Date.now()}${file.originalname}`)
-    }
-})
-
-const upload = multer({storage:storage})
-
-//post method (if we have to upload file)
-//route to post
-
-blogRouter.post("/add", upload.single("image"), addBlog);
-
+blogRouter.post("/add", upload.fields([{name:'image' ,maxCount:1}]), addBlog);
 blogRouter.get('/list' ,listBlog)
-
 blogRouter.post('/remove' ,removeBlog)
-
 blogRouter.post('/blog/:id' ,getBlockById)
+blogRouter.put("/update/:id", upload.single("image"), updateBlog);
+
 export default blogRouter;

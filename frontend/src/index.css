@@ -22,4 +22,14 @@ hr{
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* For Chrome, Safari, and Opera */
   }
-  
+
+.description{
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+
+.description p:has(img){
+  display: flex;
+  justify-content: center;
+  background-color: transparent !important;
+}

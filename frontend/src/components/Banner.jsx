@@ -31,7 +31,7 @@ const Banner = ({ url }) => {
         {banner.map((ban, id) => (
           <div key={id}>
             <a href={ban.link} target="_blank" rel="noopener noreferrer">
-              <img src={`${url}/images/banners/${ban.image}`} alt="banner" className="max-w-full h-auto"/>
+              <img src={ban.image} alt="banner" className="max-w-full h-auto"/>
             </a>
           </div>
         ))}

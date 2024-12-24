@@ -15,6 +15,7 @@ import About from './components/About';
 
 function App() {
   const url = "https://mern-blog-backend-9oua.onrender.com";
+
   const location = useLocation();
 
   // Show MiddlePage only on the root route

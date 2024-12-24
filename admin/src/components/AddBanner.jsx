@@ -4,41 +4,32 @@ import { toast } from 'react-toastify';
 
 const AddBanner = ({url}) => {
     const [image, setImage] = useState(null);
-    const [data, setData] = useState({
-        link: '',
-    });
-
-    const onChangeHandler = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setData((prev) => ({ ...prev, [name]: value }));
-    };
+    const [link, setLink] = useState('');
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('link', data.link);
-        formData.append('image', image);
-
         try {
-            const response = await axios.post(`${url}/api/banner/addBanner`, formData);
+            const formData = new FormData();
+            formData.append('link', link);
+            formData.append('image', image); 
+            const response = await axios.post(`${url}/api/banner/addBanner`, formData, {  headers: { 'Content-Type': 'multipart/form-data', },});
+    
             if (response.data.success) {
-                setData({
-                    link: '',
-                });
-                setImage(null);
+                setImage("")
+                setLink('')
                 toast.success(response.data.message);
             } else {
                 toast.error(response.data.message);
             }
         } catch (error) {
+            console.error('Error:', error.message);
             toast.error('Error adding banner');
         }
     };
-
+    
     useEffect(() => {
         
-    }, [data]);
+    }, []);
   return (
     <div className="max-w-md mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
         <h1 className="text-2xl font-bold mb-5">Add banner</h1>
@@ -56,7 +47,7 @@ const AddBanner = ({url}) => {
                 <label htmlFor="link" className="block text-sm font-medium text-gray-700">
                     link
                 </label>
-                <input onChange={onChangeHandler} value={data.link} type="text" name="link" placeholder="Type here" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"/>
+                <input onChange={(e)=>setLink(e.target.value)} value={link} type="text" name="link" placeholder="Type here" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"/>
             </div>
             <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200" >
                 Add banner

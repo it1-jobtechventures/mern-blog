@@ -1,82 +1,47 @@
-
-import express from 'express'
-import cors from 'cors'
+import express from 'express';
+import cors from 'cors';
 import { connectDB } from './config/db.js';
-import 'dotenv/config'
+import 'dotenv/config';  // Ensure dotenv is loaded to read .env file
 import userRouter from './routes/userRoute.js';
 import blogRouter from './routes/blogRoute.js';
 import updateRouter from './routes/updateRoute.js';
 import bannerRouter from './routes/bannerRoute.js';
 import galleryRouter from './routes/galleryRoute.js';
 import contactRouter from './routes/contactRoute.js';
-import bcrypt from 'bcryptjs';
+import connectCloudinary from './config/cloudinary.js';
 
-//app config
+// App configuration
 const app = express();
 const port = process.env.PORT || 4000;
 
-//middleware 
+// Middleware
 app.use(express.json());
 app.use(cors());
-// Middleware to parse URL-encoded data (if needed)
 app.use(express.urlencoded({ extended: true }));
-//db connect
+
+// DB connection
 connectDB();
 
+// connect cloudinary
+connectCloudinary()
 
-// // Check and Create Default Admin
-// const createDefaultAdmin = async () => {
-//     try {
-//       const adminEmail = process.env.ADMIN_EMAIL;
-//       const adminPassword = process.env.ADMIN_PASSWORD;
-  
-//       if (!adminEmail || !adminPassword) {
-//         console.error('Admin credentials are missing in .env file');
-//         return;
-//       }
-  
-//       const existingAdmin = await adminModel.findOne({ email: adminEmail });
-//       if (!existingAdmin) {
-//         const hashedPassword = await bcrypt.hash(adminPassword, 10);
-//         const admin = new adminModel({
-//           name: 'Default Admin',
-//           email: adminEmail,
-//           password: hashedPassword,
-//         });
-//         await admin.save();
-//         console.log('Default admin created successfully!');
-//       } else {
-//         console.log('Admin already exists.');
-//       }
-//     } catch (error) {
-//       console.error('Error creating default admin:', error);
-//     }
-//   };
-  
-//   // Call the function on server startup
-//   createDefaultAdmin()
-
-
-//routes
-app.use('/api/user',userRouter)
-//mount upload folder to the 'images' endpoint.
-// app.use('/images',express.static('upload'))
+// Routes
+app.use('/api/user', userRouter);
 app.use('/images/banners', express.static('upload/banners'));
 app.use('/images/blogs', express.static('upload/blogs'));
 
-app.use('/api/blog',blogRouter)
-app.use('/api/update', updateRouter)
-app.use('/api/banner', bannerRouter)
-app.use('/api/gallery', galleryRouter)
-app.use('/api/contact', contactRouter)
+app.use('/api/blog', blogRouter);
+app.use('/api/update', updateRouter);
+app.use('/api/banner', bannerRouter);
+app.use('/api/gallery', galleryRouter);
+app.use('/api/contact', contactRouter);
 
-// request the data for server
-app.get('/' , (req , res) => {
-    res.send("API Working")
+// Health check route
+app.get('/', (req, res) => {
+  res.send("API Working");
 });
 
-// to run express server
-app.listen(port , () => {
-    console.log(`server started on http://localhost:${port}`)
+// Start server
+app.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
 });
-
