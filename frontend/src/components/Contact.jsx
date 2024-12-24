@@ -16,6 +16,7 @@ const Contact = ({ url }) => {
     subject: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   // Handle form data change
   const onChangeHandler = (e) => {
@@ -29,6 +30,7 @@ const Contact = ({ url }) => {
 
     // Save form data in the database
     try {
+      setLoading(true);
       const response = await axios.post(`${url}/api/contact/sentEmail`, formData);
       if (response.data.success) {
         // Send email using EmailJS
@@ -48,6 +50,8 @@ const Contact = ({ url }) => {
     } catch (error) {
       console.log(error.message)
       toast.error("Error submitting form.");
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -142,8 +146,16 @@ const Contact = ({ url }) => {
                 <textarea name="message" value={formData.message} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Message" rows="4" required/>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 sm:justify-between items-center">
-                <button type="submit" className="w-full sm:w-auto bg-[#ff9724] text-white px-4 py-2 rounded-md hover:bg-[#f18847] transition">
-                  Submit
+                <button disabled={loading} type="submit" className="w-full sm:w-auto bg-[#ff9724] text-white px-4 py-2 rounded-md hover:bg-[#f18847] transition">
+                  {
+                    loading ? (
+                      <div className="flex justify-center items-center">
+                        <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+                      </div>
+                    ):(
+                      "Submit"
+                    )
+                  }
                 </button>
               </div>
             </form>
