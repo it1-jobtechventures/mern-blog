@@ -80,6 +80,7 @@ const updateBlog = async (req, res) => {
     try {
         const { id } = req.params;
         const blog = await blogModel.findById(id);
+
         if (!blog) {
             return res.status(404).json({ success: false, message: "Blog not found" });
         }
@@ -91,19 +92,29 @@ const updateBlog = async (req, res) => {
         blog.category = req.body.category || blog.category;
         blog.keyword = req.body.keyword ? req.body.keyword.split(",") : blog.keyword;
 
-        // Update the main image if provided
+        // Handle image replacement if a new file is uploaded
         if (req.file) {
-            const mainImageFilename = req.file.filename;
-            fs.unlink(`upload/blogs/${blog.image}`, (err) => {
-                if (err) console.error("Error removing old image:", err);
-            });
-            blog.image = mainImageFilename;
+            // Delete the existing image from Cloudinary
+            if (blog.image) {
+                const publicId = blog.image.split("/").pop().split(".")[0]; // Extract public ID
+                await cloudinary.uploader.destroy(publicId);
+            }
+
+            // Upload the new image to Cloudinary
+            const file = req.file; // Uploaded file from multer
+            const result = await cloudinary.uploader.upload(file.path, { resource_type: "image" });
+
+            // Assign the new image URL to the blog
+            blog.image = result.secure_url;
+
+            // // Optionally remove the file from local storage after upload
+            // fs.unlinkSync(file.path);
         }
 
         await blog.save();
         res.json({ success: true, message: "Blog updated successfully" });
     } catch (error) {
-        console.error(error);
+        console.error("Error updating blog:", error);
         res.status(500).json({ success: false, message: error.message });
     }
 };
