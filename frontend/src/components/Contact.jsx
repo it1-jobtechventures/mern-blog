@@ -17,8 +17,6 @@ const Contact = ({ url }) => {
     message: "",
   });
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   // Handle form data change
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -44,7 +42,6 @@ const Contact = ({ url }) => {
           subject: "",
           message: "",
         });
-        setIsModalOpen(false); // Close the modal on successful submission
       } else {
         toast.error("Error submitting form.");
       }
@@ -64,10 +61,10 @@ const Contact = ({ url }) => {
 
     emailjs
       .send(
-        "service_jxoj6co",
-        "template_m8sf5gk",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        "e-_rfXCcHpoHXPCIy"
+        import.meta.env.VITE_EMAILJS_USER_ID
       )
       .then(
         (response) => {
@@ -80,10 +77,10 @@ const Contact = ({ url }) => {
   };
 
   return (
-    <div className="relative">
-      <div className="flex flex-col md:flex-row items-center justify-between bg-[#202020] text-white py-16 px-6 md:px-8">
+    <div className="relative bg-[#202020] pb-10">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between bg-[#202020] text-white py-16 px-6 md:px-8">
         <div className="w-full md:w-1/2">
-          <div className="w-full h-1 bg-[#ff9724] mb-4"></div>
+          <div className="w-full h-1 bg-[#ff9724] mb-4 mt-3 md:mt-0"></div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center md:text-left">CONTACT.</h1>
           <p className="mb-4 text-center md:text-left text-sm md:text-lg"> PRAKASH BANSAL</p>
           <p className="mb-6 text-center md:text-left text-sm"> PRAKASHBANSAL(AT)GMAIL(DOT)COM</p>
@@ -93,17 +90,12 @@ const Contact = ({ url }) => {
             <Link to={''}><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
             <Link to={''}><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link> 
           </div>
-          <button onClick={() => setIsModalOpen(true)} className="bg-[#ff9724] text-white font-bold py-2 px-6 rounded hover:bg-[#f18847] transition duration-200 w-full md:w-auto">
-            Get in Touch
-          </button>
         </div>
         <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">
           <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className="rounded-md shadow-lg w-4/5 max-w-xs md:max-w-md"/>
         </div>
       </div>
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-auto">
+        <div className=" inset-0 z-50 flex items-center justify-center  bg-opacity-50 overflow-auto">
           <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-xs sm:max-w-lg mx-4">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center"> Contact Us</h2>
             <form onSubmit={onSubmitHandler}>
@@ -148,9 +140,6 @@ const Contact = ({ url }) => {
                 <textarea name="message" value={formData.message} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Message" rows="4" required/>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 sm:justify-between items-center">
-                <button type="button" onClick={() => setIsModalOpen(false)} className="w-full sm:w-auto bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 transition">
-                  Close
-                </button>
                 <button type="submit" className="w-full sm:w-auto bg-[#ff9724] text-white px-4 py-2 rounded-md hover:bg-[#f18847] transition">
                   Submit
                 </button>
@@ -158,7 +147,6 @@ const Contact = ({ url }) => {
             </form>
           </div>
         </div>
-      )}
     </div>
   );
 };
