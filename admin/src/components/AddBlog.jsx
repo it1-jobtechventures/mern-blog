@@ -5,6 +5,7 @@ import JoditEditor from 'jodit-react';
 
 const AddBlog = ({ url }) => {
     const [image, setImage] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         title: '',
         headline: '',
@@ -34,8 +35,8 @@ const AddBlog = ({ url }) => {
         formData.append('image', image);
 
         try {
+            setLoading(true); 
             const response = await axios.post(`${url}/api/blog/add`, formData);
-            
             if (response.data.success) {
                 toast.success(response.data.message);
                 setData({ title: '', headline: '', keyword: '', category: '' });
@@ -46,6 +47,8 @@ const AddBlog = ({ url }) => {
             }
         } catch (error) {
             toast.error('Error adding blog');
+        }finally{
+            setLoading(false)
         }
     };
 
@@ -119,8 +122,16 @@ const AddBlog = ({ url }) => {
                         <option value="Education">Education</option>
                     </select>
                 </div>
-                <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded sm:px-6 lg:px-8">
-                    Add Blog
+                <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white py-2 rounded sm:px-6 lg:px-8">
+                    {
+                        loading ? (
+                            <div className="flex justify-center items-center">
+                                <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+                            </div>
+                        ):(
+                            "Add Blog"
+                        )
+                    }
                 </button>
             </form>
         </div>

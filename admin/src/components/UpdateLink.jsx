@@ -52,8 +52,16 @@ const UpdateLink = ({ url }) => {
                         </label>
                         <input onChange={onChangeHandler} value={data.link} type="text" name="link" placeholder="Type here" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
                     </div>
-                    <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200">
-                        Add Link
+                    <button disabled={loading} type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200">
+                        {
+                            loading ? (
+                                <div className="flex justify-center items-center">
+                                    <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+                                </div>
+                            ):(
+                                "Add Link"
+                            )
+                        }
                     </button>
                 </form>
             </div>

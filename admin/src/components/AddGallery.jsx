@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 const AddGallery = ({url}) => {
     const [image, setImage] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -11,6 +12,7 @@ const AddGallery = ({url}) => {
         formData.append('image', image);
 
         try {
+            setLoading(true); 
             const response = await axios.post(`${url}/api/gallery/addPhoto`, formData);
             if (response.data.success) {
                 setImage(null);
@@ -20,6 +22,8 @@ const AddGallery = ({url}) => {
             }
         } catch (error) {
             toast.error('Error adding photo');
+        }finally{
+            setLoading(false);
         }
     };
 
@@ -40,8 +44,16 @@ const AddGallery = ({url}) => {
                 </label>
                 <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden required />
             </div>
-            <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200" >
-                Add photo
+            <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200" disabled={loading}>
+                {
+                    loading ? (
+                        <div className="flex justify-center items-center">
+                            <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+                        </div>
+                    ):(
+                        "Add photo"
+                    )
+                }
             </button>
         </form>
     </div>
@@ -50,6 +62,7 @@ const AddGallery = ({url}) => {
 }
 
 export default AddGallery
+
 // import React, { useState } from 'react';
 // import axios from 'axios';
 // import { toast } from 'react-toastify';

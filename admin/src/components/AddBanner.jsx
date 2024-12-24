@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 const AddBanner = ({url}) => {
     const [image, setImage] = useState(null);
     const [link, setLink] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -12,6 +13,7 @@ const AddBanner = ({url}) => {
             const formData = new FormData();
             formData.append('link', link);
             formData.append('image', image); 
+            setLoading(true)
             const response = await axios.post(`${url}/api/banner/addBanner`, formData, {  headers: { 'Content-Type': 'multipart/form-data', },});
     
             if (response.data.success) {
@@ -24,6 +26,8 @@ const AddBanner = ({url}) => {
         } catch (error) {
             console.error('Error:', error.message);
             toast.error('Error adding banner');
+        }finally{
+            setLoading(false);
         }
     };
     
@@ -49,8 +53,16 @@ const AddBanner = ({url}) => {
                 </label>
                 <input onChange={(e)=>setLink(e.target.value)} value={link} type="text" name="link" placeholder="Type here" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"/>
             </div>
-            <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200" >
-                Add banner
+            <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200" >
+                {
+                    loading ? (
+                        <div className="flex justify-center items-center">
+                            <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+                        </div>
+                    ):(
+                        "Add banner"
+                    )
+                }
             </button>
         </form>
     </div>
