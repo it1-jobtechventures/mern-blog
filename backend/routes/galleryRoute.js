@@ -1,24 +1,31 @@
 import express from "express";
-//to store image 
-import multer from "multer";
 import { addGallery, listGallery, removeGallery } from "../controllers/galleryController.js";
+import upload from "../middleware/multer.js";
 
 
 const galleryRouter = express.Router();
 
-//image storage engine using multer 
-const storage = multer.diskStorage({
-    destination:'upload',
-    filename:(res,file,cb)=>{
-        // file will be store in upload folder with time stamp
-        return cb(null , `${Date.now()}${file.originalname}`)
-    }
-})
-
-const upload = multer({storage:storage})
-
-galleryRouter.post("/addPhoto" ,upload.single("image"), addGallery)
+galleryRouter.post("/addPhoto" ,upload.fields([{name:'image', maxCount:1}]), addGallery)
 galleryRouter.get("/listPhoto" , listGallery)
 galleryRouter.post("/removePhoto" ,removeGallery)
 
 export default galleryRouter;
+
+// import express from "express";
+// import upload from "../middleware/multer.js";
+// import { addGallery, listGallery, removeGallery } from "../controllers/galleryController.js";
+
+// const galleryRouter = express.Router();
+
+// galleryRouter.post(
+//     "/addFiles",
+//     upload.fields([
+//         { name: 'images', maxCount: 5 }, // Allow up to 5 images
+//         { name: 'videos', maxCount: 3 }, // Allow up to 3 videos
+//     ]),
+//     addGallery
+// );
+// galleryRouter.get("/listPhoto" , listGallery)
+// galleryRouter.post("/removePhoto" ,removeGallery)
+
+// export default galleryRouter;

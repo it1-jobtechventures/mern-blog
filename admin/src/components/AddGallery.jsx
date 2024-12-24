@@ -50,3 +50,79 @@ const AddGallery = ({url}) => {
 }
 
 export default AddGallery
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import { toast } from 'react-toastify';
+
+// const AddGallery = ({ url }) => {
+//     const [images, setImages] = useState([]);
+//     const [videos, setVideos] = useState([]);
+
+//     const onSubmitHandler = async (e) => {
+//         e.preventDefault();
+//         const formData = new FormData();
+
+//         images.forEach((image) => formData.append('images', image));
+//         videos.forEach((video) => formData.append('videos', video));
+
+//         try {
+//             const response = await axios.post(`${url}/api/gallery/addFiles`, formData, {
+//                 headers: { "Content-Type": "multipart/form-data" },
+//             });
+//             if (response.data.success) {
+//                 setImages([]);
+//                 setVideos([]);
+//                 toast.success(response.data.message);
+//             } else {
+//                 toast.error(response.data.message);
+//             }
+//         } catch (error) {
+//             toast.error('Error uploading files');
+//         }
+//     };
+
+//     const handleImageChange = (e) => setImages([...e.target.files]);
+//     const handleVideoChange = (e) => setVideos([...e.target.files]);
+
+//     return (
+//         <div className="max-w-md mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
+//             <h1 className="text-2xl font-bold mb-5">Add Files</h1>
+//             <form onSubmit={onSubmitHandler}>
+//                 <div className="mb-4">
+//                     <label htmlFor="images" className="block text-sm font-medium text-gray-700">
+//                         Upload Images
+//                     </label>
+//                     <input
+//                         onChange={handleImageChange}
+//                         type="file"
+//                         id="images"
+//                         multiple
+//                         accept="image/*"
+//                         className="block w-full border p-2"
+//                     />
+//                 </div>
+//                 <div className="mb-4">
+//                     <label htmlFor="videos" className="block text-sm font-medium text-gray-700">
+//                         Upload Videos
+//                     </label>
+//                     <input
+//                         onChange={handleVideoChange}
+//                         type="file"
+//                         id="videos"
+//                         multiple
+//                         accept="video/*"
+//                         className="block w-full border p-2"
+//                     />
+//                 </div>
+//                 <button
+//                     type="submit"
+//                     className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200"
+//                 >
+//                     Upload Files
+//                 </button>
+//             </form>
+//         </div>
+//     );
+// };
+
+// export default AddGallery;
