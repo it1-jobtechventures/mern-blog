@@ -7,10 +7,10 @@ import { FcLike } from "react-icons/fc";
 const BlogDetail = ({ url }) => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchBlog = async () => {
     try {
@@ -91,8 +91,8 @@ const BlogDetail = ({ url }) => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center p-8">
-        <div className="loader"></div>
+      <div className="flex justify-center items-center">
+        <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -122,8 +122,17 @@ const BlogDetail = ({ url }) => {
         <h2 className="text-xl font-semibold text-gray-700 mb-4">Comments</h2>
         <form onSubmit={handleCommentSubmit} className="mb-4">
           <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows="4" placeholder="Add a comment..." className="w-full p-4 border rounded-md mb-4"></textarea>
-          <button type="submit" className="bg-[#ff9724] text-white px-4 py-2 rounded">
-            Submit Comment
+          <button disabled={loading} type="submit" className="bg-[#ff9724] text-white px-4 py-2 rounded">
+            {
+              loading ? (
+                <div className="flex justify-center items-center">
+                  <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+                </div>
+              ):(
+                "Submit Comment"
+              )
+            }
+            
           </button>
         </form>
         {/* Display Comments */}
