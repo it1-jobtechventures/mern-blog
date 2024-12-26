@@ -1,22 +1,43 @@
 import blogModel from "../models/blogModel.js";
 import commentModel from "../models/commentModel.js";
 
-// Like a Blog
+// // Like a Blog
+// const likeBlog = async (req, res) => {
+//     const { id } = req.params;
+//     try {
+//         const blog = await blogModel.findById(id);
+//         if (!blog) {
+//             return res.status(404).json({ success: false, message: "Blog not found" });
+//         }
+//         blog.likes += 1;
+//         await blog.save();
+//         res.status(200).json({ success: true, data: blog });
+//     } catch (error) {
+//         res.status(500).json({ success: false, message: "Server error" });
+//     }
+// };
 const likeBlog = async (req, res) => {
     const { id } = req.params;
+    const { toggle } = req.body; // Determine whether to add or remove the like
+
     try {
         const blog = await blogModel.findById(id);
         if (!blog) {
             return res.status(404).json({ success: false, message: "Blog not found" });
         }
-        blog.likes += 1;
+
+        if (toggle) {
+            blog.likes += 1; // Add a like
+        } else {
+            blog.likes = Math.max(0, blog.likes - 1); // Remove a like but ensure it doesn't go below 0
+        }
+
         await blog.save();
         res.status(200).json({ success: true, data: blog });
     } catch (error) {
         res.status(500).json({ success: false, message: "Server error" });
     }
-};
-
+}
 // Add a comment to a blog post
 const addComment = async (req, res) => {
     try {
