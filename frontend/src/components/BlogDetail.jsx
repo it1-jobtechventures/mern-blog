@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { FcLike } from "react-icons/fc";
 
 const BlogDetail = ({ url }) => {
   const { id } = useParams();
@@ -9,6 +10,7 @@ const BlogDetail = ({ url }) => {
   const [loading, setLoading] = useState(true);
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
 
   const fetchBlog = async () => {
     try {
@@ -28,14 +30,29 @@ const BlogDetail = ({ url }) => {
     }
   };
 
+  // const handleLike = async () => {
+  //   try {
+  //     await axios.post(`${url}/api/blog/like/${id}`);
+  //     setBlog({ ...blog, likes: blog.likes + 1 });
+  //   } catch (error) {
+  //     toast.error('Error liking the blog');
+  //   }
+  // };
+
   const handleLike = async () => {
     try {
-      await axios.post(`${url}/api/blog/like/${id}`);
-      setBlog({ ...blog, likes: blog.likes + 1 });
+        const response = await axios.post(`http://localhost:4000/api/blog/like/${id}`, { toggle: !isLiked });
+        if (response.data.success) {
+            setIsLiked(!isLiked); // Toggle the local like state
+            setBlog({ ...blog, likes: response.data.data.likes }); // Update the blog's likes count
+        } else {
+            toast.error('Error toggling like');
+        }
     } catch (error) {
-      toast.error('Error liking the blog');
+        toast.error('Error toggling like');
     }
-  };
+};
+
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
@@ -97,8 +114,8 @@ const BlogDetail = ({ url }) => {
         {new Date(blog.date).toLocaleDateString()}
       </div>
       {/* Like Button */}
-      <button className="mt-4 bg-[#ff9724] text-white px-4 py-2 rounded" onClick={handleLike}>
-        Like ❤ {blog.likes}
+      <button className="mt-4 bg-[#ff9724] text-white px-4 py-2 rounded flex items-center gap-1" onClick={handleLike}>
+        {isLiked ? <FcLike/> : "🤍"} {blog.likes}
       </button>
       {/* Comment Section */}
       <div className="mt-8">
