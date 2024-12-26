@@ -7,7 +7,9 @@ const blogSchema = new mongoose.Schema({
     keyword: { type: [String], required: true },
     category: { type: String },
     content: { type: String, required: true },
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    likes: { type: Number, default: 0 },
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comment',  }],// Reference to the Comment model
 });
 
 const blogModel = mongoose.models.blog || mongoose.model("blog", blogSchema)
