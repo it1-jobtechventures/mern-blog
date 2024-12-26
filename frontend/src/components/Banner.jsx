@@ -9,7 +9,7 @@ const Banner = ({ url }) => {
 
   const fetchBanner = async () => {
     try {
-      const response = await axios.get(url + '/api/banner/listBanner');
+      const response = await axios.get(`${url}/api/banner/listBanner`);
       if (response.data.success) {
         setBanner(response.data.data);
       } else {
@@ -26,12 +26,12 @@ const Banner = ({ url }) => {
   }, []);
 
   return (
-    <div className="w-60 md:w-96 lg:w-[28rem] m:w-48 mb-3">
-      <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={1000} showThumbs={false} dynamicHeight={true}>
+    <div className="mb-5">
+      <Carousel showArrows={true} onClickItem={true} showIndicators={false} infiniteLoop={true} autoPlay={true} interval={1000} showThumbs={false} dynamicHeight={true}>
         {banner.map((ban, id) => (
-          <div key={id}>
+          <div key={id} className=" m-5">
             <a href={ban.link} target="_blank" rel="noopener noreferrer">
-              <img src={ban.image} alt="banner" className="max-w-full h-auto"/>
+              <img src={ban.image} alt="banner" className="h-80 w-80 object-contain rounded-md"/>
             </a>
           </div>
         ))}
