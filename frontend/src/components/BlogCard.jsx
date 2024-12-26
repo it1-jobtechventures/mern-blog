@@ -1,6 +1,9 @@
 import React from 'react';
 
 const BlogCard = ({ blog , url}) => {
+    // Ensure comments is an empty array if undefined
+    const commentsCount = Array.isArray(blog.comments) ? blog.comments.length : 0;
+    
   return (
     <>
         <div className=" max-w-md  rounded-lg shadow-lg   p-4 transition-transform transform hover:scale-105 hover:shadow-2xl">
@@ -9,11 +12,11 @@ const BlogCard = ({ blog , url}) => {
                 <h2 className="text-xl font-bold mt-2  pb-2 ">{blog.title}</h2>
                 <div className='flex justify-between pt-3 p-2'>
                     <div className='flex gap-3'>
-                        <p>0 views</p>
-                        <p>0 comments</p>
+                        <p>{blog.view}</p>
+                        <p>{commentsCount} comments</p>
                     </div>
                     <div>
-                        9 ❤
+                        {blog.likes}❤
                     </div>
                 </div>
             </div>
