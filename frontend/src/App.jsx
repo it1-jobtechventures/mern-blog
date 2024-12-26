@@ -13,6 +13,7 @@ import MiddlePage from './pages/MiddlePage';
 import Logo from './components/Logo';
 import About from './components/About';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
   const url = "https://mern-blog-backend-9oua.onrender.com";
@@ -37,8 +38,8 @@ function App() {
       </Routes>
       {isHomePage && <MiddlePage url={url}/>}
       <Logo/>
-      
       <Footer url={url} />
+      <ScrollToTopButton/>
     </>
   );
 }
