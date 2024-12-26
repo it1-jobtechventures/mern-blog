@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import MiddlePage from './pages/MiddlePage';
 import Logo from './components/Logo';
 import About from './components/About';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const url = "https://mern-blog-backend-9oua.onrender.com";
@@ -25,6 +26,7 @@ function App() {
     <>
       <ToastContainer />
       <Navbar />
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Header url={url} />} />
         <Route path='/about' element={<About url={url}/>}/>

@@ -52,7 +52,7 @@ const Header = () => {
               grant-funded projects.
             </p>
             <div className="-mt-6 pl-6 sm:pl-10 lg:pl-14 text-lg sm:text-xl">
-              <Link to={""}>
+              <Link to={"/about"}>
                 <button className="bg-[#ff9724] text-white p-3 rounded-full">
                   About me
                 </button>
