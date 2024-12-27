@@ -60,10 +60,12 @@ import AllBanner from './components/AllBanner';
 import AddGallery from './components/AddGallery';
 import DisplayGallery from './components/DisplayGallery';
 import AllEmail from './components/AllEmail';
+import AddUser from './components/AddUser';
+import AllUser from './components/AllUser';
 
 function App() {
   // const url = 'http://localhost:4000';
-const url = 'https://mern-blog-backend-9oua.onrender.com'
+  const url = 'https://mern-blog-backend-9oua.onrender.com'
   // ProtectedRoute component
   function ProtectedRoute({ element, ...rest }) {
     const isAuthenticated = localStorage.getItem('admin_blog'); // Check if user is logged in
@@ -90,6 +92,8 @@ const url = 'https://mern-blog-backend-9oua.onrender.com'
             <Route path="/addGallery" element={<ProtectedRoute element={<AddGallery url={url} />} />} />
             <Route path="/allGallery" element={<ProtectedRoute element={<DisplayGallery url={url} />} />} />
             <Route path="/emails" element={<ProtectedRoute element={<AllEmail url={url} />} />} />
+            <Route path="/addUser" element={<ProtectedRoute element={<AddUser url={url} />} />} />
+            <Route path="/allUser" element={<ProtectedRoute element={<AllUser url={url} />} />} />
           </Routes>
         </div>
       </div>
