@@ -7,6 +7,7 @@ const UpdateLink = ({ url }) => {
         title: '',
         link: ''
     });
+    const [loading, setLoading] = useState(false);
 
     const onChangeHandler = (e) => {
         const { name, value } = e.target;
@@ -16,6 +17,7 @@ const UpdateLink = ({ url }) => {
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true)
             const response = await axios.post(`${url}/api/update/addUpdate`, data, {
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -28,6 +30,8 @@ const UpdateLink = ({ url }) => {
         } catch (error) {
             console.error('Error:', error.response?.data || error.message);
             toast.error(error.message);
+        }finally{
+            setLoading(false)
         }
     };
 

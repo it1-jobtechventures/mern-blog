@@ -8,12 +8,13 @@ const AddUser = ({url}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
 
   const handleAddUser = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       const response = await axios.post( `${url}/api/user/add`, { name, email, password },);
-
       if (response.data.success) {
         toast.success('User added successfully');
         setName('');
@@ -25,6 +26,8 @@ const AddUser = ({url}) => {
       }
     } catch (error) {
       toast.error('Failed to add user');
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -46,8 +49,16 @@ const AddUser = ({url}) => {
               <label className="block text-gray-700 text-sm font-medium mb-2">Password</label>
               <input type="password" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Enter password"/>
             </div>
-            <button type="submit" className="w-full bg-primary  py-3 px-4 rounded-md hover:bg-buttonHover focus:ring-2 focus:ring-indigo-500 transition duration-300">
-              Add user
+            <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white py-2 rounded sm:px-6 lg:px-8">
+              {
+                loading ? (
+                  <div className="flex justify-center items-center">
+                    <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+                  </div>
+                ):(
+                  "Add user"
+                )
+              }
             </button>
           </form>
         </div>

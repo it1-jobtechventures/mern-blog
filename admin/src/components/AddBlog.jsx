@@ -14,6 +14,7 @@ const AddBlog = ({ url }) => {
     });
     const [content, setContent] = useState('');
     const editorRef = useRef(null);
+    
     const onChangeHandler = (e) => {
         const { name, value } = e.target;
         setData((prev) => ({ ...prev, [name]: value }));
