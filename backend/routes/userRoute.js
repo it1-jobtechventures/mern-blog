@@ -1,11 +1,13 @@
-import express from 'express'
-import { loginUser , registerUser } from '../controllers/userController.js'
+import express from 'express';
+import { addUser, allUser, loginUser, removeUser } from '../controllers/userController.js';
 
-//create router using express
-const userRouter = express.Router()
+const userRouter = express.Router();
 
-//created routes for login and register 
-userRouter.post("/register" , registerUser);
-userRouter.post('/login' , loginUser)
+// Admin-only routes
+userRouter.post('/add' ,addUser);
+userRouter.post('/remove', removeUser);
+userRouter.get('/allUser', allUser);
+// User routes
+userRouter.post('/userLogin', loginUser);
 
 export default userRouter;
