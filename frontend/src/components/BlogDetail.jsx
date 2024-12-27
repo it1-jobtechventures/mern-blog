@@ -31,19 +31,34 @@ const BlogDetail = ({ url }) => {
   };
 
   const handleLike = async () => {
+    const likedBlogs = JSON.parse(localStorage.getItem("likedBlogs")) || [];
+    const isAlreadyLiked = likedBlogs.includes(id);
     try {
-        const response = await axios.post(`http://localhost:4000/api/blog/like/${id}`, { toggle: !isLiked });
-        if (response.data.success) {
-            setIsLiked(!isLiked); // Toggle the local like state
-            setBlog({ ...blog, likes: response.data.data.likes }); // Update the blog's likes count
+      // Send the toggle request to the server
+      const response = await axios.post(`${url}/api/blog/like/${id}`, { toggle: !isAlreadyLiked });
+      if (response.data.success) {
+        setIsLiked(!isAlreadyLiked); // Toggle the local like state
+        // Update the like count locally
+        setBlog({ ...blog, likes: response.data.data.likes });
+        // Update localStorage
+        if (isAlreadyLiked) {
+          // Remove the blog ID from localStorage
+          const updatedLikedBlogs = likedBlogs.filter((blogId) => blogId !== id);
+          localStorage.setItem("likedBlogs", JSON.stringify(updatedLikedBlogs));
         } else {
-            toast.error('Error toggling like');
+          // Add the blog ID to localStorage
+          likedBlogs.push(id);
+          localStorage.setItem("likedBlogs", JSON.stringify(likedBlogs));
         }
+        // toast.success(isAlreadyLiked ? "Like removed!" : "Blog liked!");
+      } else {
+        toast.error("Error toggling like");
+      }
     } catch (error) {
-        toast.error('Error toggling like');
+      toast.error("Error toggling like");
+      console.error("Error toggling like:", error);
     }
   };
-
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
@@ -81,6 +96,10 @@ const BlogDetail = ({ url }) => {
   useEffect(() => {
     fetchBlog();
     fetchComments()
+    // Check if the blog is already liked
+    const likedBlogs = JSON.parse(localStorage.getItem("likedBlogs")) || [];
+    setIsLiked(likedBlogs.includes(id));
+  
   }, [id]);
 
   if (!blog) {
@@ -90,7 +109,7 @@ const BlogDetail = ({ url }) => {
   const images = blog.images || [];
   return (
     loading ? (
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center md:pt-32">
         <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
       </div>
     ) : (
