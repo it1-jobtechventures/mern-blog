@@ -30,15 +30,6 @@ const BlogDetail = ({ url }) => {
     }
   };
 
-  // const handleLike = async () => {
-  //   try {
-  //     await axios.post(`${url}/api/blog/like/${id}`);
-  //     setBlog({ ...blog, likes: blog.likes + 1 });
-  //   } catch (error) {
-  //     toast.error('Error liking the blog');
-  //   }
-  // };
-
   const handleLike = async () => {
     try {
         const response = await axios.post(`http://localhost:4000/api/blog/like/${id}`, { toggle: !isLiked });
@@ -51,7 +42,7 @@ const BlogDetail = ({ url }) => {
     } catch (error) {
         toast.error('Error toggling like');
     }
-};
+  };
 
 
   const handleCommentSubmit = async (e) => {
@@ -70,6 +61,7 @@ const BlogDetail = ({ url }) => {
   
   const fetchComments = async () => {
     try {
+      setLoading(true)
       const response = await axios.get(`${url}/api/blog/comments/${id}`);
       if (response.data.success) {
         setComments(response.data.data); // Store the comments in state
@@ -80,6 +72,8 @@ const BlogDetail = ({ url }) => {
     } catch (error) {
       toast.error('Error fetching comments');
       console.error('Error fetching comments:', error);
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -89,21 +83,18 @@ const BlogDetail = ({ url }) => {
     fetchComments()
   }, [id]);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center">
-        <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
   if (!blog) {
     return <div className="p-8">Blog not found</div>;
   }
 
   const images = blog.images || [];
   return (
-    <div className="container mx-auto p-6 md:p-10 md:pt-32 rounded-lg shadow-lg relative">
+    loading ? (
+      <div className="flex justify-center items-center">
+        <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
+      </div>
+    ) : (
+      <div className="container mx-auto p-6 md:p-10 md:pt-32 rounded-lg shadow-lg relative">
       <h1 className="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-4">{blog.title}</h1>
       <h3 className="text-2xl md:text-3xl font-semibold text-center text-[#ff9724] mb-6">{blog.headline}</h3>
       <div className="mb-8 flex justify-center">
@@ -132,7 +123,6 @@ const BlogDetail = ({ url }) => {
                 "Submit Comment"
               )
             }
-            
           </button>
         </form>
         {/* Display Comments */}
@@ -146,6 +136,8 @@ const BlogDetail = ({ url }) => {
         }
       </div>
     </div>
+    )
+
   );
 };
 

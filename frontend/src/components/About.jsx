@@ -14,8 +14,8 @@ const About = () => {
             I’m passionate about innovation and driven by impact.
           </div>
           <div className="text-sm lg:text-xl  mt-6 md:mt-10">
-          I really enjoy working on cutting-edge projects and developing enabling new technologies in the hope that these will one day translate back to the real world and have a direct impact on our lives.
-          I also enjoy being surrounded by brilliant people that share the vision of “technology for good” and I’m truly humbled by their support. Meanwhile, I’m excited by the ever-growing challenges I’m faced with as my career unfolds and keen to take them on.
+            I really enjoy working on cutting-edge projects and developing enabling new technologies in the hope that these will one day translate back to the real world and have a direct impact on our lives.
+            I also enjoy being surrounded by brilliant people that share the vision of “technology for good” and I’m truly humbled by their support. Meanwhile, I’m excited by the ever-growing challenges I’m faced with as my career unfolds and keen to take them on.
           </div>
         </div>
         <div className="w-full md:w-1/2 flex justify-center p-6">
