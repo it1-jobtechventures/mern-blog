@@ -12,9 +12,9 @@ const Logo = () => {
           <div key={idx} className="rounded-md border border-gray-300 bg-white shadow-md p-6 flex flex-col items-center hover:shadow-lg transition-shadow duration-300">
             <img className="rounded-sm h-24 w-24 md:h-32 md:w-32 object-contain mb-4" src={logo.image} alt="logo"/>
             <p className="text-center text-sm md:text-base mb-4">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              {logo.text}
             </p>
-            <div className="flex text-2xl gap-4">
+            <div className="flex text-2xl gap-4 mt-auto">
               <Link to={logo.insta}>
                 <FaInstagram className="hover:text-[#ff9724] cursor-pointer" />
               </Link>
