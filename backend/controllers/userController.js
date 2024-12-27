@@ -1,79 +1,142 @@
-import userModel from "../models/userModel.js";
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'
-import bcrypt from 'bcryptjs'
-import validator from 'validator'
+import userModel from '../models/userModel.js';
+import CryptoJS from "crypto-js";
 
+const encryptionKey = process.env.ENCRYPTION_KEY || "defaultSecretKey"; // Use a secure, environment-based key
 
-// login user
+// const addUser = async (req, res) => {
+//   try {
+//     const { name, email, password } = req.body;
+
+//     if (!name || !email || !password) {
+//       return res.status(400).json({ success: false, message: 'All fields are required' });
+//     }
+
+//     const existingUser = await userModel.findOne({ email });
+//     if (existingUser) {
+//       return res.status(400).json({ success: false, message: 'User already exists' });
+//     }
+
+//     const hashedPassword = await bcrypt.hash(password, 10);
+
+//     const user = await userModel.create({
+//       name,
+//       email,
+//       password: hashedPassword,
+//     });
+
+//     res.status(201).json({ success: true, message: 'User added successfully', user });
+//   } catch (error) {
+//     console.error('Error adding user:', error);
+//     res.status(500).json({ success: false, message: 'Internal Server Error' });
+//   }
+// };
+
+const addUser = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    if (!name || !email || !password) {
+      return res.status(400).json({ success: false, message: "All fields are required" });
+    }
+
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ success: false, message: "User already exists" });
+    }
+
+    // Encrypt the password
+    const encryptedPassword = CryptoJS.AES.encrypt(password, encryptionKey).toString();
+
+    const user = await userModel.create({
+      name,
+      email,
+      password: encryptedPassword,
+    });
+
+    res.status(201).json({ success: true, message: "User added successfully", user });
+  } catch (error) {
+    console.error("Error adding user:", error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
+const removeUser = async(req, res) => {
+  try {
+    const user = await userModel.findById(req.body.id);
+    await userModel.findByIdAndDelete(req.body.id);
+    res.json({ success: true, message: 'user removed' });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+}
+
+// const allUser = async (req, res) => {
+//   try {
+//     const user = await userModel.find({});
+//     res.json({success:true ,data:user})
+//   } catch (error) {
+//     console.log(error);
+//     res.json({ success: false, message: error.message });
+//   }
+// }
+
+const allUser = async (req, res) => {
+  try {
+    const encryptionKey = process.env.ENCRYPTION_KEY || "defaultSecretKey";
+
+    const users = await userModel.find({});
+    const decryptedUsers = users.map((user) => {
+      // Decrypt the password
+      const bytes = CryptoJS.AES.decrypt(user.password, encryptionKey);
+      const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
+
+      return {
+        ...user._doc,
+        password: originalPassword, // Replace the hashed password with the decrypted one
+      };
+    });
+
+    res.json({ success: true, data: decryptedUsers });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
+// user Login Function
 const loginUser = async (req, res) => {
-    const {email , password} = req.body;
-    try {
-        // to check user is available to this email id
-        const user = await userModel.findOne({email});
-        //to check we get user or not 
-        if (!user) {
-            //if we not get any user
-            return res.json({success:false, messsage:"user Does not exist"})
-        }
-        //if getting user then we match password the store password in the db
-        const isMatch = await bcrypt.compare(password , user.password)
-        //id password is not match 
-        if (!isMatch) {
-            return res.json({success:false, message:"Invalid credentials"})
-        }
+  const { email, password } = req.body;
 
-        //if password is match we gemerated  one token 
-        const token = createToken(user._id)
-        res.json({success:true,token})
-    } catch (error) {
-        console.log(error.message)
-        res.json({success:false,message:"Error"})
+  try {
+    // Check if the email exists in userModel
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'You are not a user' });
     }
-}
 
-const createToken = (id) => {
-    //generated token
-    return jwt.sign({id} ,process.env.JWT_SECRET , {expiresIn:'1hr'})
-}
-
-//register user 
-const registerUser = async (req, res) => {
-    //logic to register user ti the website 
-    const {name,password,email} = req.body;
-    try {
-        //check email is already register or not
-        const exists = await userModel.findOne({email});
-        if (exists) {
-            return res.json({success:false,message:"User already exixts"})
-        }
-        //validating email format and strong password
-        if (!validator.isEmail(email)) {
-            return res.json({success:false,message:"Please enter valid email"})
-        }
-
-        if (password.length<8) {
-            return res.json({success:false,message:"Please enter strong password"})
-        }
-
-        //to encrypt the passowrd
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassowrd = await bcrypt.hash(password,salt);
-
-        // create new user
-        const newUser  = new userModel({
-            name:name,
-            email:email,
-            password:hashedPassowrd,
-        })
-
-        // to save the user in database
-        const user = await newUser.save()
-        const token = createToken(user._id)
-        res.json({success:true,token})
-    } catch (error) {
-        console.log(error.message)
-        res.json({success:false,message:"Error"})
+    // Verify the password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: 'Invalid credentials' });
     }
-}
 
-export {loginUser , registerUser}
+    // Generate a token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+
+    // Respond with success message and token
+    res.status(200).json({
+      success: true,
+      message: 'Login successful',
+      token,
+      user: { id: user._id, name: user.name, email: user.email },
+    });
+  } catch (error) {
+    console.error('Error during user login:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+export { addUser , removeUser, allUser , loginUser};
