@@ -63,13 +63,18 @@ const Sidebar = () => {
           <NavLink to={'/emails'} className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLinkClick}>
             <span className="text-xl">💬</span> <p className="ml-2">All Emails</p>
           </NavLink>
+          <NavLink to={'/addUser'} className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLinkClick}>
+            <span className="text-xl">➕</span> <p className="ml-2">Add User</p>
+          </NavLink>
+          <NavLink to={'/allUser'} className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLinkClick}>
+            <span className="text-xl">◼</span> <p className="ml-2">All User</p>
+          </NavLink>
         </div>
         <div className=''>
-        <p  className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLogout}>
+        <p  className="flex items-center hover:text-gray-300 transition duration-200 mt-auto" onClick={handleLogout}>
             <span className="text-xl">🛑</span> <p className="ml-2">logout</p>
           </p>
         </div>
-
       </aside>
     </>
   );
