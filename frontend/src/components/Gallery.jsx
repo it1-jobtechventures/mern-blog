@@ -33,7 +33,7 @@ const Gallery = ({ url }) => {
         <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
       </div>
     ) : (
-      <div className="pt-16 pb-10">
+      <div className="pt-16 pb-10 bg-[#202020]">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl text-white font-semibold text-center mb-8">Gallery</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
