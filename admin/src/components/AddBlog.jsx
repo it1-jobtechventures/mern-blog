@@ -32,7 +32,9 @@ const AddBlog = ({ url }) => {
         formData.append('title', data.title);
         formData.append('headline', data.headline);
         formData.append('keyword', data.keyword);
-        formData.append('category', data.category);
+        if (data.category) { // Only add category if it's selected
+            formData.append('category', data.category);
+        }
         formData.append('content', content);
         formData.append('image', image);
 
