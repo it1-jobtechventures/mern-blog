@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-const AddCategory = () => {
+const AddCategory = ({url}) => {
     const [category, setCategory] = useState('');
     const [loading, setLoading] = useState(false);
     const [categories, setCategories] = useState([]);
