@@ -94,7 +94,7 @@ const Blog = ({ url }) => {
       {/* Categories and Blogs Section */}
       <div className="mt-5 px-4 md:px-8">
         {/* Categories Filter */}
-        <div className="flex gap-4 mb-4 overflow-x-auto scrollbar-hide scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
+        <div className="flex gap-4 mb-4 overflow-x-auto scrollbar-hide">
           {/* Button to show all blogs */}
           <button onClick={() => setSelectedCategory("all")} className={`px-4 py-2 flex-shrink-0 rounded-md ${   selectedCategory === "all" ? "bg-[#ff9724] text-white" : "bg-gray-200" }`}>
             All Blogs
