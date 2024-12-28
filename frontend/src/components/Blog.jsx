@@ -13,24 +13,57 @@ const Blog = ({ url }) => {
   const [loading, setLoading] = useState(false); // Tracks loading state for data fetching
   const [isEmpty, setIsEmpty] = useState(false); // Tracks if there are no blogs available
 
-  // Function to fetch blogs and categories from the server
+  // // Function to fetch blogs and categories from the server
+  // const fetchBlogsAndCategories = async () => {
+  //   try {
+  //     setLoading(true); // Start loading spinner
+
+  //     // Fetch blogs and categories from the backend
+  //     const blogsResponse = await axios.get(`${url}/api/blog/list`);
+  //     const categoriesResponse = await axios.get(`${url}/api/category/allCategories`);
+
+  //     // Handle blogs response
+  //     if (blogsResponse.data.success) {
+  //       setBlogs(blogsResponse.data.data); // Store all blogs
+  //       setFilteredBlogs(blogsResponse.data.data); // Initially display all blogs
+  //       setIsEmpty(blogsResponse.data.data.length === 0); // Check if blogs are empty
+  //     } else {
+  //       toast.error("Error fetching blogs!");
+  //     }
+
+  //     // Handle categories response
+  //     if (categoriesResponse.data.success) {
+  //       setCategories(categoriesResponse.data.data); // Store all categories
+  //     } else {
+  //       toast.error("Error fetching categories!");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //     toast.error("Network error: Failed to load data!");
+  //   } finally {
+  //     setLoading(false); // Stop loading spinner
+  //   }
+  // };
+
   const fetchBlogsAndCategories = async () => {
     try {
       setLoading(true); // Start loading spinner
-
+  
       // Fetch blogs and categories from the backend
       const blogsResponse = await axios.get(`${url}/api/blog/list`);
       const categoriesResponse = await axios.get(`${url}/api/category/allCategories`);
-
+  
       // Handle blogs response
       if (blogsResponse.data.success) {
-        setBlogs(blogsResponse.data.data); // Store all blogs
-        setFilteredBlogs(blogsResponse.data.data); // Initially display all blogs
-        setIsEmpty(blogsResponse.data.data.length === 0); // Check if blogs are empty
+        // Sort blogs by date in descending order (LIFO)
+        const sortedBlogs = blogsResponse.data.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setBlogs(sortedBlogs); // Store all blogs in LIFO order
+        setFilteredBlogs(sortedBlogs); // Initially display all blogs in LIFO order
+        setIsEmpty(sortedBlogs.length === 0); // Check if blogs are empty
       } else {
         toast.error("Error fetching blogs!");
       }
-
+  
       // Handle categories response
       if (categoriesResponse.data.success) {
         setCategories(categoriesResponse.data.data); // Store all categories
@@ -45,6 +78,7 @@ const Blog = ({ url }) => {
     }
   };
 
+  
   // Effect to fetch blogs and categories on component mount
   useEffect(() => {
     fetchBlogsAndCategories();
