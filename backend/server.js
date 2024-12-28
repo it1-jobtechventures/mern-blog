@@ -12,6 +12,7 @@ import connectCloudinary from './config/cloudinary.js';
 import adminModel from './models/adminModel.js';
 import bcrypt from 'bcryptjs'
 import adminRouter from './routes/adminRoutes.js';
+import categoryRouter from './routes/categoryRoute.js';
 
 // App configuration
 const app = express();
@@ -72,6 +73,7 @@ app.use('/api/update', updateRouter);
 app.use('/api/banner', bannerRouter);
 app.use('/api/gallery', galleryRouter);
 app.use('/api/contact', contactRouter);
+app.use('/api/category', categoryRouter);
 
 // Health check route
 app.get('/', (req, res) => {
