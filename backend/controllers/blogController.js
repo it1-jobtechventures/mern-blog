@@ -107,7 +107,7 @@ const updateBlog = async (req, res) => {
             // Assign the new image URL to the blog
             blog.image = result.secure_url;
 
-            // // Optionally remove the file from local storage after upload
+            // Optionally remove the file from local storage after upload
             // fs.unlinkSync(file.path);
         }
 
@@ -118,6 +118,5 @@ const updateBlog = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
-
 
 export {addBlog, listBlog, removeBlog,getBlockById,updateBlog};
