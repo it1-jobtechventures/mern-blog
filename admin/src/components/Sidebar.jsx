@@ -69,6 +69,9 @@ const Sidebar = () => {
           <NavLink to={'/allUser'} className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLinkClick}>
             <span className="text-xl">◼</span> <p className="ml-2">All User</p>
           </NavLink>
+          <NavLink to={'/allCategory'} className="flex items-center hover:text-gray-300 transition duration-200" onClick={handleLinkClick}>
+            <span className="text-xl">🔷</span> <p className="ml-2">Category</p>
+          </NavLink>
         </div>
         <div className=''>
         <p  className="flex items-center hover:text-gray-300 transition duration-200 mt-auto" onClick={handleLogout}>
