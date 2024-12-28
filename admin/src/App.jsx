@@ -62,6 +62,7 @@ import DisplayGallery from './components/DisplayGallery';
 import AllEmail from './components/AllEmail';
 import AddUser from './components/AddUser';
 import AllUser from './components/AllUser';
+import AddCategory from './components/AddCategory';
 
 function App() {
   // const url = 'http://localhost:4000';
@@ -94,6 +95,7 @@ function App() {
             <Route path="/emails" element={<ProtectedRoute element={<AllEmail url={url} />} />} />
             <Route path="/addUser" element={<ProtectedRoute element={<AddUser url={url} />} />} />
             <Route path="/allUser" element={<ProtectedRoute element={<AllUser url={url} />} />} />
+            <Route path="/allCategory" element={<ProtectedRoute element={<AddCategory url={url} />} />} />
           </Routes>
         </div>
       </div>
