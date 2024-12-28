@@ -14,7 +14,8 @@ const AddBlog = ({ url }) => {
     });
     const [content, setContent] = useState('');
     const editorRef = useRef(null);
-    
+    const [categories, setCategories] = useState([]);
+
     const onChangeHandler = (e) => {
         const { name, value } = e.target;
         setData((prev) => ({ ...prev, [name]: value }));
@@ -75,6 +76,23 @@ const AddBlog = ({ url }) => {
         ],
     };
 
+    const fetchCategories = async () => {
+        try {
+            const response = await axios.get(`${url}/api/category/allCategories`);
+            if (response.data.success) {
+                setCategories(response.data.data);
+            } else {
+                toast.error("Failed to fetch categories");
+            }
+        } catch (error) {
+            toast.error("Error fetching categories");
+        }
+    };
+
+    useEffect(() => {
+        fetchCategories()
+    },[])
+
     return (
         <div className="max-w-2xl mx-auto mt-10 z-0 p-5 bg-white shadow-lg rounded-lg sm:max-w-full md:max-w-3xl lg:max-w-4xl ">
             <h1 className="text-2xl font-bold mb-5">Add Blog</h1>
@@ -116,11 +134,13 @@ const AddBlog = ({ url }) => {
                     <label htmlFor="category" className="block text-sm font-medium text-gray-700">
                         Category
                     </label>
-                    <select name="category" onChange={onChangeHandler} value={data.category} className="block w-full border p-2" >
+                    <select name="category" onChange={onChangeHandler} value={data.category} className="block w-full border p-2">
                         <option value="">Select Category</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Lifestyle">Lifestyle</option>
-                        <option value="Education">Education</option>
+                        {categories.map((category) => (
+                            <option key={category._id} value={category._id}>
+                                {category.name}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white py-2 rounded sm:px-6 lg:px-8">
