@@ -56,27 +56,27 @@
 //         }
 //     };
 
-//     // Jodit Editor configuration
-//     const editorConfig = {
-//         readonly: false,
-//         height: 400,
-//         uploader: {
-//             insertImageAsBase64URI: true,
-//         },
-//         toolbarSticky: false,
-//         buttons: [
-//             'bold',
-//             'italic',
-//             'underline',
-//             'link',
-//             'image',
-//             'align',
-//             'undo',
-//             'redo',
-//             'fontsize',
-//             'font',
-//         ],
-//     };
+    // // Jodit Editor configuration
+    // const editorConfig = {
+    //     readonly: false,
+    //     height: 400,
+    //     uploader: {
+    //         insertImageAsBase64URI: true,
+    //     },
+    //     toolbarSticky: false,
+    //     buttons: [
+    //         'bold',
+    //         'italic',
+    //         'underline',
+    //         'link',
+    //         'image',
+    //         'align',
+    //         'undo',
+    //         'redo',
+    //         'fontsize',
+    //         'font',
+    //     ],
+    // };
 
 //     const fetchCategories = async () => {
 //         try {
@@ -252,6 +252,27 @@ const AddBlog = ({ url }) => {
         fetchCategories();
     }, [url]);
 
+        // Jodit Editor configuration
+        const editorConfig = {
+            readonly: false,
+            height: 400,
+            uploader: {
+                insertImageAsBase64URI: true,
+            },
+            toolbarSticky: false,
+            buttons: [
+                'bold',
+                'italic',
+                'underline',
+                'link',
+                'image',
+                'align',
+                'undo',
+                'redo',
+                'fontsize',
+                'font',
+            ],
+        };
     return (
         <div className="max-w-2xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
             <h1 className="text-2xl font-bold mb-5">{blogToEdit ? 'Update Blog' : 'Add Blog'}</h1>
@@ -285,7 +306,7 @@ const AddBlog = ({ url }) => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700">Blog Content</label>
-                    <JoditEditor ref={editorRef} value={content} config={{ readonly: false, height: 400 }} onBlur={(newContent) => setContent(newContent)}/>
+                    <JoditEditor ref={editorRef} value={content} config={editorConfig} onBlur={(newContent) => setContent(newContent)}/>
                 </div>
                 <div className="mb-4">
                     <label htmlFor="category" className="block text-sm font-medium text-gray-700">
