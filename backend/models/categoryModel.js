@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 // user Schema
 const categorySchema = new mongoose.Schema({
-    name:{type:String,required:true ,unique: true},
+    name:{type:String ,unique: true},
 },{minimize:false})
 
 // create model in database
