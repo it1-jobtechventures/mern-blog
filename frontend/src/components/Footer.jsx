@@ -25,10 +25,10 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row gap-8 text-center md:text-left text-white">
         <ul className="space-y-2">
           <li className="font-bold">Navigate</li>
-          <NavLink to={'/'}><li>About</li></NavLink>
-          <NavLink to={'/'}><li>Blogs</li></NavLink>
-          <NavLink to={'/'}><li>Gallery</li></NavLink>
-          <NavLink to={'/'}><li>Contact</li></NavLink>
+          <NavLink to={'/about'}><li>About</li></NavLink>
+          <NavLink to={'/blog'}><li>Blogs</li></NavLink>
+          <NavLink to={'/gallery'}><li>Gallery</li></NavLink>
+          <NavLink to={'/contact'}><li>Contact</li></NavLink>
         </ul>
       </div>
     </footer>

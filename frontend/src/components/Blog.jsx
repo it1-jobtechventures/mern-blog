@@ -114,7 +114,7 @@ const Blog = ({ url }) => {
   }
 
   return (
-    <div className="bg-[#202020]">
+    <div className="bg-[#202020] pb-10">
       {/* Header Section */}
       <main className="flex flex-col-reverse md:flex-row items-center bg-[#202020] justify-around p-4 md:p-8">
         <div className="w-full md:w-1/2 flex justify-center flex-col text-center md:text-left">
