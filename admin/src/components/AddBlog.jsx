@@ -271,6 +271,7 @@ const AddBlog = ({ url }) => {
                 'redo',
                 'fontsize',
                 'font',
+                'video'
             ],
         };
     return (

@@ -1,141 +1,93 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const AddGallery = ({url}) => {
-    const [image, setImage] = useState(null);
+const AddGallery = ({ url }) => {
+    const [media, setMedia] = useState([]);
+    const [previewUrls, setPreviewUrls] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('image', image);
+
+        media.forEach((file) => {
+            formData.append('media', file);
+        });
 
         try {
-            setLoading(true); 
-            const response = await axios.post(`${url}/api/gallery/addPhoto`, formData);
+            setLoading(true);
+            const response = await axios.post(`${url}/api/gallery/addMedia`, formData);
             if (response.data.success) {
-                setImage(null);
+                // Clear media and previews
+                setMedia([]);
+                clearPreview();
                 toast.success(response.data.message);
             } else {
                 toast.error(response.data.message);
             }
         } catch (error) {
-            toast.error('Error adding photo');
-        }finally{
+            toast.error('Error adding media');
+        } finally {
             setLoading(false);
         }
     };
 
-    useEffect(() => {
-        
-    }, []);
-  return (
-    <div>
+    const onFilesChange = (e) => {
+        const files = Array.from(e.target.files);
+        setMedia(files);
+
+        // Generate preview URLs
+        const urls = files.map((file) => URL.createObjectURL(file));
+        setPreviewUrls(urls);
+    };
+
+    const clearPreview = () => {
+        // Revoke object URLs to release memory
+        previewUrls.forEach((url) => URL.revokeObjectURL(url));
+        setPreviewUrls([]);
+        // Reset file input
+        document.getElementById('media').value = '';
+    };
+
+    return (
         <div className="max-w-md mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
-        <h1 className="text-2xl font-bold mb-5">Add photo</h1>
-        <form onSubmit={onSubmitHandler}>
-            <div className="mb-4">
-                <label htmlFor="image" className="block text-sm font-medium text-gray-700">
-                    Upload Image
-                </label>
-                <label htmlFor="image" className="block cursor-pointer">
-                    <img src={image ? URL.createObjectURL(image) : ''} alt="Upload" className="h-20 w-20 mb-2 border border-gray-300 rounded" />
-                </label>
-                <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden required />
-            </div>
-            <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200" disabled={loading}>
-                {
-                    loading ? (
+            <h1 className="text-2xl font-bold mb-5">Add Media</h1>
+            <form onSubmit={onSubmitHandler}>
+                <div className="mb-4">
+                    <label htmlFor="media" className="block text-sm font-medium text-gray-700">
+                        Upload Images/Videos
+                    </label>
+                    <input type="file" id="media" multiple accept="image/*,video/*" className="block w-full text-sm text-gray-500" onChange={onFilesChange}/>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                    {previewUrls.map((url, index) => {
+                        const isImage = media[index]?.type.startsWith('image');
+                        return (
+                            <div key={index} className="relative">
+                                {isImage ? (
+                                    <img src={url} alt="Preview" className="h-20 w-20 object-cover border border-gray-300 rounded"/>
+                                ) : (
+                                    <video src={url} controls className="h-20 w-20 object-cover border border-gray-300 rounded"/>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+
+                <button type="submit" className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200" disabled={loading}>
+                    {loading ? (
                         <div className="flex justify-center items-center">
                             <div className="w-6 h-6 border-t-2 border-b-2 border-white rounded-full animate-spin"></div>
                         </div>
-                    ):(
-                        "Add photo"
-                    )
-                }
-            </button>
-        </form>
-    </div>
-    </div>
-  )
-}
+                    ) : (
+                        'Add Media'
+                    )}
+                </button>
+            </form>
+        </div>
+    );
+};
 
-export default AddGallery
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// import { toast } from 'react-toastify';
-
-// const AddGallery = ({ url }) => {
-//     const [images, setImages] = useState([]);
-//     const [videos, setVideos] = useState([]);
-
-//     const onSubmitHandler = async (e) => {
-//         e.preventDefault();
-//         const formData = new FormData();
-
-//         images.forEach((image) => formData.append('images', image));
-//         videos.forEach((video) => formData.append('videos', video));
-
-//         try {
-//             const response = await axios.post(`${url}/api/gallery/addFiles`, formData, {
-//                 headers: { "Content-Type": "multipart/form-data" },
-//             });
-//             if (response.data.success) {
-//                 setImages([]);
-//                 setVideos([]);
-//                 toast.success(response.data.message);
-//             } else {
-//                 toast.error(response.data.message);
-//             }
-//         } catch (error) {
-//             toast.error('Error uploading files');
-//         }
-//     };
-
-//     const handleImageChange = (e) => setImages([...e.target.files]);
-//     const handleVideoChange = (e) => setVideos([...e.target.files]);
-
-//     return (
-//         <div className="max-w-md mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
-//             <h1 className="text-2xl font-bold mb-5">Add Files</h1>
-//             <form onSubmit={onSubmitHandler}>
-//                 <div className="mb-4">
-//                     <label htmlFor="images" className="block text-sm font-medium text-gray-700">
-//                         Upload Images
-//                     </label>
-//                     <input
-//                         onChange={handleImageChange}
-//                         type="file"
-//                         id="images"
-//                         multiple
-//                         accept="image/*"
-//                         className="block w-full border p-2"
-//                     />
-//                 </div>
-//                 <div className="mb-4">
-//                     <label htmlFor="videos" className="block text-sm font-medium text-gray-700">
-//                         Upload Videos
-//                     </label>
-//                     <input
-//                         onChange={handleVideoChange}
-//                         type="file"
-//                         id="videos"
-//                         multiple
-//                         accept="video/*"
-//                         className="block w-full border p-2"
-//                     />
-//                 </div>
-//                 <button
-//                     type="submit"
-//                     className="w-full bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition duration-200"
-//                 >
-//                     Upload Files
-//                 </button>
-//             </form>
-//         </div>
-//     );
-// };
-
-// export default AddGallery;
+export default AddGallery;
