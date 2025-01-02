@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/authContext';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate()
+  const { logout } = useContext(AuthContext);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -19,7 +21,7 @@ const Sidebar = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('admin_blog')
+    logout()
     navigate('/login')
   }
 
@@ -74,7 +76,7 @@ const Sidebar = () => {
           </NavLink>
         </div>
         <div className=''>
-        <p  className="flex items-center hover:text-gray-300 transition duration-200 mt-auto" onClick={handleLogout}>
+        <p  className="flex items-center hover:text-gray-300 transition duration-200 mt-auto cursor-pointer" onClick={handleLogout}>
             <span className="text-xl">🛑</span> <p className="ml-2">logout</p>
           </p>
         </div>
