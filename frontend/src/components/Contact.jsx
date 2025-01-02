@@ -91,10 +91,10 @@ const Contact = ({ url }) => {
           <p className="mb-4 text-center md:text-left text-sm md:text-lg"> PRAKASH BANSAL</p>
           <p className="mb-6 text-center md:text-left text-sm"> PRAKASHBANSAL(AT)GMAIL(DOT)COM</p>
           <div className="flex justify-center md:justify-start space-x-4 text-3xl mb-6">
-            <Link to={''}><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
-            <Link to={''}><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
-            <Link to={''}><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
-            <Link to={''}><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link> 
+            <Link to={''} target="_blank"><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={''} target="_blank"><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={''} target="_blank"><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={''} target="_blank"><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link> 
           </div>
         </div>
         <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">

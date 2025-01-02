@@ -15,16 +15,16 @@ const Logo = () => {
               {logo.text}
             </p>
             <div className="flex text-2xl gap-4 mt-auto">
-              <Link to={logo.insta}>
+              <Link to={logo.insta} target="_blank">
                 <FaInstagram className="hover:text-[#ff9724] cursor-pointer" />
               </Link>
-              <Link to={logo.linkedin}>
+              <Link to={logo.linkedin} target="_blank">
                 <CiLinkedin className="hover:text-[#ff9724] cursor-pointer" />
               </Link>
-              <Link to={logo.facebook}>
+              <Link to={logo.facebook} target="_blank">
                 <CiFacebook className="hover:text-[#ff9724] cursor-pointer" />
               </Link>
-              <Link to={logo.twitter}>
+              <Link to={logo.twitter} target="_blank">
                 <CiTwitter className="hover:text-[#ff9724] cursor-pointer" />
               </Link>
             </div>

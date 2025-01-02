@@ -16,10 +16,10 @@ const Footer = () => {
         </p>
         {/* Social Media Icons */}
         <div className="mt-6 text-3xl font-medium flex gap-5 justify-center md:justify-start items-center">
-          <Link to={''}><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
-          <Link to={''} ><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
+          <Link to={''} target='_blank'><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
+          <Link to={''} target='_blank' ><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
           <Link target='_blank' to={'https://www.facebook.com/prakashbansal?mibextid=wwXIfr&rdid=AQH84ggmTmd77kcE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AvhATBBTS%2F%3Fmibextid%3DwwXIfr'}><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
-          <Link to={''}><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link>
+          <Link to={''} target='_blank'><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link>
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 text-center md:text-left text-white">
