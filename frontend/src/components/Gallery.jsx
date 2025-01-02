@@ -56,6 +56,7 @@
 // };
 
 // export default Gallery;
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -93,8 +94,8 @@ const Gallery = ({ url }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {loading
             ? Array.from({ length: 8 }).map((_, index) => (
-            <div key={index} className="w-full h-64 bg-gray-700 rounded-lg animate-pulse" />
-          ))
+              <div key={index} className="w-full h-64 bg-gray-700 rounded-lg animate-pulse" />
+            ))
             : photo.map((item, index) => (
               <div key={index} onClick={() => setPopupMedia(item)} className="cursor-pointer">
                 {item.type === 'video' ? (
@@ -103,33 +104,32 @@ const Gallery = ({ url }) => {
                     Your browser does not support the video tag.
                   </video>
                 ) : (
-                  <img src={item.media} alt="media" className="w-full pointer-events-none h-64 object-cover rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg"/>
-                )
-              }
-            </div>
-          ))
-        }
-      </div>
-    </div>
-    {/* Popup Overlay */}
-    {popupMedia && (
-      <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-        <div className="relative w-[40rem] h-[36rem] bg-gray-900 rounded-lg p-4 flex items-center justify-center">
-          <button className="absolute top-2 right-2 text-white text-2xl" onClick={() => setPopupMedia(null)}>
-            ✕
-          </button>
-          {popupMedia.type === 'video' ? (
-            <video controls autoPlay className="w-full h-full rounded-lg">
-              <source src={popupMedia.media} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <img src={popupMedia.media} alt="Popup media" className="w-full h-full object-cover rounded-lg" />
-          )}
+                  <img src={item.media} alt="media" className="w-full pointer-events-none h-64 object-cover rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg" />
+                )}
+              </div>
+            ))}
         </div>
       </div>
-    )}
-  </div>
+
+      {/* Popup Overlay */}
+      {popupMedia && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="relative bg-gray-900 rounded-lg p-4 flex items-center justify-center w-full max-w-[40rem] h-auto max-h-[90vh]">
+            <button className="absolute top-2 right-2 text-white text-2xl" onClick={() => setPopupMedia(null)}>
+              ✕
+            </button>
+            {popupMedia.type === 'video' ? (
+              <video controls autoPlay className="w-full h-full rounded-lg">
+                <source src={popupMedia.media} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <img src={popupMedia.media} alt="Popup media" className="w-full h-full object-cover rounded-lg" />
+            )}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
