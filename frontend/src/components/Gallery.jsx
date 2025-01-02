@@ -39,12 +39,12 @@ const Gallery = ({ url }) => {
             : photo.map((item, index) => (
               <div key={index}>
                 {item.type === 'video' ? (
-                  <video controls className="w-full h-64 object-cover rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg">
+                  <video controls className="w-full h-64 object-cover rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg pointer-events-none">
                     <source src={item.media} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                   ) : (
-                    <img src={item.media} alt="media" className="w-full h-64 object-cover rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg"/>
+                    <img src={item.media} alt="media" className="w-full h-64 object-cover rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg pointer-events-none"/>
                   )}
               </div>
             )
