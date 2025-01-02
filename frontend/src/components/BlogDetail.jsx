@@ -94,9 +94,8 @@ const BlogDetail = ({ url }) => {
       <h1 className="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-4">{blog.title}</h1>
       <h3 className="text-2xl md:text-3xl font-semibold text-center text-[#ff9724] mb-6 break-words">{blog.headline}</h3>
       <div className="mb-8 flex justify-center">
-        <img src={blog.image} alt={blog.title} className="max-w-full h-auto object-contain rounded-lg shadow-lg" />
+        <img src={blog.image} alt={blog.title} className="max-w-full h-96 object-contain rounded-lg shadow-lg" />
       </div>
-      <hr/>
       <div className="text-lg text-gray-700 pt-2 mb-8 text-justify leading-relaxed description" dangerouslySetInnerHTML={{ __html: blog.content }}></div>
       <div className="absolute bottom-6 right-6 text-sm text-gray-500">
         {new Date(blog.date).toLocaleDateString()}
