@@ -24,10 +24,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="h-16 bg-[#202020] flex justify-between items-center px-4 text-white  w-full z-50 shadow-md">
+      <nav className="h-20 bg-[#202020] flex justify-between items-center px-4 text-white  w-full z-50 shadow-md">
         <div>
           <NavLink to="/" onClick={closeSidebar}>
-            <img src="/pbd.png" alt="logo" className="h-12 w-32 object-contain" />
+            <img src="/pbd.png" alt="logo" className="h-14 md:h-16 w-32 object-contain" />
           </NavLink>
         </div>
         <div
