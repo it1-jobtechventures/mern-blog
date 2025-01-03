@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import bioImage from '../assets/pb_bio.jpeg'
 
 const Header = () => {
   return (
@@ -30,7 +31,7 @@ const Header = () => {
       <div>
         <header className="flex flex-col-reverse md:flex-row">
           <div className="w-full md:w-1/2 flex justify-center bg-[#f3f3f3] p-6">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"/>
+            <img src={bioImage} alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"/>
           </div>
           <div className="w-full md:w-1/2 p-6 bg-[#fffafa]">
             <div className="flex flex-col items-end">
