@@ -11,6 +11,7 @@ const Contact = ({ url }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    countryCode: "+",
     phoneNo: "",
     email: "",
     subject: "",
@@ -24,9 +25,32 @@ const Contact = ({ url }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const validateForm = () => {
+    if (!/^\+?\d{1,4}$/.test(formData.countryCode)) {
+      toast.error("Invalid country code. Example: +1");
+      return false;
+    }
+    if (!/^\d{10}$/.test(formData.phoneNo)) {
+      toast.error("Phone number must be 10 digits long.");
+      return false;
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      toast.error("Invalid email address.");
+      return false;
+    }
+    if (!formData.firstName || !formData.lastName || !formData.subject || !formData.message) {
+      toast.error("All fields are required.");
+      return false;
+    }
+    return true;
+  };
+  
+
   // Handle form submission
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
 
     // Save form data in the database
     try {
@@ -40,6 +64,7 @@ const Contact = ({ url }) => {
           firstName: "",
           lastName: "",
           email: "",
+          countryCode: "",
           phoneNo: "",
           subject: "",
           message: "",
@@ -60,6 +85,7 @@ const Contact = ({ url }) => {
     const templateParams = {
       from_name: `${data.firstName} ${data.lastName}`,
       email: data.email,
+      phoneNo:data.phoneNo,
       subject: data.subject,
       message: data.message,
     };
@@ -119,7 +145,7 @@ const Contact = ({ url }) => {
                   <input type="text" name="lastName" value={formData.lastName} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Last Name" required/>
                 </div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
+              {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 hidden sm:block">
                     Email
@@ -131,6 +157,39 @@ const Contact = ({ url }) => {
                     Phone No.
                   </label>
                   <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Phone No." required/>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
+                  <div>
+                    <label htmlFor="countryCode" className="block text-sm font-medium text-gray-700 hidden sm:block">
+                      Country Code
+                    </label>
+                    <input type="text" name="countryCode" value={formData.countryCode} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-12 border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Country Code (e.g., +1)" required/>
+                  </div>
+                  <div>
+                    <label htmlFor="phoneNo" className="block text-sm font-medium text-gray-700 hidden sm:block">
+                      Phone No.
+                    </label>
+                    <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={(e) => { const value = e.target.value; if (/^\d{0,10}$/.test(value)) {    setFormData((prev) => ({ ...prev, phoneNo: value })); }}} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Phone No." required/>
+                  </div>
+                </div>
+              </div> */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 hidden sm:block">
+                    Email
+                  </label>
+                  <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Email" required/>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
+                  <div>
+                    <label htmlFor="countryCode" className="block text-sm font-medium text-gray-700 hidden sm:block">
+                      Phone No.
+                    </label>
+                    <div className="flex">
+                      <input type="text" name="countryCode" value={formData.countryCode} onChange={onChangeHandler} className="w-12 border border-gray-300 rounded-l-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Country Code" required/>
+                      <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={(e) => { const value = e.target.value; if (/^\d{0,10}$/.test(value)) { setFormData((prev) => ({ ...prev, phoneNo: value }));}}} className="w-full sm:w-40 border border-gray-300 rounded-r-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Phone No." required/>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="mb-4">
