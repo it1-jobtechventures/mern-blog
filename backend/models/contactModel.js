@@ -5,6 +5,7 @@ const contactSchema = new mongoose.Schema({
   lastName: { type: String, required: true },
   countryCode: { type: String, required: true },
   phoneNo : {type:String , required:true},
+  location : {type:String , required:true},
   email: { type: String, required: true },
   subject: { type: String, required: true },
   message: { type: String, required: true },

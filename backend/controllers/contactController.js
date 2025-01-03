@@ -6,6 +6,7 @@ const sentEmail = async(req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             countryCode: req.body.countryCode,
+            location:req.body.location,
             phoneNo : req.body.phoneNo,
             email: req.body.email,
             subject: req.body.subject,
