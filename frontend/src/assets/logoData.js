@@ -7,7 +7,7 @@ import jobtech from '/jobtech.png'
 const logoData = [
     {
         "image":jonringer,
-        "text":"JOBRINGER ~ India's Job Portal, a robust and feature-rich Job Portal, designed to cater the industry needs in current market scenario, equipped with latest technology and AI based algorithms.",
+        "text":"Jobringer ~ India's Job Portal.",
         "linkedin":"https://in.linkedin.com/company/jobringer",
         "insta":"https://www.instagram.com/jobringerjobs",
         "facebook":"https://www.facebook.com/jobwithjobringer/",
@@ -15,7 +15,7 @@ const logoData = [
     },
     {
         "image":arfectLogo,
-        "text":"ARFECT ~ Medical & Scientific Communications Firm, caters to supporting pharmaceutical industry for their business needs especially designing and delivering end-to-end project management towards brand growth and brand promotion.",
+        "text":"Medical Affairs And Acientific Communications Firm.",
         "linkedin":"https://in.linkedin.com/company/arfect",
         "insta":"https://www.instagram.com/arfect.business.solutions/",
         "facebook":"https://www.facebook.com/profile.php?id=100090887163544&mibextid=ZbWKwL",
@@ -23,7 +23,7 @@ const logoData = [
     },
     {
         "image":hindco,
-        "text":"HINDCO, a leading Executive Search & Career Coaching Firm of India, deals in search, selection and placement of senior and middle level professionals for the Industry.",
+        "text":"Executive Search And Recruitment Consulting Firm.",
         "linkedin":"https://in.linkedin.com/company/hindco",
         "insta":"https://www.instagram.com/hindcojobs/?hl=en",
         "facebook":"https://www.facebook.com/HindcoConsultingServices/",
@@ -31,7 +31,7 @@ const logoData = [
     },
     {
         "image":alanze,
-        "text":"ALANZE, a Retail Apparel and Fashion company with a wide range of products distributed thru online platforms.",
+        "text":"Online Retail Apparel and Fashion Platform.",
         "linkedin":"https://in.linkedin.com/company/alanze",
         "insta":"https://www.instagram.com/alanzefashion/#",
         "facebook":"https://www.facebook.com/alanzefashion/",

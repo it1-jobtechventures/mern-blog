@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="flex flex-col md:flex-row justify-around items-center md:items-start gap-2 p-8 bg-[#202020] ">
       <div className="space-y-4 text-center md:text-left text-white">
-          <img src="/pbd.png" alt="logo" className="h-12 w-32 object-contain align-middle" />
+          <img src="/pb.png" alt="logo" className="h-12 w-40 object-contain align-middle" />
         <p className="text-sm md:text-base">
           iste odit quam ratione? Ullam adipisci deserunt <br />
           similique nemo alias exercitationem at ipsa ut laborum.
@@ -23,8 +23,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 text-center md:text-left text-white">
-        <ul className="space-y-2">
-          <li className="font-bold">Navigate</li>
+        <ul className="space-y-5">
+          <li className="font-bold">NAVIGATE</li>
           <NavLink to={'/about'}><li>About</li></NavLink>
           <NavLink to={'/blog'}><li>Blogs</li></NavLink>
           <NavLink to={'/gallery'}><li>Gallery</li></NavLink>
