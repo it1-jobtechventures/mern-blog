@@ -39,7 +39,7 @@ const Contact = ({ url }) => {
       toast.error("Invalid email address.");
       return false;
     }
-    if (!formData.firstName || !formData.lastName || !formData.subject || !formData.message) {
+    if (!formData.firstName || !formData.lastName || !formData.subject || !formData.message || !formData.location) {
       toast.error("All fields are required.");
       return false;
     }

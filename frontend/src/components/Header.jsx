@@ -30,10 +30,10 @@ const Header = () => {
       </header>
       <div>
         <header className="flex flex-col-reverse md:flex-row">
-          <div className="w-full md:w-1/2 flex justify-center bg-[#f3f3f3] p-6">
+          <div className="w-full md:w-1/2 flex justify-center  p-6">
             <img src={bioImage} alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"/>
           </div>
-          <div className="w-full md:w-1/2 p-6 bg-[#fffafa]">
+          <div className="w-full md:w-1/2 p-6 bg-[#f3f3f3]">
             <div className="flex flex-col items-end">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 relative text-right">
                 BIOGRAPHY
