@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import bioImage from '../assets/pb_bio.jpeg'
+import bioImage from '../assets/pb2_bio.jpeg'
 
 const Header = () => {
   return (
