@@ -11,7 +11,8 @@ const Contact = ({ url }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    countryCode: "+",
+    countryCode: "",
+    location:"",
     phoneNo: "",
     email: "",
     subject: "",
@@ -65,6 +66,7 @@ const Contact = ({ url }) => {
           lastName: "",
           email: "",
           countryCode: "",
+          location:"",
           phoneNo: "",
           subject: "",
           message: "",
@@ -180,18 +182,24 @@ const Contact = ({ url }) => {
                   </label>
                   <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Email" required/>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
-                  <div>
-                    <label htmlFor="countryCode" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                      Phone No.
-                    </label>
-                    <div className="flex">
-                      <input type="text" name="countryCode" value={formData.countryCode} onChange={onChangeHandler} className="w-12 border border-gray-300 rounded-l-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Country Code" required/>
-                      <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={(e) => { const value = e.target.value; if (/^\d{0,10}$/.test(value)) { setFormData((prev) => ({ ...prev, phoneNo: value }));}}} className="w-full sm:w-40 border border-gray-300 rounded-r-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Phone No." required/>
-                    </div>
-                  </div>
+                <div>
+                  <label htmlFor="location" className="block text-sm font-medium text-gray-700 hidden sm:block">
+                    Location
+                  </label>
+                  <input type="text" name="location" value={formData.location} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Location" required/>
                 </div>
               </div>
+              <div className="mb-4">
+                <div className="w-full">
+                  <label htmlFor="countryCode" className="block text-sm font-medium text-gray-700 hidden sm:block">
+                    Phone No.
+                  </label>
+                  <div className="flex">
+                    <input type="number" name="countryCode" value={formData.countryCode} onChange={(e) => {const value = e.target.value; if(/^\d{0,4}$/.test(value)) {setFormData((prev) => ({...prev , countryCode: value}));}}} className="w-20 border border-gray-300 rounded-l-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="+91" required/>
+                    <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={(e) => { const value = e.target.value; if (/^\d{0,10}$/.test(value)) { setFormData((prev) => ({ ...prev, phoneNo: value }));}}} className="w-full  border border-gray-300 rounded-r-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Phone No." required/>
+                  </div>
+                </div>
+                </div>
               <div className="mb-4">
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 hidden sm:block">
                   Subject
