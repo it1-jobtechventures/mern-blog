@@ -5,6 +5,7 @@ const sentEmail = async(req, res) => {
         const contact = new contactModel({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
+            countryCode: req.body.countryCode,
             phoneNo : req.body.phoneNo,
             email: req.body.email,
             subject: req.body.subject,
