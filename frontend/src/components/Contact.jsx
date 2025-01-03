@@ -119,10 +119,10 @@ const Contact = ({ url }) => {
           <p className="mb-4 text-center md:text-left text-sm md:text-lg"> PRAKASH BANSAL</p>
           <p className="mb-6 text-center md:text-left text-sm"> PRAKASHBANSAL(AT)GMAIL(DOT)COM</p>
           <div className="flex justify-center md:justify-start space-x-4 text-3xl mb-6">
-            <Link to={''} target="_blank"><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
-            <Link to={''} target="_blank"><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
-            <Link to={''} target="_blank"><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
-            <Link to={''} target="_blank"><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link> 
+            <Link to={'https://www.instagram.com/prakbansal/?igsh=MW4zOWNyNXZneHhtYQ%3D%3D#'} target="_blank"><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={'https://www.linkedin.com/authwall?trk=gf&trkInfo=AQEFiEirkuP4uwAAAZQrxQ3Q0PGDDlczUzLg67c4tGhUG5qmltYWdTAD8eMyVsnCu2Qa9eB5d0W4-T4h3RX7cDnTp4DkJPrOwEkFI25TCZGSp7WnO_3TaHv4Jaga-BK069_BERA=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fprakashbansal'} target="_blank"><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={'facebook.com/prakashbansal?rdid=aH7v1LuL0d0XT43i&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FV3rXm7jtLFwrMfGm%2F#'} target="_blank"><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
+            <Link to={'https://x.com/i/flow/login?redirect_after_login=%2FPrakBansal'} target="_blank"><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link> 
           </div>
         </div>
         <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">

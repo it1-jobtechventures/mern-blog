@@ -16,10 +16,10 @@ const Footer = () => {
         </p>
         {/* Social Media Icons */}
         <div className="mt-6 text-3xl font-medium flex gap-5 justify-center md:justify-start items-center">
-          <Link to={''} target='_blank'><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
-          <Link to={''} target='_blank' ><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
-          <Link target='_blank' to={'https://www.facebook.com/prakashbansal?mibextid=wwXIfr&rdid=AQH84ggmTmd77kcE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AvhATBBTS%2F%3Fmibextid%3DwwXIfr'}><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
-          <Link to={''} target='_blank'><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link>
+          <Link to={'https://www.instagram.com/prakbansal/?igsh=MW4zOWNyNXZneHhtYQ%3D%3D#'} target='_blank'><FaInstagram className="hover:text-[#ff9724] cursor-pointer"/></Link>
+          <Link to={'https://www.linkedin.com/authwall?trk=gf&trkInfo=AQEFiEirkuP4uwAAAZQrxQ3Q0PGDDlczUzLg67c4tGhUG5qmltYWdTAD8eMyVsnCu2Qa9eB5d0W4-T4h3RX7cDnTp4DkJPrOwEkFI25TCZGSp7WnO_3TaHv4Jaga-BK069_BERA=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fprakashbansal'} target='_blank' ><CiLinkedin className="hover:text-[#ff9724] cursor-pointer"/></Link>
+          <Link target='_blank' to={'https://facebook.com/prakashbansal?rdid=aH7v1LuL0d0XT43i&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FV3rXm7jtLFwrMfGm%2F#'}><CiFacebook className="hover:text-[#ff9724] cursor-pointer"/></Link>
+          <Link to={'https://x.com/i/flow/login?redirect_after_login=%2FPrakBansal'} target='_blank'><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link>
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 text-center md:text-left text-white">
