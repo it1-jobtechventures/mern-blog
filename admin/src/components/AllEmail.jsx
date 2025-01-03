@@ -34,6 +34,7 @@ const AllEmail = ({url}) => {
                 <p className="text-gray-600"><strong>Email:</strong> {email.email}</p>
                 <p className="text-gray-600"><strong>country Code:</strong> {email.countryCode}</p>
                 <p className="text-gray-600"><strong>Phone No.:</strong> {email.phoneNo}</p>
+                <p className="text-gray-600"><strong>Location:</strong> {email.location}</p>
                 <p className="font-medium mt-2"><strong>Subject:</strong> {email.subject}</p>
                 <p className="mt-2 text-gray-700"><strong>Message:</strong> {email.message}</p>
                 <p className="mt-2 text-sm text-gray-500"><strong>Date:</strong> {new Date(email.date).toLocaleString()}</p>
