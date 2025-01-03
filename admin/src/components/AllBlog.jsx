@@ -89,7 +89,8 @@ const AllBlog = ({ url }) => {
         try {
             const response = await axios.get(`${url}/api/blog/list`);
             if (response.data.success) {
-                setAllBlog(response.data.data);
+                const sortBlog = response.data.data.sort((a,b) => new Date(b.date) - new Date(a.date))
+                setAllBlog(sortBlog);
             } else {
                 toast.error('Error fetching blogs.');
             }

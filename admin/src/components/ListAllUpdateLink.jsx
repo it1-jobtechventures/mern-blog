@@ -9,7 +9,8 @@ const ListAllUpdateLink = ({url}) => {
         try {
             const response = await axios.get(`${url}/api/update/allUpdate`);
             if (response.data.success) {
-                setUpdateList(response.data.data);
+                const sortList = response.data.data.sort((a,b) => new Date(b.date) - new Date(a.date))
+                setUpdateList(sortList);
             } else {
                 toast.error('Error fetching links.');
             }

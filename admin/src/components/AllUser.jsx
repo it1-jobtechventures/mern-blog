@@ -9,7 +9,8 @@ const AllUser = ({url}) => {
     try {
       const res = await axios.get(`${url}/api/user/allUser`);
       if (res.data.success) {
-        setUsers(res.data.data);
+        const sortUser = response.data.data.sort((a,b) => new Date(b.date) - new Date(a.date))
+        setUsers(sortUser);
       } else {
         toast.error('Error fetching user');
       }

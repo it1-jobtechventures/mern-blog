@@ -10,7 +10,8 @@ const DisplayGallery = ({ url }) => {
     try {
       const response = await axios.get(`${url}/api/gallery/listPhoto`);
       if (response.data.success) {
-        setAllMedia(response.data.data);
+        const sortMedia= response.data.data.sort((a,b) => new Date(b.date) - new Date(a.date))
+        setAllMedia(sortMedia);
       } else {
         toast.error('Error fetching media.');
       }

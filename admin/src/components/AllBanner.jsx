@@ -9,7 +9,8 @@ const AllBanner = ({ url }) => {
     try {
       const response = await axios.get(`${url}/api/banner/listBanner`);
       if (response.data.success) {
-        setAllBanner(response.data.data);
+        const sortBanner = response.data.data.sort((a,b) => new Date(b.date) - new Date(a.date))
+        setAllBanner(sortBanner);
       } else {
         toast.error('Error fetching banner.');
       }
