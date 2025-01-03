@@ -87,11 +87,14 @@ const AddCategory = ({url}) => {
             {
                 categories && categories.length > 0 ? (
                     categories.map((category) => (
-                        <div key={category._id}>
-                            <p>{category.name}</p>
-                            <button onClick={() => removeCategories(category._id)} className="border border-red-500">
-                                Remove
-                            </button>
+                        <div className='w-80 mt-10'>
+                            <h4 className='text-center font-medium'>Categories</h4>
+                            <div key={category._id} className='flex justify-around p-3 items-center shadow-lg shadow-orange-300 mt-5 rounded-lg'>
+                                <p>{category.name}</p>
+                                <button onClick={() => removeCategories(category._id)} className="border bg-orange-300 rounded-md p-3">
+                                    Remove
+                                </button>
+                            </div>
                         </div>
                     ))
                 ) : (
