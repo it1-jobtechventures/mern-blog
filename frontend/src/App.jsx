@@ -36,8 +36,9 @@ function App() {
         <Route path="/gallery" element={<Gallery url={url} />} />
         <Route path="/contact" element={<Contact url={url} />} />
       </Routes>
-      {isHomePage && <MiddlePage url={url}/>}
       <Logo/>
+      {isHomePage && <MiddlePage url={url}/>}
+      
       <Footer url={url} />
       <ScrollToTopButton/>
     </>

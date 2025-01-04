@@ -50,7 +50,7 @@ const Gallery = ({ url }) => {
                     Your browser does not support the video tag.
                   </video>
                 ) : (
-                  <img src={item.media} alt="media" className="w-full pointer-events-none h-64 object-cover rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg"
+                  <img src={item.media} alt="media" className="w-full pointer-events-none h-64 object-contain rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg"
                   />
                 )}
               </div>

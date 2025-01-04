@@ -1,32 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import bioImage from '../assets/pb2_bio.jpeg'
+import header from '../assets/image1.jpeg'
 
 const Header = () => {
   return (
     <main>
-      <header className="flex flex-col bg-[#202020] text-white pt-12 pb-32">
+      <header className="flex flex-col bg-[#202020] text-white pb-12">
         <div className="flex flex-col-reverse md:flex-row bg-[#202020] text-white md:pt-16">
           <div className="w-full md:w-1/2 p-6 md:text-left">
             <h1 className="text-3xl sm:text-4xl font-bold mb-6 relative inline-block">
               PRAKASH BANSAL
             </h1>
             <div className="bottom-0 left-0 w-full h-1 bg-[#ff9724]"></div>
-            <div className="text-3xl sm:text-5xl lg:text-8xl text-right mt-6 md:mt-10">
+            <div className="text-3xl sm:text-5xl lg:text-7xl text-right mt-6 md:mt-10">
               <p>RESEARCHER.</p>
               <p>INVENTOR.</p>
               <p>AUTHOR.</p>
             </div>
           </div>
           <div className="w-full md:w-1/2 flex justify-center p-6">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"/>
+            <img src={header} alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg md:h-[400px] h-[250px] object-cover object-top"/>
           </div>
         </div>
-        <div className="w-full md:w-3/4 lg:w-1/2 text-lg sm:text-xl p-5 pl-10">
+        {/* <div className="w-full md:w-3/4 lg:w-1/2 text-lg sm:text-xl p-5 pl-10">
           An experienced researcher, inventor, and author, with a track record
           at leading R&D teams, writing winning grant proposals, whilst being
           passionate about deep-tech innovation that leads to impact.
-        </div>
+        </div> */}
       </header>
       <div>
         <header className="flex flex-col-reverse md:flex-row">

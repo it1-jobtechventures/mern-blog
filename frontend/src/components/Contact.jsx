@@ -6,6 +6,7 @@ import { FaInstagram } from "react-icons/fa";
 import { CiLinkedin, CiFacebook } from "react-icons/ci";
 import {Link} from 'react-router-dom'
 import { CiTwitter } from "react-icons/ci";
+import contact from '../assets/contact.jpeg'
 
 const Contact = ({ url }) => {
   const [formData, setFormData] = useState({
@@ -126,7 +127,7 @@ const Contact = ({ url }) => {
           </div>
         </div>
         <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className="rounded-md shadow-lg w-4/5 max-w-xs md:max-w-md"/>
+          <img src={contact} alt="profile" className="rounded-md shadow-lg w-4/5 max-w-xs md:max-w-md"/>
         </div>
       </div>
         <div className=" inset-0 z-50 flex items-center justify-center  bg-opacity-50 overflow-auto">

@@ -1,5 +1,6 @@
 import React from 'react'
-
+import fam from '../assets/fam.jpeg'
+import about from '../assets/about.jpeg'
 const About = () => {
   return (
     <main>
@@ -19,16 +20,16 @@ const About = () => {
           </div>
         </div>
         <div className="w-full md:w-1/2 flex justify-center p-6">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"/>
+          <img src={about} alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"/>
         </div>
       </div>
     </header>
     <div>
       <header className="flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2 flex justify-center bg-[#f3f3f3] p-6">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className="rounded-md shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"/>
+        <div className="w-full md:w-1/2 flex justify-center p-6">
+          <img src={fam} alt="profile" className="rounded-md object-contain  w-full max-w-sm md:max-w-md lg:max-w-lg h-auto"/>
         </div>
-        <div className="w-full md:w-1/2 p-6 bg-[#fffafa]">
+        <div className="w-full md:w-1/2 p-6 bg-[#f3f3f3] ">
           <div className="flex flex-col items-end">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 relative text-right">
               My background is a bit like a pizza
