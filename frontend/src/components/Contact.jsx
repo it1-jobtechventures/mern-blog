@@ -6,7 +6,7 @@ import { FaInstagram } from "react-icons/fa";
 import { CiLinkedin, CiFacebook } from "react-icons/ci";
 import {Link} from 'react-router-dom'
 import { CiTwitter } from "react-icons/ci";
-import contact from '../assets/contact.jpeg'
+import contact from '../assets/pb_contact.jpeg'
 
 const Contact = ({ url }) => {
   const [formData, setFormData] = useState({
@@ -113,7 +113,7 @@ const Contact = ({ url }) => {
 
   return (
     <div className="relative bg-[#202020] pb-10">
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between bg-[#202020] text-white py-16 px-6 md:px-8">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between bg-[#202020] text-white md:py-10 px-6 md:px-8">
         <div className="w-full md:w-1/2">
           <div className="w-full h-1 bg-[#ff9724] mb-4 mt-3 md:mt-0"></div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center md:text-left">CONTACT.</h1>
@@ -126,8 +126,11 @@ const Contact = ({ url }) => {
             <Link to={'https://x.com/i/flow/login?redirect_after_login=%2FPrakBansal'} target="_blank"><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link> 
           </div>
         </div>
-        <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">
+        {/* <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">
           <img src={contact} alt="profile" className="rounded-md shadow-lg w-4/5 max-w-xs md:max-w-md"/>
+        </div> */}
+        <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">
+          <img src={contact} alt="profile" className="md:h-[500px] h-[250px] object-cover object-top rounded-md"/>
         </div>
       </div>
         <div className=" inset-0 z-50 flex items-center justify-center  bg-opacity-50 overflow-auto">
