@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import BlogCard from "./BlogCard";
 import axios from "axios";
 import { toast } from "react-toastify";
+import blog_img from '../assets/blog.jpeg'
 
 const SkeletonCard = () => (
   <div className="animate-pulse flex flex-col gap-2 bg-gray-800 p-4 rounded-md">
@@ -80,7 +81,7 @@ const Blog = ({ url }) => {
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">BLOG.</h1>
         </div>
         <div className="w-full md:w-1/2 flex justify-center">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className="rounded-md shadow-lg w-3/4 md:w-full max-w-sm md:max-w-md"/>
+          <img src={blog_img} alt="profile" className="rounded-md shadow-lg w-3/4 md:w-full max-w-sm md:max-w-md"/>
         </div>
       </main>
       {/* Categories and Blogs Section */}
