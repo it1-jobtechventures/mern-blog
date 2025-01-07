@@ -29,7 +29,7 @@ const Gallery = ({ url }) => {
   }, []);
 
   return (
-    <div className="pt-16 pb-10 bg-[#202020] relative">
+    <div className="pt-16 pb-10 bg-[#202020] relative min-h-screen">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl text-white font-semibold text-center mb-8">Gallery</h2>
         {loading ? (
@@ -43,15 +43,14 @@ const Gallery = ({ url }) => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {photo.map((item, index) => (
-              <div key={index} onClick={() => setPopupMedia(item)} className="cursor-pointer">
+              <div key={index} onClick={() => setPopupMedia(item)} className="cursor-pointer group hover:shadow-xl transition-shadow duration-300">
                 {item.type === 'video' ? (
-                  <video controls className="w-full pointer-events-none h-64 object-cover rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg">
+                  <video controls className="w-full h-64 object-contain rounded-lg transition-transform duration-300 ease-in-out transform group-hover:scale-105">
                     <source src={item.media} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 ) : (
-                  <img src={item.media} alt="media" className="w-full pointer-events-none h-64 object-contain rounded-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:shadow-lg"
-                  />
+                  <img src={item.media} alt="media" className="w-full h-64 object-contain rounded-lg transition-transform duration-300 ease-in-out transform group-hover:scale-105"/>
                 )}
               </div>
             ))}
@@ -61,19 +60,20 @@ const Gallery = ({ url }) => {
       {/* Popup Overlay */}
       {popupMedia && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="relative bg-gray-900 rounded-lg p-4 flex items-center justify-center w-full max-w-[40rem] h-auto max-h-[90vh]">
-            <button className="absolute top-2 right-2 text-white text-2xl" onClick={() => setPopupMedia(null)}>
+          <div className="relative bg-gray-800 rounded-lg p-4 sm:p-6 flex flex-col items-center justify-center w-[90%] max-w-[500px] sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[900px] max-h-[90vh] overflow-hidden">
+            <button className="absolute top-4 right-4 text-white text-3xl hover:text-gray-400 transition" onClick={() => setPopupMedia(null)}>
               ✕
             </button>
-            {popupMedia.type === 'video' ? (
-              <video controls autoPlay className="w-full h-full rounded-lg">
-                <source src={popupMedia.media} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            ) : (
-              <img src={popupMedia.media} alt="Popup media" className="w-full h-full object-cover rounded-lg"
-              />
-            )}
+            <div className="w-full h-[70vw] sm:h-[50vw] md:h-[40vw] lg:h-[30rem] flex items-center justify-center">
+              {popupMedia.type === 'video' ? (
+                <video controls className="w-full h-full object-contain rounded-lg">
+                  <source src={popupMedia.media} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img src={popupMedia.media} alt="Popup media" className="w-full h-full object-contain rounded-lg"/>
+              )}
+            </div>
           </div>
         </div>
       )}
