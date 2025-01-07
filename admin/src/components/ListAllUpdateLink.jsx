@@ -42,21 +42,25 @@ const ListAllUpdateLink = ({url}) => {
     return (
         <div className="max-w-6xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
             <h1 className="text-2xl font-bold mb-5">All Update Links</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                {updateList.map((list, index) => (
-                    <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-lg overflow-hidden">
-                        <h2 className="font-semibold text-lg mb-2 truncate" title={list.title}>
-                            {list.title}
-                        </h2>
-                        <p className="text-gray-700 mb-2 break-words" title={list.link}>
-                            {list.link}
-                        </p>
-                        <button onClick={() => removeUpdatedLink(list._id)} className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-700 transition duration-200">
-                            Remove Link
-                        </button>
-                    </div>
-                ))}
-            </div>
+            {updateList.length === 0 ? (
+                <p className="text-center text-gray-500">No Links available.</p>
+            ):(
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                    {updateList.map((list, index) => (
+                        <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-lg overflow-hidden">
+                            <h2 className="font-semibold text-lg mb-2 truncate" title={list.title}>
+                                {list.title}
+                            </h2>
+                            <p className="text-gray-700 mb-2 break-words" title={list.link}>
+                                {list.link}
+                            </p>
+                            <button onClick={() => removeUpdatedLink(list._id)} className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-700 transition duration-200">
+                                Remove Link
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

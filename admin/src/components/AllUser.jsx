@@ -42,25 +42,29 @@ const AllUser = ({url}) => {
     <>
       <div className="container mx-auto p-6 mt-24">
         <h1 className="text-3xl font-semibold text-primary mb-6">All Users</h1>
-        <div className="space-y-6">
-          {users.map((user) => (
-            <div key={user._id} className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-lg transition-shadow" >
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="text-lg font-semibold text-gray-800">Name: {user.name}</p>
-                  <p className="text-sm text-gray-600">Email: {user.email}</p>
-                  <p className="text-sm text-gray-500">Created Date: {new Date(user.createdAt).toLocaleDateString()}</p>
-                  <p className="text-sm text-gray-600">Password: {user.password}</p>
-                </div>
-                <div className="flex space-x-4">
-                  <button onClick={() => removeUser(user._id)} className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors">
-                    Remove user
-                  </button>
+        {users.length === 0 ? (
+          <p className="text-center text-gray-500">No user available.</p>
+        ):(
+          <div className="space-y-6">
+            {users.map((user) => (
+              <div key={user._id} className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-lg transition-shadow" >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-lg font-semibold text-gray-800">Name: {user.name}</p>
+                    <p className="text-sm text-gray-600">Email: {user.email}</p>
+                    <p className="text-sm text-gray-500">Created Date: {new Date(user.createdAt).toLocaleDateString()}</p>
+                    <p className="text-sm text-gray-600">Password: {user.password}</p>
+                  </div>
+                  <div className="flex space-x-4">
+                    <button onClick={() => removeUser(user._id)} className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors">
+                      Remove user
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   )

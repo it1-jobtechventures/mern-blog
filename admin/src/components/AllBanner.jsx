@@ -43,21 +43,25 @@ const AllBanner = ({ url }) => {
     <div className="max-w-6xl mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
       <h1 className="text-2xl font-bold mb-5">All Banner List</h1>
       <div className="overflow-x-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {allBanner.map((banner, index) => (
-            <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <img src={banner.image} alt="banner" className="w-full h-40 object-cover rounded-lg mb-3"/>
-              <div className="flex flex-col items-center">
-                <p className="font-semibold text-center mb-2 break-words text-xs sm:text-sm">
-                  {banner.link}
-                </p>
-                <button onClick={() => removeBanner(banner._id)} className="mt-2 w-full bg-red-500 text-white font-bold py-2 rounded hover:bg-red-700 transition duration-200">
-                  Remove
-                </button>
+        {allBanner.length === 0 ? (
+          <p className="text-center text-gray-500">No Banner available.</p>
+        ):(
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {allBanner.map((banner, index) => (
+              <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-md">
+                <img src={banner.image} alt="banner" className="w-full h-40 object-cover rounded-lg mb-3"/>
+                <div className="flex flex-col items-center">
+                  <p className="font-semibold text-center mb-2 break-words text-xs sm:text-sm">
+                    {banner.link}
+                  </p>
+                  <button onClick={() => removeBanner(banner._id)} className="mt-2 w-full bg-red-500 text-white font-bold py-2 rounded hover:bg-red-700 transition duration-200">
+                    Remove
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
