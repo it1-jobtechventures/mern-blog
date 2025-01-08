@@ -6,6 +6,14 @@ import jobtech from '/jobtech.png'
 
 const logoData = [
     {
+        "image":hindco,
+        "text":"Executive Search And Recruitment Consulting Firm.",
+        "linkedin":"https://in.linkedin.com/company/hindco",
+        "insta":"https://www.instagram.com/hindcojobs/?hl=en",
+        "facebook":"https://www.facebook.com/HindcoConsultingServices/",
+        "twitter":"https://x.com/jobshindco?lang=en"
+    },
+    {
         "image":jonringer,
         "text":"Jobringer ~ India's Job Portal.",
         "linkedin":"https://in.linkedin.com/company/jobringer",
@@ -21,14 +29,7 @@ const logoData = [
         "facebook":"https://www.facebook.com/profile.php?id=100090887163544&mibextid=ZbWKwL",
         "twitter":"https://twitter.com/ArfectS"
     },
-    {
-        "image":hindco,
-        "text":"Executive Search And Recruitment Consulting Firm.",
-        "linkedin":"https://in.linkedin.com/company/hindco",
-        "insta":"https://www.instagram.com/hindcojobs/?hl=en",
-        "facebook":"https://www.facebook.com/HindcoConsultingServices/",
-        "twitter":"https://x.com/jobshindco?lang=en"
-    },
+
     {
         "image":alanze,
         "text":"Online Retail Apparel and Fashion Platform.",
