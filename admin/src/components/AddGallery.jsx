@@ -56,7 +56,7 @@ const AddGallery = ({ url }) => {
             <form onSubmit={onSubmitHandler}>
                 <div className="mb-4">
                     <label htmlFor="media" className="block text-sm font-medium text-gray-700">
-                        Upload Images/Videos
+                        Upload Images/Videos(select upto 10 images/videos)
                     </label>
                     <input type="file" id="media" multiple accept="image/*,video/*" className="block w-full text-sm text-gray-500" onChange={onFilesChange}/>
                 </div>
