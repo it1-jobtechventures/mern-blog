@@ -10,8 +10,6 @@ import contact from '../assets/pb_contact.jpeg'
 
 const Contact = ({ url }) => {
   const [formData, setFormData] = useState({
-    // firstName: "",
-    // lastName: "",
     name:"",
     countryCode: "",
     location:"",
@@ -41,7 +39,7 @@ const Contact = ({ url }) => {
       toast.error("Invalid email address.");
       return false;
     }
-    if (!formData.name|| !formData.message || !formData.location) {
+    if (!formData.name || !formData.subject || !formData.message || !formData.location) {
       toast.error("All fields are required.");
       return false;
     }
@@ -59,16 +57,11 @@ const Contact = ({ url }) => {
     try {
       setLoading(true);
       const response = await axios.post(`${url}/api/contact/sentEmail`, formData);
-      console.log("ajsdh",response.data)
-      console.log("jsadkj",formData)
       if (response.data.success) {
         // Send email using EmailJS
         sendEmail(formData);
-        console.log("front",formData)
         toast.success("Form submitted successfully.");
         setFormData({
-          // firstName: "",
-          // lastName: "",
           name:"",
           email: "",
           countryCode: "",
@@ -82,78 +75,39 @@ const Contact = ({ url }) => {
       }
     } catch (error) {
       console.log(error.message)
-      toast.error(error.message);
+      toast.error("Error submitting form.");
     }finally{
       setLoading(false);
     }
   };
 
-  // // Send email using EmailJS
-  // const sendEmail = (data) => {
-  //   const templateParams = {
-  //     // from_name: `${data.firstName} ${data.lastName}`,
-  //     from_name: data.name,
-  //     email: data.email,
-  //     phoneNo:data.phoneNo,
-  //     subject: data.subject,
-  //     message: data.message,
-  //   };
-
-  //   emailjs
-  //     .send(
-  //       import.meta.env.VITE_EMAILJS_SERVICE_ID, 
-  //       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-  //       templateParams,
-  //       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-  //     )
-  //     .then(
-  //       (response) => {
-  //         toast.success("Email sent successfully");
-  //       },
-  //       (error) => {
-  //         console.log(error.message)
-  //         toast.error("Error sending email");
-  //       }
-  //     );
-  // };
   // Send email using EmailJS
-const sendEmail = (data) => {
-  console.log("sendEmail called with data:", data); // Debug log for input data
+  const sendEmail = (data) => {
+    const templateParams = {
+      from_name: data.name,
+      email: data.email,
+      phoneNo:data.phoneNo,
+      subject: data.subject,
+      message: data.message,
+    };
 
-  const templateParams = {
-    from_name: data.name,
-    email: data.email,
-    phoneNo: data.phoneNo,
-    subject: data.subject,
-    message: data.message,
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (response) => {
+          toast.success("Email sent successfully");
+        },
+        (error) => {
+          console.log(error.message)
+          toast.error("Error sending email");
+        }
+      );
   };
-
-  console.log("Template parameters prepared:", templateParams); // Debug log for templateParams
-
-  // Log environment variables (be cautious with sensitive data)
-  console.log("EmailJS Service ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID); // Debug log for service ID
-  console.log("EmailJS Template ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID); // Debug log for template ID
-  console.log("EmailJS Public Key:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY); // Debug log for public key
-
-  emailjs
-    .send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID, 
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      templateParams,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
-    .then(
-      (response) => {
-        console.log("EmailJS response:", response); // Debug log for successful response
-        toast.success("Email sent successfully");
-      },
-      (error) => {
-        console.error("EmailJS error:", error); // Debug log for error response
-        toast.error("Error sending email");
-      }
-    );
-};
-
 
   return (
     <div className="relative bg-[#202020] pb-10">
@@ -170,9 +124,6 @@ const sendEmail = (data) => {
             <Link to={'https://x.com/i/flow/login?redirect_after_login=%2FPrakBansal'} target="_blank"><CiTwitter className="hover:text-[#ff9724] cursor-pointer"/></Link> 
           </div>
         </div>
-        {/* <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">
-          <img src={contact} alt="profile" className="rounded-md shadow-lg w-4/5 max-w-xs md:max-w-md"/>
-        </div> */}
         <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-center">
           <img src={contact} alt="profile" className="md:h-[500px] h-[250px] object-cover object-top rounded-md"/>
         </div>
@@ -181,22 +132,24 @@ const sendEmail = (data) => {
           <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-xs sm:max-w-lg mx-4">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center"> Contact Us</h2>
             <form onSubmit={onSubmitHandler}>
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                  Name *
-                </label>
-                <input type="text" name="name" value={formData.name} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Name" required/>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 hidden sm:block">
+                    name
+                  </label>
+                  <input type="text" name="name" value={formData.name} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Last Name" required/>
+                </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Email *
+                    Email
                   </label>
                   <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Email" required/>
                 </div>
                 <div>
                   <label htmlFor="location" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Location *
+                    Location
                   </label>
                   <input type="text" name="location" value={formData.location} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Location" required/>
                 </div>
@@ -204,7 +157,7 @@ const sendEmail = (data) => {
               <div className="mb-4">
                 <div className="w-full">
                   <label htmlFor="countryCode" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Phone No. *
+                    Phone No.
                   </label>
                   <div className="flex">
                     <input type="number" name="countryCode" value={formData.countryCode} onChange={(e) => {const value = e.target.value; if(/^\d{0,4}$/.test(value)) {setFormData((prev) => ({...prev , countryCode: value}));}}} className="w-20 border border-gray-300 rounded-l-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="+91" required/>
@@ -216,11 +169,11 @@ const sendEmail = (data) => {
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 hidden sm:block">
                   Subject
                 </label>
-                <input type="text" name="subject" value={formData.subject} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Subject" />
+                <input type="text" name="subject" value={formData.subject} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Subject"/>
               </div>
               <div className="mb-4">
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                  Message *
+                  Message
                 </label>
                 <textarea name="message" value={formData.message} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Message" rows="4" required/>
               </div>
