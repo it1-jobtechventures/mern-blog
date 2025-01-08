@@ -62,6 +62,7 @@ const Contact = ({ url }) => {
       if (response.data.success) {
         // Send email using EmailJS
         sendEmail(formData);
+        console.log("front",formData)
         toast.success("Form submitted successfully.");
         setFormData({
           // firstName: "",
@@ -79,7 +80,7 @@ const Contact = ({ url }) => {
       }
     } catch (error) {
       console.log(error.message)
-      toast.error("Error submitting form.");
+      toast.error(error.message);
     }finally{
       setLoading(false);
     }
