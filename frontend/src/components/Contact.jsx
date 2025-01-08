@@ -39,7 +39,7 @@ const Contact = ({ url }) => {
       toast.error("Invalid email address.");
       return false;
     }
-    if (!formData.name || !formData.subject || !formData.message || !formData.location) {
+    if (!formData.name || !formData.message || !formData.location) {
       toast.error("All fields are required.");
       return false;
     }
@@ -86,6 +86,7 @@ const Contact = ({ url }) => {
     const templateParams = {
       from_name: data.name,
       email: data.email,
+      countryCode: data.countryCode,
       phoneNo:data.phoneNo,
       subject: data.subject,
       message: data.message,
@@ -132,13 +133,11 @@ const Contact = ({ url }) => {
           <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-xs sm:max-w-lg mx-4">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center"> Contact Us</h2>
             <form onSubmit={onSubmitHandler}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
-                <div>
+              <div className="mb-4">
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    name
+                    Name
                   </label>
-                  <input type="text" name="name" value={formData.name} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Last Name" required/>
-                </div>
+                  <input type="text" name="name" value={formData.name} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Full Name" required/>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
                 <div>
