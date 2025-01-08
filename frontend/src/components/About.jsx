@@ -36,7 +36,7 @@ const About = () => {
             </h1>
             <div className="w-1/3 sm:w-1/4 h-1 bg-[#ff9724]"></div>
           </div>
-          <p className="text-base sm:text-lg leading-relaxed mb-4  p-6 sm:p-10  text-justify space-y-2">
+          <p className="text-base sm:text-lg leading-relaxed mb-4 sm:p-10  text-justify space-y-2">
             Family is the cornerstone of everything I do. It’s where I draw my inspiration, strength, and motivation. Together, we’ve built a life rooted in love, respect, and a shared commitment to growth and happiness.<br/>
             <p><span className='font-bold'>Priya Bansal</span>, my wonderful wife, is a dedicated dietitian who has always been a source of health and well-being in our home. Her passion for nutrition and wellness inspires us to live balanced, healthy lives, and her unwavering support has been instrumental in both my personal and professional journey. She’s not just the heart of our home, but a true partner in every sense.<br/></p>
             <p>Our daughters are both exceptionally talented and unique in their own ways:</p>
