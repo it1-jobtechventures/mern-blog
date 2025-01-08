@@ -54,12 +54,11 @@ const Contact = ({ url }) => {
     e.preventDefault();
 
     if (!validateForm()) return;
-    console.log("hjh",formData)
+
     // Save form data in the database
     try {
       setLoading(true);
       const response = await axios.post(`${url}/api/contact/sentEmail`, formData);
-      console.log(response.data)
       if (response.data.success) {
         // Send email using EmailJS
         sendEmail(formData);
@@ -86,68 +85,6 @@ const Contact = ({ url }) => {
     }
   };
 
-  // const onSubmitHandler = async (e) => {
-  //   e.preventDefault();
-  //   if (!validateForm()) return;
-  
-  //   console.log("Submitting form:", formData); // Debug log
-  
-  //   // try {
-  //   //   setLoading(true);
-  //   //   const response = await axios.post(`${url}/api/contact/sentEmail`, formData, {
-  //   //     headers: { "Content-Type": "application/json" },
-  //   //   });
-  //   //   console.log("API response:", response.data); // Debug log
-  
-  //   //   if (response.data.success) {
-  //   //     sendEmail(formData);
-  //   //     toast.success("Form submitted successfully.");
-  //   //     setFormData({
-  //   //       name: "",
-  //   //       email: "",
-  //   //       countryCode: "",
-  //   //       location: "",
-  //   //       phoneNo: "",
-  //   //       subject: "",
-  //   //       message: "",
-  //   //     });
-  //   //   } else {
-  //   //     toast.error("Error submitting form.");
-  //   //   }
-  //   // } catch (error) {
-  //   //   console.error("Error submitting form:", error.message); // Debug log
-  //   //   toast.error("Error submitting form.");
-  //   // } finally {
-  //   //   setLoading(false);
-  //   // }
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post(`${url}/api/contact/sentEmail`, formData);
-  //     console.log("API response:", response.data);
-  //     if (response.data.success) {
-  //       sendEmail(formData);
-  //       toast.success("Form submitted successfully.");
-  //       setFormData({
-  //         name: "",
-  //         email: "",
-  //         countryCode: "",
-  //         location: "",
-  //         phoneNo: "",
-  //         subject: "",
-  //         message: "",
-  //       });
-  //     } else {
-  //       toast.error("Error submitting form.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error); // Log full error object
-  //     toast.error("Error submitting form: " + (error.message || "Unknown error occurred."));
-  //   } finally {
-  //     setLoading(false);
-  //   }
-    
-  // };
-  
   // Send email using EmailJS
   const sendEmail = (data) => {
     const templateParams = {
