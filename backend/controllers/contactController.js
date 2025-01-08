@@ -3,8 +3,9 @@ import contactModel from "../models/contactModel.js";
 const sentEmail = async(req, res) => {
     try {
         const contact = new contactModel({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            // firstName: req.body.firstName,
+            // lastName: req.body.lastName,
+            name:req.body.name,
             countryCode: req.body.countryCode,
             location:req.body.location,
             phoneNo : req.body.phoneNo,
