@@ -35,8 +35,7 @@ const AllEmail = ({url}) => {
                 <div key={email._id} className="bg-gray-100 p-4 rounded-lg shadow-md">
                     <h2 className="text-xl font-semibold">{email.name}</h2>
                     <p className="text-gray-600"><strong>Email:</strong> {email.email}</p>
-                    <p className="text-gray-600"><strong>country Code:</strong> {email.countryCode}</p>
-                    <p className="text-gray-600"><strong>Phone No.:</strong> {email.phoneNo}</p>
+                    <p className="text-gray-600"><strong>Phone No.:</strong>+{email.countryCode}-{email.phoneNo}</p>
                     <p className="text-gray-600"><strong>Location:</strong> {email.location}</p>
                     <p className="font-medium mt-2"><strong>Subject:</strong> {email.subject}</p>
                     <p className="mt-2 text-gray-700"><strong>Message:</strong> {email.message}</p>
