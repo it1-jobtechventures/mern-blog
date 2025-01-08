@@ -10,8 +10,9 @@ import contact from '../assets/pb_contact.jpeg'
 
 const Contact = ({ url }) => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    // firstName: "",
+    // lastName: "",
+    name:"",
     countryCode: "",
     location:"",
     phoneNo: "",
@@ -40,7 +41,7 @@ const Contact = ({ url }) => {
       toast.error("Invalid email address.");
       return false;
     }
-    if (!formData.firstName || !formData.lastName || !formData.subject || !formData.message || !formData.location) {
+    if (!formData.name|| !formData.message || !formData.location) {
       toast.error("All fields are required.");
       return false;
     }
@@ -63,8 +64,9 @@ const Contact = ({ url }) => {
         sendEmail(formData);
         toast.success("Form submitted successfully.");
         setFormData({
-          firstName: "",
-          lastName: "",
+          // firstName: "",
+          // lastName: "",
+          name:"",
           email: "",
           countryCode: "",
           location:"",
@@ -86,7 +88,8 @@ const Contact = ({ url }) => {
   // Send email using EmailJS
   const sendEmail = (data) => {
     const templateParams = {
-      from_name: `${data.firstName} ${data.lastName}`,
+      // from_name: `${data.firstName} ${data.lastName}`,
+      from_name: data.name,
       email: data.email,
       phoneNo:data.phoneNo,
       subject: data.subject,
@@ -137,58 +140,22 @@ const Contact = ({ url }) => {
           <div className="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-xs sm:max-w-lg mx-4">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center"> Contact Us</h2>
             <form onSubmit={onSubmitHandler}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    First Name
-                  </label>
-                  <input type="text" name="firstName" value={formData.firstName} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="First Name" required/>
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Last Name
-                  </label>
-                  <input type="text" name="lastName" value={formData.lastName} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Last Name" required/>
-                </div>
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 hidden sm:block">
+                  Name *
+                </label>
+                <input type="text" name="name" value={formData.name} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Name" required/>
               </div>
-              {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Email
-                  </label>
-                  <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Email"  required/>
-                </div>
-                <div>
-                  <label htmlFor="phoneNo" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Phone No.
-                  </label>
-                  <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Phone No." required/>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
-                  <div>
-                    <label htmlFor="countryCode" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                      Country Code
-                    </label>
-                    <input type="text" name="countryCode" value={formData.countryCode} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-12 border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Country Code (e.g., +1)" required/>
-                  </div>
-                  <div>
-                    <label htmlFor="phoneNo" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                      Phone No.
-                    </label>
-                    <input type="tel" name="phoneNo" value={formData.phoneNo} onChange={(e) => { const value = e.target.value; if (/^\d{0,10}$/.test(value)) {    setFormData((prev) => ({ ...prev, phoneNo: value })); }}} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Phone No." required/>
-                  </div>
-                </div>
-              </div> */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Email
+                    Email *
                   </label>
                   <input type="email" name="email" value={formData.email} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Email" required/>
                 </div>
                 <div>
                   <label htmlFor="location" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Location
+                    Location *
                   </label>
                   <input type="text" name="location" value={formData.location} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Location" required/>
                 </div>
@@ -196,7 +163,7 @@ const Contact = ({ url }) => {
               <div className="mb-4">
                 <div className="w-full">
                   <label htmlFor="countryCode" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                    Phone No.
+                    Phone No. *
                   </label>
                   <div className="flex">
                     <input type="number" name="countryCode" value={formData.countryCode} onChange={(e) => {const value = e.target.value; if(/^\d{0,4}$/.test(value)) {setFormData((prev) => ({...prev , countryCode: value}));}}} className="w-20 border border-gray-300 rounded-l-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="+91" required/>
@@ -208,11 +175,11 @@ const Contact = ({ url }) => {
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 hidden sm:block">
                   Subject
                 </label>
-                <input type="text" name="subject" value={formData.subject} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Subject" required/>
+                <input type="text" name="subject" value={formData.subject} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Subject" />
               </div>
               <div className="mb-4">
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 hidden sm:block">
-                  Message
+                  Message *
                 </label>
                 <textarea name="message" value={formData.message} onChange={onChangeHandler} className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]" placeholder="Message" rows="4" required/>
               </div>
