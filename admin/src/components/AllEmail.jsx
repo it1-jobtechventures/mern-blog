@@ -33,7 +33,7 @@ const AllEmail = ({url}) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {allEmails.map((email) => (
                 <div key={email._id} className="bg-gray-100 p-4 rounded-lg shadow-md">
-                    <h2 className="text-xl font-semibold">{email.firstName} {email.lastName}</h2>
+                    <h2 className="text-xl font-semibold">{email.name}</h2>
                     <p className="text-gray-600"><strong>Email:</strong> {email.email}</p>
                     <p className="text-gray-600"><strong>country Code:</strong> {email.countryCode}</p>
                     <p className="text-gray-600"><strong>Phone No.:</strong> {email.phoneNo}</p>
