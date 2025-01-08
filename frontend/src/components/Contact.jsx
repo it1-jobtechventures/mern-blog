@@ -54,7 +54,7 @@ const Contact = ({ url }) => {
     e.preventDefault();
 
     if (!validateForm()) return;
-
+    console.log("hjh",formData)
     // Save form data in the database
     try {
       setLoading(true);
