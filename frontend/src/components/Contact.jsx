@@ -88,34 +88,72 @@ const Contact = ({ url }) => {
     }
   };
 
-  // Send email using EmailJS
-  const sendEmail = (data) => {
-    const templateParams = {
-      // from_name: `${data.firstName} ${data.lastName}`,
-      from_name: data.name,
-      email: data.email,
-      phoneNo:data.phoneNo,
-      subject: data.subject,
-      message: data.message,
-    };
+  // // Send email using EmailJS
+  // const sendEmail = (data) => {
+  //   const templateParams = {
+  //     // from_name: `${data.firstName} ${data.lastName}`,
+  //     from_name: data.name,
+  //     email: data.email,
+  //     phoneNo:data.phoneNo,
+  //     subject: data.subject,
+  //     message: data.message,
+  //   };
 
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID, 
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (response) => {
-          toast.success("Email sent successfully");
-        },
-        (error) => {
-          console.log(error.message)
-          toast.error("Error sending email");
-        }
-      );
+  //   emailjs
+  //     .send(
+  //       import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+  //       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  //       templateParams,
+  //       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+  //     )
+  //     .then(
+  //       (response) => {
+  //         toast.success("Email sent successfully");
+  //       },
+  //       (error) => {
+  //         console.log(error.message)
+  //         toast.error("Error sending email");
+  //       }
+  //     );
+  // };
+  // Send email using EmailJS
+const sendEmail = (data) => {
+  console.log("sendEmail called with data:", data); // Debug log for input data
+
+  const templateParams = {
+    from_name: data.name,
+    email: data.email,
+    phoneNo: data.phoneNo,
+    subject: data.subject,
+    message: data.message,
   };
+
+  console.log("Template parameters prepared:", templateParams); // Debug log for templateParams
+
+  // Log environment variables (be cautious with sensitive data)
+  console.log("EmailJS Service ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID); // Debug log for service ID
+  console.log("EmailJS Template ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID); // Debug log for template ID
+  console.log("EmailJS Public Key:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY); // Debug log for public key
+
+  emailjs
+    .send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(
+      (response) => {
+        console.log("EmailJS response:", response); // Debug log for successful response
+        toast.success("Email sent successfully");
+      },
+      (error) => {
+        console.error("EmailJS error:", error); // Debug log for error response
+        toast.error("Error sending email");
+      }
+    );
+};
+
 
   return (
     <div className="relative bg-[#202020] pb-10">
