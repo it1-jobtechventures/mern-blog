@@ -41,11 +41,11 @@ const Header = () => {
               </h1>
               <div className="w-full sm:w-1/4 h-1 bg-[#ff9724]"></div>
             </div>
-            <p className="text-base sm:text-lg leading-relaxed mb-4 pt-4 sm:p-10  text-justify">
+            <p className="text-base sm:text-lg leading-relaxed mb-4 pt-2 sm:p-10  text-justify space-y-1">
               <p>I’m <span className="font-bold">Prakash Bansal</span>, an entrepreneur and business leader with a deep passion for driving innovation and scaling businesses. Over the years, I’ve successfully built and led ventures across multiple industry sectors, leveraging technology and strategic vision to create impactful, high-growth solutions.<br/></p>
-              <p className="pt-3">Passionate about turning bold ideas into sustainable businesses that not only meet market needs but also lead through innovation. My entrepreneurial journey is rooted in the belief that impactful businesses are built through customer-centric solutions, operational excellence, and strong leadership.<br/></p>
-              <p className="pt-3">From launching startups to leading high-growth companies, I have always focused on fostering a culture of innovation and delivering real value. I like to interact with people from diverse backgrounds, any generation of entrepreneurs, sharing insights and strategies for business growth and leadership.</p>
-              <p className="pt-3">Let’s connect to explore how we can innovate, collaborate, and grow together!</p>
+              <p >Passionate about turning bold ideas into sustainable businesses that not only meet market needs but also lead through innovation. My entrepreneurial journey is rooted in the belief that impactful businesses are built through customer-centric solutions, operational excellence, and strong leadership.<br/></p>
+              <p>From launching startups to leading high-growth companies, I have always focused on fostering a culture of innovation and delivering real value. I like to interact with people from diverse backgrounds, any generation of entrepreneurs, sharing insights and strategies for business growth and leadership.</p>
+              <p>Let’s connect to explore how we can innovate, collaborate, and grow together!</p>
             </p>
             <div className=" pl-6 sm:pl-10 lg:pl-14 text-lg sm:text-xl">
               <Link to={"/about"}>

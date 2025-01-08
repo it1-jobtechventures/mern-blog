@@ -32,17 +32,17 @@ const About = () => {
         <div className="w-full md:w-1/2 p-6 bg-[#f3f3f3] ">
           <div className="flex flex-col items-end">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 relative text-right">
-              My background is a bit like a pizza
+              About My Family
             </h1>
             <div className="w-1/3 sm:w-1/4 h-1 bg-[#ff9724]"></div>
           </div>
-          <p className="text-base sm:text-lg leading-relaxed mb-4 pt-7 p-6 sm:p-10 lg:p-14">
-            The base is Mathematical Physics, the sauce is Engineering and Computer Science, and the toppings, well, the toppings will depend on the project that I’m working on at the time. 
-            Most recently, at Ultraleap, we’ve been developing a new type of human-computer interface. One made up of invisible small vibrations in the air that we can generate and you can gesture, touch and feel with your bare hands and without having to wear or hold anything. A touchable hologram if you like.
-            Prior to that, at Toshiba, we’ve been working on modelling and designing more reliable wireless networks. Part of my work on this topic was included in Toshiba’s wining bid to rollout smart meters in Japan.
-            So, my background in Mathematical Physics, Complex Systems, and Wireless Networks certainly comes in handy in the development of emerging technologies, especially during the current wave of AI. However, at the same time in the past few years, I’ve learned so much about user-centered design, human factors, immersive multi-sensory experiences, and the importance of responsible research and innovation.
-            More recently, I’ve been fascinated by the complexities of how to set up and manage an R&D team that is able to fund itself and delivers results. So much so, that I’ve written a book about it.
-            Finally, leveraging my experiences, I’ve recently launched a consultancy service that helps other companies apply for R&D funding and then set them up. I’m calling this service: Orestify. 
+          <p className="text-base sm:text-lg leading-relaxed mb-4  p-6 sm:p-10  text-justify space-y-2">
+            Family is the cornerstone of everything I do. It’s where I draw my inspiration, strength, and motivation. Together, we’ve built a life rooted in love, respect, and a shared commitment to growth and happiness.<br/>
+            <p><span className='font-bold'>Priya Bansal</span>, my wonderful wife, is a dedicated dietitian who has always been a source of health and well-being in our home. Her passion for nutrition and wellness inspires us to live balanced, healthy lives, and her unwavering support has been instrumental in both my personal and professional journey. She’s not just the heart of our home, but a true partner in every sense.<br/></p>
+            <p>Our daughters are both exceptionally talented and unique in their own ways:</p>
+              <p><span className='pl-6 font-bold'>• Mansi Bansal</span> (18) is in her first year of Computer Engineering. A tech enthusiast with a sharp mind and a love for problem-solving, she’s already carving out her path in the world of technology. We’re incredibly proud of how she’s embracing the challenges of university life and the bright future ahead of her.</p>
+              <p><span className='pl-6 font-bold'>• Ashmi Bansal</span> (12) is a creative soul who has already made her mark as an author. At just 12 years old, she has a unique perspective on the world, which she beautifully captures in her writing. Whether it’s crafting stories or exploring new ideas, Ashmi constantly reminds us of the power of imagination and self-expression.</p>
+              <p>Together, our family creates a nurturing, supportive environment where we learn from each other, celebrate each other’s successes, and always have each other’s backs. We believe in the power of shared experiences, whether it’s celebrating achievements, overcoming challenges, or simply enjoying time together. Our family is a reflection of the values I hold dear—growth, love, creativity, and kindness.</p>
           </p>
         </div>
       </header>
