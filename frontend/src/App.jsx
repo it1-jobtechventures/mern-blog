@@ -16,7 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
-  const url = "https://mern-blog-backend-9oua.onrender.com";
+  const url = import.meta.env.VITE_BACKEND_URL;
 
   const location = useLocation();
 
