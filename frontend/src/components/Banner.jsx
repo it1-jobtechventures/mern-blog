@@ -36,7 +36,7 @@ const Banner = ({ url }) => {
       </div>
     ):(
       <div className="mb-5">
-        <Carousel showArrows={true}  showIndicators={true} infiniteLoop={true} autoPlay={true} interval={2000} showThumbs={false} dynamicHeight={true}>
+        <Carousel showArrows={true}  showIndicators={true} infiniteLoop={true} autoPlay={true} interval={5000} showThumbs={false} dynamicHeight={true}>
           {banner.map((ban, id) => (
             <a href={ban.link} target="_blank">
               <div key={id} className=" m-5 cursor-pointer">
