@@ -59,8 +59,8 @@ const Contact = ({ url }) => {
     try {
       setLoading(true);
       const response = await axios.post(`${url}/api/contact/sentEmail`, formData);
-      console.log(response.data.data)
-      console.log(formData)
+      console.log("ajsdh",response.data)
+      console.log("jsadkj",formData)
       if (response.data.success) {
         // Send email using EmailJS
         sendEmail(formData);
