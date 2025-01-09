@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="h-20 bg-[#202020] flex justify-between items-center px-4 text-white  w-full z-50 shadow-md">
+      <nav className="h-20 bg-[#202020] flex justify-between items-center px-4 text-white  w-full z-50 shadow-md md:pt-5">
         <div>
           <NavLink to="/" onClick={closeSidebar}>
             <img src="/pb.png" alt="logo" className="h-14 md:h-16 w-40 object-contain" />
