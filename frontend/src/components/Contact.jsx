@@ -112,7 +112,7 @@ const Contact = ({ url }) => {
 
   return (
     <div className="relative bg-[#202020] pb-10">
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between bg-[#202020] text-white md:py-10 px-6 md:px-8">
+      <div className="flex flex-col-reverse md:flex-row h-screen items-center justify-between bg-[#202020] text-white md:py-10 px-6 md:px-8">
         <div className="w-full md:w-1/2">
           <div className="w-full h-1 bg-[#ff9724] mb-4 mt-3 md:mt-0"></div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center md:text-left">CONTACT.</h1>
