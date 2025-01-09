@@ -82,7 +82,7 @@ const UpdatedLink = ({ url }) => {
       if (listContainerRef.current) {
         // Scroll to the next list item (smooth scroll effect)
         listContainerRef.current.scrollBy({
-          top: 40, // Adjust this value based on the height of your list items
+          top: 64,
           behavior: "smooth",
         });
 
