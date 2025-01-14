@@ -409,7 +409,7 @@ const Contact = ({ url }) => {
                 name="name"
                 value={formData.name}
                 onChange={onChangeHandler}
-                className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
+                className="mt-1 sm:mt-0 block w-full border text-gray-700 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
                 placeholder="Full Name"
                 required
               />
@@ -424,7 +424,7 @@ const Contact = ({ url }) => {
                   name="email"
                   value={formData.email}
                   onChange={onChangeHandler}
-                  className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
+                  className="mt-1 sm:mt-0 block w-full border text-gray-700 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
                   placeholder="Email"
                   required
                 />
@@ -438,7 +438,7 @@ const Contact = ({ url }) => {
                   name="location"
                   value={formData.location}
                   onChange={onChangeHandler}
-                  className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
+                  className="mt-1 sm:mt-0 block w-full border text-gray-700 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
                   placeholder="Location"
                   required
                 />
@@ -460,7 +460,7 @@ const Contact = ({ url }) => {
                         setFormData((prev) => ({ ...prev, countryCode: value }));
                       }
                     }}
-                    className="w-20 border border-gray-300 rounded-l-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
+                    className="w-20 border border-gray-300 text-gray-700 rounded-l-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
                     placeholder="+91"
                     required
                   />
@@ -474,7 +474,7 @@ const Contact = ({ url }) => {
                         setFormData((prev) => ({ ...prev, phoneNo: value }));
                       }
                     }}
-                    className="w-full border border-gray-300 rounded-r-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
+                    className="w-full border border-gray-300 text-gray-700 rounded-r-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
                     placeholder="Phone No."
                     required
                   />
@@ -490,7 +490,7 @@ const Contact = ({ url }) => {
                 name="subject"
                 value={formData.subject}
                 onChange={onChangeHandler}
-                className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
+                className="mt-1 sm:mt-0 block w-full border text-gray-700 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
                 placeholder="Subject"
               />
             </div>
@@ -502,7 +502,7 @@ const Contact = ({ url }) => {
                 name="message"
                 value={formData.message}
                 onChange={onChangeHandler}
-                className="mt-1 sm:mt-0 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
+                className="mt-1 sm:mt-0 block w-full border text-gray-700 border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-[#ff9724] focus:border-[#ff9724]"
                 placeholder="Message"
                 rows="4"
                 required
@@ -512,7 +512,7 @@ const Contact = ({ url }) => {
               <button
                 disabled={loading}
                 type="submit"
-                className="w-full sm:w-auto bg-[#ff9724] text-white px-4 py-2 rounded-md hover:bg-[#f18847] transition"
+                className="w-full sm:w-auto  bg-[#ff9724] text-white px-4 py-2 rounded-md hover:bg-[#f18847] transition"
               >
                 {loading ? (
                   <div className="flex justify-center items-center">
